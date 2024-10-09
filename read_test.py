@@ -124,7 +124,7 @@ if False and not os.path.isfile("data_frame_test.csv"):
     df_data_frame_test = pd.DataFrame(data_frame_test)
     df_data_frame_test.to_csv("data_frame_test.csv", index = False)
 
-if False and not os.path.isfile("data_frame_val.csv"):
+if not os.path.isfile("data_frame_val.csv"):
 
     data_frame_val  = {"variable": [], "model": [], "ws": [], "test": [], "val": [], "R2": [], "MAE": [], "MSE": [], "RMSE": []}
     for var in var_list:

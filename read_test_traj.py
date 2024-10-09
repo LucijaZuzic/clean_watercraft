@@ -157,7 +157,7 @@ if False and not os.path.isfile("data_frame_traj_test.csv"):
     df_data_frame_traj_test = pd.DataFrame(data_frame_traj_test)
     df_data_frame_traj_test.to_csv("data_frame_traj_test.csv", index = False)
 
-if False and not os.path.isfile("data_frame_traj_val.csv"):
+if not os.path.isfile("data_frame_traj_val.csv"):
 
     data_frame_traj_val  = {"variable": [], "model": [], "ws": [], "test": [], "val": [], "R2": [], "MAE": [], "MSE": [], "RMSE": [], "euclid": [], "haversine": []}
     for var in var_list:
