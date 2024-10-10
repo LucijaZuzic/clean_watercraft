@@ -1,0 +1,13 @@
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
+			RNN Linear & $51.9\%$ & $28.62\%$ & $\mathbf{86.18\%}$ & $16.41\%$ & $\mathbf{79.24\%}$ & $\mathbf{72.95\%}$ & $68.47\%$ \\ \hline
+			UniTS & $\mathbf{57.9\%}$ & $\mathbf{44.22\%}$ & $77.21\%$ & $\mathbf{35.22\%}$ & $74.14\%$ & $71.27\%$ & $\mathbf{68.56\%}$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average $R^{2}$ (\%) across k-fold validation datasets, with standard deviation in brackets, for the heading estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\label{tab:best_direction_R2}
+\end{table}

@@ -1,0 +1,13 @@
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
+			LSTM Linear & $6.743$ & $7.885$ & $\mathbf{2.451}$ & $8.424$ & $3.405$ & $4.205$ & $4.852$ \\ \hline
+			UniTS & $\mathbf{5.671}$ & $\mathbf{6.983}$ & $2.744$ & $\mathbf{7.614}$ & $\mathbf{3.297}$ & $\mathbf{3.781}$ & $\mathbf{4.205}$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average MAE across k-fold validation datasets, with standard deviation in brackets, for the speed estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\label{tab:best_speed_MAE}
+\end{table}

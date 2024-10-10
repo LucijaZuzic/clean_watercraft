@@ -1,0 +1,14 @@
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
+			GRU Att 1 & $50.23\%$ & $14.4\%$ & $95.28\%$ & $2.92\%$ & $\mathbf{91.82\%}$ & $87.72\%$ & $84.58\%$ \\ \hline
+			LSTM Third & $47.71\%$ & $-0.66\%$ & $\mathbf{96.89\%}$ & $-22.14\%$ & $90.01\%$ & $83.68\%$ & $76.18\%$ \\ \hline
+			UniTS & $\mathbf{69.49\%}$ & $\mathbf{42.52\%}$ & $93.99\%$ & $\mathbf{23.32\%}$ & $91.16\%$ & $\mathbf{88.16\%}$ & $\mathbf{85.06\%}$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average $R^{2}$ (\%) across k-fold validation datasets, with standard deviation in brackets, for the $x$ offset estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\label{tab:best_longitude_no_abs_R2}
+\end{table}

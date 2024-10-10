@@ -1,0 +1,28 @@
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
+			GRU Att 1 & $23.951$ & $36.419$ & $2.059$ & $41.263$ & $\mathbf{2.54}$ & $3.247$ & $4.337$ \\ \hline
+			GRU Att 2 & $10.393$ & $22.56$ & $2.329$ & $39.777$ & $3.027$ & $3.602$ & $4.964$ \\ \hline
+			GRU Att 3 & $13.659$ & $31.751$ & $2.153$ & $44.307$ & $3.037$ & $3.736$ & $4.585$ \\ \hline
+			GRU Att 4 & $14.137$ & $33.45$ & $\mathbf{1.947}$ & $41.809$ & $2.57$ & $3.219$ & $4.064$ \\ \hline
+			GRU Linear & $43.989$ & $51.514$ & $28.622$ & $52.501$ & $30.808$ & $30.233$ & $33.971$ \\ \hline
+			GRU Reference & $40.654$ & $48.078$ & $28.212$ & $49.581$ & $36.417$ & $34.449$ & $36.216$ \\ \hline
+			GRU Third & $40.033$ & $48.176$ & $28.511$ & $49.633$ & $36.522$ & $34.211$ & $36.762$ \\ \hline
+			GRU Twice & $34.786$ & $46.985$ & $25.135$ & $50.782$ & $35.111$ & $35.566$ & $36.867$ \\ \hline
+			LSTM Linear & $44.029$ & $39.529$ & $37.577$ & $47.981$ & $35.12$ & $32.027$ & $44.821$ \\ \hline
+			LSTM Reference & $39.34$ & $44.133$ & $1.7032851016198568e+145$ & $48.687$ & $39.534$ & $37.81$ & $32.966$ \\ \hline
+			LSTM Third & $41.263$ & $50.932$ & $31.415$ & $52.084$ & $41.385$ & $38.229$ & $45.091$ \\ \hline
+			LSTM Twice & $45.53$ & $58.309$ & $47.777$ & $55.283$ & $43.563$ & $42.163$ & $52.893$ \\ \hline
+			RNN Linear & $42.326$ & $43.289$ & $113.412$ & $50.042$ & $63.744$ & $74.767$ & $54.658$ \\ \hline
+			RNN Reference & $41.665$ & $45.811$ & $102.635$ & $51.386$ & $99.475$ & $46.681$ & $48.77$ \\ \hline
+			RNN Third & $42.443$ & $58.44$ & $59.9$ & $54.741$ & $44.712$ & $44.306$ & $46.158$ \\ \hline
+			RNN Twice & $71.08$ & $62.186$ & $177.65$ & $56.755$ & $140.409$ & $164.779$ & $120.433$ \\ \hline
+			UniTS & $\mathbf{5.989}$ & $\mathbf{8.696}$ & $2.849$ & $\mathbf{11.493}$ & $3.143$ & $\mathbf{3.16}$ & $\mathbf{3.719}$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average MAE ($10^{-3}$) across k-fold validation datasets, with standard deviation in brackets, for the trajectories in the k-fold testing datasets estimated using $x$ and $y$ offset, different RNN models, and forecasting times.}
+	\label{tab:all_no_abs_MAE}
+\end{table}

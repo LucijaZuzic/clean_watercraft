@@ -1,0 +1,69 @@
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
+			\multirow{2}{*}{RNN Linear} & $51.75\%$ & $28.44\%$ & $\mathbf{86.11\%}$ & $16.2\%$ & $\mathbf{79.12\%}$ & $\mathbf{72.83\%}$ & $68.34\%$ \\
+			 & ($3.08\%$) & ($3.04\%$) & \textbf{(}$\mathbf{1.3\%}$\textbf{)} & ($4.48\%$) & \textbf{(}$\mathbf{2.11\%}$\textbf{)} & \textbf{(}$\mathbf{2.27\%}$\textbf{)} & ($2.23\%$) \\ \hline
+			\multirow{2}{*}{UniTS} & $\mathbf{57.72\%}$ & $\mathbf{44.0\%}$ & $77.09\%$ & $\mathbf{34.98\%}$ & $74.0\%$ & $71.12\%$ & $\mathbf{68.39\%}$ \\
+			 & \textbf{(}$\mathbf{2.76\%}$\textbf{)} & \textbf{(}$\mathbf{3.21\%}$\textbf{)} & ($1.99\%$) & \textbf{(}$\mathbf{3.79\%}$\textbf{)} & ($2.25\%$) & ($2.42\%$) & \textbf{(}$\mathbf{2.55\%}$\textbf{)} \\ \hline
+		\end{tabular}
+	}
+	\caption{The average $R^{2}$ (\%) across k-fold validation datasets, with standard deviation in brackets, for the heading estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\label{tab:best_direction_R2}
+\end{table}
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
+			\multirow{2}{*}{GRU Att 2} & $61.6\%$ & $28.71\%$ & $93.23\%$ & $2.39\%$ & $90.0\%$ & $\mathbf{87.69\%}$ & $\mathbf{84.05\%}$ \\
+			 & ($3.4\%$) & ($6.2\%$) & ($1.51\%$) & ($8.4\%$) & ($2.05\%$) & \textbf{(}$\mathbf{1.72\%}$\textbf{)} & \textbf{(}$\mathbf{1.93\%}$\textbf{)} \\ \hline
+			\multirow{2}{*}{GRU Reference} & $45.82\%$ & $2.42\%$ & $\mathbf{95.61\%}$ & $-20.58\%$ & $87.54\%$ & $80.31\%$ & $74.42\%$ \\
+			 & ($4.34\%$) & ($5.99\%$) & \textbf{(}$\mathbf{2.14\%}$\textbf{)} & ($7.07\%$) & ($4.07\%$) & ($4.96\%$) & ($4.09\%$) \\ \hline
+			\multirow{2}{*}{LSTM Third} & $46.06\%$ & $1.72\%$ & $93.81\%$ & $-20.76\%$ & $\mathbf{90.91\%}$ & $82.5\%$ & $77.25\%$ \\
+			 & ($3.94\%$) & ($5.94\%$) & ($3.93\%$) & ($9.82\%$) & \textbf{(}$\mathbf{5.23\%}$\textbf{)} & ($8.75\%$) & ($5.43\%$) \\ \hline
+			\multirow{2}{*}{UniTS} & $\mathbf{68.0\%}$ & $\mathbf{41.68\%}$ & $92.75\%$ & $\mathbf{24.17\%}$ & $89.96\%$ & $86.92\%$ & $83.77\%$ \\
+			 & \textbf{(}$\mathbf{2.31\%}$\textbf{)} & \textbf{(}$\mathbf{3.95\%}$\textbf{)} & ($1.98\%$) & \textbf{(}$\mathbf{4.68\%}$\textbf{)} & ($1.67\%$) & ($1.63\%$) & ($1.67\%$) \\ \hline
+		\end{tabular}
+	}
+	\caption{The average $R^{2}$ (\%) across k-fold validation datasets, with standard deviation in brackets, for the $y$ offset estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\label{tab:best_latitude_no_abs_R2}
+\end{table}
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
+			\multirow{2}{*}{GRU Att 1} & $50.34\%$ & $14.63\%$ & $95.29\%$ & $3.01\%$ & $\mathbf{91.83\%}$ & $87.74\%$ & $84.62\%$ \\
+			 & ($14.06\%$) & ($5.96\%$) & ($0.92\%$) & ($13.0\%$) & \textbf{(}$\mathbf{1.53\%}$\textbf{)} & ($2.02\%$) & ($2.12\%$) \\ \hline
+			\multirow{2}{*}{LSTM Third} & $47.76\%$ & $-0.74\%$ & $\mathbf{96.88\%}$ & $-22.31\%$ & $89.96\%$ & $83.59\%$ & $76.3\%$ \\
+			 & ($4.45\%$) & ($5.66\%$) & \textbf{(}$\mathbf{1.13\%}$\textbf{)} & ($4.66\%$) & ($3.73\%$) & ($4.38\%$) & ($4.29\%$) \\ \hline
+			\multirow{2}{*}{UniTS} & $\mathbf{69.54\%}$ & $\mathbf{42.6\%}$ & $93.99\%$ & $\mathbf{23.39\%}$ & $91.18\%$ & $\mathbf{88.19\%}$ & $\mathbf{85.09\%}$ \\
+			 & \textbf{(}$\mathbf{2.54\%}$\textbf{)} & \textbf{(}$\mathbf{3.68\%}$\textbf{)} & ($0.83\%$) & \textbf{(}$\mathbf{4.0\%}$\textbf{)} & ($1.05\%$) & \textbf{(}$\mathbf{1.32\%}$\textbf{)} & \textbf{(}$\mathbf{1.57\%}$\textbf{)} \\ \hline
+		\end{tabular}
+	}
+	\caption{The average $R^{2}$ (\%) across k-fold validation datasets, with standard deviation in brackets, for the $x$ offset estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\label{tab:best_longitude_no_abs_R2}
+\end{table}
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
+			\multirow{2}{*}{LSTM Linear} & $62.8\%$ & $54.98\%$ & $\mathbf{94.39\%}$ & $51.44\%$ & $89.11\%$ & $83.69\%$ & $78.54\%$ \\
+			 & ($3.95\%$) & ($4.2\%$) & \textbf{(}$\mathbf{0.63\%}$\textbf{)} & ($4.16\%$) & ($1.3\%$) & ($1.83\%$) & ($2.27\%$) \\ \hline
+			\multirow{2}{*}{UniTS} & $\mathbf{72.89\%}$ & $\mathbf{61.53\%}$ & $93.45\%$ & $\mathbf{56.21\%}$ & $\mathbf{90.5\%}$ & $\mathbf{87.48\%}$ & $\mathbf{84.54\%}$ \\
+			 & \textbf{(}$\mathbf{2.68\%}$\textbf{)} & \textbf{(}$\mathbf{3.89\%}$\textbf{)} & ($0.64\%$) & \textbf{(}$\mathbf{3.92\%}$\textbf{)} & \textbf{(}$\mathbf{0.92\%}$\textbf{)} & \textbf{(}$\mathbf{1.21\%}$\textbf{)} & \textbf{(}$\mathbf{1.49\%}$\textbf{)} \\ \hline
+		\end{tabular}
+	}
+	\caption{The average $R^{2}$ (\%) across k-fold validation datasets, with standard deviation in brackets, for the speed estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\label{tab:best_speed_R2}
+\end{table}

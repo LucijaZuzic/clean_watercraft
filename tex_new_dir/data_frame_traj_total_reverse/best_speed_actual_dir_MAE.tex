@@ -1,0 +1,14 @@
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
+			GRU Att 1 & $\mathbf{10.25}$ & $\mathbf{17.08}$ & $7.31$ & $48.36$ & $7.78$ & $\mathbf{8.42}$ & $\mathbf{8.65}$ \\ \hline
+			GRU Att 2 & $10.8$ & $17.5$ & $7.32$ & $\mathbf{24.49}$ & $7.94$ & $8.45$ & $8.81$ \\ \hline
+			GRU Att 4 & $11.38$ & $17.71$ & $\mathbf{7.28}$ & $32.8$ & $\mathbf{7.68}$ & $8.44$ & $9.04$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average MAE ($10^{-3}$) across k-fold validation datasets, with standard deviation in brackets, for the trajectories in the k-fold testing datasets estimated using speed, heading, and time, different RNN models, and forecasting times.}
+	\label{tab:best_speed_actual_dir_MAE}
+\end{table}

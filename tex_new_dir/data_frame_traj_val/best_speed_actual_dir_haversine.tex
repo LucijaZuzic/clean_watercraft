@@ -1,0 +1,17 @@
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
+			\multirow{2}{*}{GRU Att 1} & $\mathbf{1.906}$ & $\mathbf{3.075}$ & $1.474$ & $8.261$ & $1.532$ & $1.637$ & $\mathbf{1.665}$ \\
+			 & \textbf{(}$\mathbf{0.116}$\textbf{)} & \textbf{(}$\mathbf{0.202}$\textbf{)} & ($0.09$) & ($6.403$) & ($0.081$) & ($0.082$) & \textbf{(}$\mathbf{0.083}$\textbf{)} \\ \hline
+			\multirow{2}{*}{GRU Att 2} & $2.001$ & $3.145$ & $1.47$ & $\mathbf{4.38}$ & $1.554$ & $\mathbf{1.634}$ & $1.681$ \\
+			 & ($0.191$) & ($0.232$) & ($0.086$) & \textbf{(}$\mathbf{0.515}$\textbf{)} & ($0.109$) & \textbf{(}$\mathbf{0.095}$\textbf{)} & ($0.108$) \\ \hline
+			\multirow{2}{*}{GRU Att 4} & $2.098$ & $3.17$ & $\mathbf{1.467}$ & $5.773$ & $\mathbf{1.518}$ & $1.638$ & $1.716$ \\
+			 & ($0.169$) & ($0.248$) & \textbf{(}$\mathbf{0.084}$\textbf{)} & ($4.507$) & \textbf{(}$\mathbf{0.092}$\textbf{)} & ($0.089$) & ($0.086$) \\ \hline
+		\end{tabular}
+	}
+	\caption{The average Haversine distance across k-fold validation datasets, with standard deviation in brackets, for the trajectories in the k-fold testing datasets estimated using speed, heading, and time, different RNN models, and forecasting times.}
+	\label{tab:best_speed_actual_dir_haversine}
+\end{table}

@@ -1,0 +1,28 @@
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
+			GRU Att 1 & $43.108$ & $66.056$ & $3.666$ & $73.416$ & $\mathbf{4.527}$ & $5.777$ & $7.752$ \\ \hline
+			GRU Att 2 & $18.742$ & $40.69$ & $4.145$ & $73.534$ & $5.383$ & $6.443$ & $8.964$ \\ \hline
+			GRU Att 3 & $24.933$ & $59.333$ & $3.797$ & $81.375$ & $5.395$ & $6.593$ & $8.093$ \\ \hline
+			GRU Att 4 & $25.787$ & $60.413$ & $\mathbf{3.454}$ & $75.725$ & $4.53$ & $5.679$ & $7.164$ \\ \hline
+			GRU Linear & $74.996$ & $90.67$ & $48.999$ & $92.554$ & $55.308$ & $53.49$ & $59.722$ \\ \hline
+			GRU Reference & $69.945$ & $83.724$ & $48.191$ & $85.978$ & $61.448$ & $59.709$ & $61.777$ \\ \hline
+			GRU Third & $70.999$ & $85.232$ & $49.402$ & $87.263$ & $63.355$ & $58.764$ & $65.77$ \\ \hline
+			GRU Twice & $61.665$ & $82.203$ & $43.768$ & $90.126$ & $62.619$ & $62.219$ & $67.323$ \\ \hline
+			LSTM Linear & $77.677$ & $70.397$ & $64.124$ & $83.143$ & $61.526$ & $53.704$ & $80.416$ \\ \hline
+			LSTM Reference & $68.122$ & $78.12$ & $123.041$ & $85.314$ & $70.635$ & $65.959$ & $58.388$ \\ \hline
+			LSTM Third & $72.228$ & $88.369$ & $57.824$ & $90.542$ & $72.338$ & $67.05$ & $76.956$ \\ \hline
+			LSTM Twice & $79.388$ & $100.999$ & $85.833$ & $95.715$ & $77.575$ & $74.561$ & $94.443$ \\ \hline
+			RNN Linear & $73.009$ & $77.055$ & $197.952$ & $87.165$ & $115.93$ & $132.217$ & $92.471$ \\ \hline
+			RNN Reference & $74.813$ & $79.197$ & $187.543$ & $89.789$ & $180.754$ & $82.246$ & $91.115$ \\ \hline
+			RNN Third & $74.777$ & $103.798$ & $109.969$ & $96.044$ & $77.973$ & $79.027$ & $81.656$ \\ \hline
+			RNN Twice & $129.491$ & $110.096$ & $300.026$ & $98.685$ & $250.121$ & $283.779$ & $217.656$ \\ \hline
+			UniTS & $\mathbf{10.568}$ & $\mathbf{15.321}$ & $4.872$ & $\mathbf{20.211}$ & $5.454$ & $\mathbf{5.572}$ & $\mathbf{6.484}$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average Haversine distance ($10^{-1}$) across k-fold validation datasets, with standard deviation in brackets, for the trajectories in the k-fold testing datasets estimated using $x$ and $y$ offset, different RNN models, and forecasting times.}
+	\label{tab:all_no_abs_haversine}
+\end{table}

@@ -1,0 +1,31 @@
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
+			GRU Att 1 & $20.574$ & $28.248$ & $\mathbf{5.535}$ & $32.557$ & $\mathbf{7.423}$ & $8.847$ & $10.121$ \\ \hline
+			GRU Att 2 & $16.46$ & $23.824$ & $6.16$ & $29.595$ & $7.865$ & $\mathbf{8.779}$ & $\mathbf{10.08}$ \\ \hline
+			GRU Att 4 & $\mathbf{16.126}$ & $26.695$ & $5.838$ & $32.355$ & $8.199$ & $9.899$ & $11.336$ \\ \hline
+			UniTS & $16.478$ & $\mathbf{23.085}$ & $7.144$ & $\mathbf{27.212}$ & $8.723$ & $10.134$ & $11.412$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average MAE ($10^{-5}$) across k-fold validation datasets, with standard deviation in brackets, for the $y$ offset estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\label{tab:best_latitude_no_abs_MAE}
+\end{table}
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
+			GRU Att 2 & $61.65\%$ & $28.86\%$ & $93.18\%$ & $2.49\%$ & $89.94\%$ & $\mathbf{87.67\%}$ & $\mathbf{84.0\%}$ \\ \hline
+			GRU Reference & $45.85\%$ & $2.6\%$ & $\mathbf{95.59\%}$ & $-20.45\%$ & $87.48\%$ & $80.09\%$ & $74.46\%$ \\ \hline
+			LSTM Third & $46.11\%$ & $1.71\%$ & $93.85\%$ & $-20.43\%$ & $\mathbf{90.91\%}$ & $82.65\%$ & $77.23\%$ \\ \hline
+			UniTS & $\mathbf{68.0\%}$ & $\mathbf{41.74\%}$ & $92.68\%$ & $\mathbf{24.27\%}$ & $89.9\%$ & $86.86\%$ & $83.72\%$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average $R^{2}$ (\%) across k-fold validation datasets, with standard deviation in brackets, for the $y$ offset estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\label{tab:best_latitude_no_abs_R2}
+\end{table}

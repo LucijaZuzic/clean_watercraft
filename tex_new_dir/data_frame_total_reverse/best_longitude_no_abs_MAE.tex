@@ -1,0 +1,14 @@
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
+			GRU Att 1 & $25.25$ & $37.81$ & $\mathbf{6.77}$ & $42.42$ & $\mathbf{9.07}$ & $\mathbf{11.33}$ & $\mathbf{12.71}$ \\ \hline
+			GRU Att 2 & $\mathbf{20.5}$ & $31.74$ & $7.11$ & $40.43$ & $9.61$ & $11.52$ & $13.06$ \\ \hline
+			UniTS & $20.93$ & $\mathbf{29.56}$ & $8.97$ & $\mathbf{35.0}$ & $10.98$ & $12.78$ & $14.41$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average MAE ($10^{-5}$) across k-fold validation datasets, with standard deviation in brackets, for the $x$ offset estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\label{tab:best_longitude_no_abs_MAE}
+\end{table}

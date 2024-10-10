@@ -151,4 +151,4 @@ for var in var_list:
                             actual_rides[ix_r]["lat"] = pd_file["actual lat"]
                             ix_r += 1
                 print(var + "/" + model + "/" + str(nf2 + 1) + "/" + ws_long, len(actual_rides))
-                draw_mosaic(actual_rides, predicted_rides, "compile_images/" + var + "/" + model + "/" + str(nf2 + 1) + "/", ws_long.replace("_predicted.csv", "_merge_val"))
+                draw_mosaic(actual_rides, predicted_rides, "compile_images/" + var + "/" + model + "/" + str(nf2 + 1) + "/", ws_long.replace("_predictions.csv", "_merge_val"))

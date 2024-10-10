@@ -1,0 +1,231 @@
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
+			GRU Att 1 & $23.951$ & $36.419$ & $2.059$ & $41.263$ & $\mathbf{2.54}$ & $3.247$ & $4.337$ \\ \hline
+			GRU Att 2 & $10.393$ & $22.56$ & $2.329$ & $39.777$ & $3.027$ & $3.602$ & $4.964$ \\ \hline
+			GRU Att 3 & $13.659$ & $31.751$ & $2.153$ & $44.307$ & $3.037$ & $3.736$ & $4.585$ \\ \hline
+			GRU Att 4 & $14.137$ & $33.45$ & $\mathbf{1.947}$ & $41.809$ & $2.57$ & $3.219$ & $4.064$ \\ \hline
+			GRU Linear & $43.989$ & $51.514$ & $28.622$ & $52.501$ & $30.808$ & $30.233$ & $33.971$ \\ \hline
+			GRU Reference & $40.654$ & $48.078$ & $28.212$ & $49.581$ & $36.417$ & $34.449$ & $36.216$ \\ \hline
+			GRU Third & $40.033$ & $48.176$ & $28.511$ & $49.633$ & $36.522$ & $34.211$ & $36.762$ \\ \hline
+			GRU Twice & $34.786$ & $46.985$ & $25.135$ & $50.782$ & $35.111$ & $35.566$ & $36.867$ \\ \hline
+			LSTM Linear & $44.029$ & $39.529$ & $37.577$ & $47.981$ & $35.12$ & $32.027$ & $44.821$ \\ \hline
+			LSTM Reference & $39.34$ & $44.133$ & $1.7032851016198568e+145$ & $48.687$ & $39.534$ & $37.81$ & $32.966$ \\ \hline
+			LSTM Third & $41.263$ & $50.932$ & $31.415$ & $52.084$ & $41.385$ & $38.229$ & $45.091$ \\ \hline
+			LSTM Twice & $45.53$ & $58.309$ & $47.777$ & $55.283$ & $43.563$ & $42.163$ & $52.893$ \\ \hline
+			RNN Linear & $42.326$ & $43.289$ & $113.412$ & $50.042$ & $63.744$ & $74.767$ & $54.658$ \\ \hline
+			RNN Reference & $41.665$ & $45.811$ & $102.635$ & $51.386$ & $99.475$ & $46.681$ & $48.77$ \\ \hline
+			RNN Third & $42.443$ & $58.44$ & $59.9$ & $54.741$ & $44.712$ & $44.306$ & $46.158$ \\ \hline
+			RNN Twice & $71.08$ & $62.186$ & $177.65$ & $56.755$ & $140.409$ & $164.779$ & $120.433$ \\ \hline
+			UniTS & $\mathbf{5.989}$ & $\mathbf{8.696}$ & $2.849$ & $\mathbf{11.493}$ & $3.143$ & $\mathbf{3.16}$ & $\mathbf{3.719}$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average MAE ($10^{-3}$) across k-fold validation datasets, with standard deviation in brackets, for the trajectories in the k-fold testing datasets estimated using $x$ and $y$ offset, different RNN models, and forecasting times.}
+	\label{tab:all_no_abs_MAE}
+\end{table}
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
+			GRU Att 1 & $\mathbf{10.246}$ & $\mathbf{17.082}$ & $7.308$ & $48.362$ & $7.778$ & $\mathbf{8.418}$ & $\mathbf{8.651}$ \\ \hline
+			GRU Att 2 & $10.802$ & $17.502$ & $7.317$ & $\mathbf{24.491}$ & $7.937$ & $8.448$ & $8.808$ \\ \hline
+			GRU Att 3 & $11.351$ & $17.915$ & $7.395$ & $25.075$ & $7.975$ & $8.615$ & $9.076$ \\ \hline
+			GRU Att 4 & $11.381$ & $17.711$ & $\mathbf{7.276}$ & $32.798$ & $\mathbf{7.683}$ & $8.44$ & $9.038$ \\ \hline
+			GRU Linear & $83.997$ & $123.409$ & $27.322$ & $137.724$ & $35.334$ & $39.941$ & $45.703$ \\ \hline
+			GRU Reference & $46.512$ & $46.121$ & $46.468$ & $45.514$ & $46.498$ & $46.528$ & $46.547$ \\ \hline
+			GRU Third & $46.512$ & $46.121$ & $46.468$ & $45.514$ & $46.498$ & $46.528$ & $46.547$ \\ \hline
+			GRU Twice & $46.512$ & $46.121$ & $46.468$ & $45.514$ & $46.498$ & $46.528$ & $46.547$ \\ \hline
+			LSTM Linear & $73.988$ & $110.996$ & $24.983$ & $131.397$ & $31.759$ & $45.537$ & $46.855$ \\ \hline
+			LSTM Reference & $46.512$ & $46.121$ & $1.7032851016198568e+145$ & $45.514$ & $46.497$ & $46.528$ & $46.547$ \\ \hline
+			LSTM Third & $46.512$ & $46.121$ & $46.468$ & $45.514$ & $46.498$ & $46.528$ & $46.547$ \\ \hline
+			LSTM Twice & $46.512$ & $46.121$ & $46.459$ & $45.514$ & $46.498$ & $46.528$ & $46.547$ \\ \hline
+			RNN Linear & $77.6$ & $118.538$ & $26.505$ & $140.144$ & $34.823$ & $41.641$ & $48.076$ \\ \hline
+			RNN Reference & $46.512$ & $46.121$ & $46.466$ & $45.514$ & $46.498$ & $46.528$ & $46.547$ \\ \hline
+			RNN Third & $46.512$ & $46.121$ & $46.468$ & $45.514$ & $46.498$ & $46.528$ & $46.547$ \\ \hline
+			RNN Twice & $46.512$ & $46.121$ & $46.468$ & $45.514$ & $46.498$ & $46.528$ & $46.547$ \\ \hline
+			UniTS & $35.267$ & $59.093$ & $12.473$ & $78.741$ & $15.835$ & $18.562$ & $21.928$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average MAE ($10^{-3}$) across k-fold validation datasets, with standard deviation in brackets, for the trajectories in the k-fold testing datasets estimated using speed, heading, and time, different RNN models, and forecasting times.}
+	\label{tab:all_speed_actual_dir_MAE}
+\end{table}
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
+			GRU Att 1 & $55.88\%$ & $16.91\%$ & $99.75\%$ & $2.92\%$ & $99.59\%$ & $99.38\%$ & $98.7\%$ \\ \hline
+			GRU Att 2 & $92.33\%$ & $66.51\%$ & $99.68\%$ & $-2.28\%$ & $99.43\%$ & $99.2\%$ & $98.16\%$ \\ \hline
+			GRU Att 3 & $87.45\%$ & $13.16\%$ & $99.76\%$ & $-42.17\%$ & $99.52\%$ & $99.21\%$ & $98.79\%$ \\ \hline
+			GRU Att 4 & $85.63\%$ & $28.35\%$ & $\mathbf{99.8\%}$ & $-9.67\%$ & $\mathbf{99.67\%}$ & $99.49\%$ & $99.11\%$ \\ \hline
+			GRU Linear & $-7.66\%$ & $-33.33\%$ & $54.21\%$ & $-37.31\%$ & $28.74\%$ & $46.73\%$ & $31.22\%$ \\ \hline
+			GRU Reference & $9.98\%$ & $-15.88\%$ & $54.64\%$ & $-21.49\%$ & $27.64\%$ & $26.81\%$ & $27.61\%$ \\ \hline
+			GRU Third & $13.04\%$ & $-29.13\%$ & $39.21\%$ & $-26.08\%$ & $8.2\%$ & $31.4\%$ & $13.1\%$ \\ \hline
+			GRU Twice & $35.29\%$ & $-12.0\%$ & $59.04\%$ & $-29.01\%$ & $22.34\%$ & $27.77\%$ & $11.02\%$ \\ \hline
+			LSTM Linear & $-2.99\%$ & $20.65\%$ & $3.94\%$ & $-29.9\%$ & $31.09\%$ & $45.15\%$ & $-19.62\%$ \\ \hline
+			LSTM Reference & $10.04\%$ & $-4.15\%$ & $15.87\%$ & $-20.11\%$ & $-0.55\%$ & $18.98\%$ & $34.55\%$ \\ \hline
+			LSTM Third & $3.4\%$ & $-21.57\%$ & $19.07\%$ & $-35.66\%$ & $-10.06\%$ & $-1.51\%$ & $-15.16\%$ \\ \hline
+			LSTM Twice & $-27.0\%$ & $-76.7\%$ & $-40.02\%$ & $-56.93\%$ & $-12.18\%$ & $-11.61\%$ & $-116.15\%$ \\ \hline
+			RNN Linear & $6.12\%$ & $6.8\%$ & $-974.08\%$ & $-23.78\%$ & $-194.06\%$ & $-361.16\%$ & $-106.47\%$ \\ \hline
+			RNN Reference & $-17.78\%$ & $-1.64\%$ & $-587.37\%$ & $-32.42\%$ & $-890.26\%$ & $-50.11\%$ & $-70.11\%$ \\ \hline
+			RNN Third & $3.28\%$ & $-65.94\%$ & $-191.61\%$ & $-50.46\%$ & $-36.64\%$ & $-31.4\%$ & $-24.86\%$ \\ \hline
+			RNN Twice & $-255.71\%$ & $-150.32\%$ & $-1945.82\%$ & $-79.61\%$ & $-1302.45\%$ & $-1587.95\%$ & $-910.35\%$ \\ \hline
+			UniTS & $\mathbf{98.37\%}$ & $\mathbf{96.71\%}$ & $99.3\%$ & $\mathbf{94.45\%}$ & $99.37\%$ & $\mathbf{99.56\%}$ & $\mathbf{99.36\%}$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average $R^{2}$ (\%) across k-fold validation datasets, with standard deviation in brackets, for the trajectories in the k-fold testing datasets estimated using $x$ and $y$ offset, different RNN models, and forecasting times.}
+	\label{tab:all_no_abs_R2}
+\end{table}
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
+			GRU Att 1 & $\mathbf{94.863\%}$ & $\mathbf{85.59\%}$ & $96.619\%$ & $-96.411\%$ & $96.467\%$ & $96.109\%$ & $\mathbf{95.999\%}$ \\ \hline
+			GRU Att 2 & $94.288\%$ & $84.721\%$ & $96.63\%$ & $\mathbf{66.379\%}$ & $96.367\%$ & $96.081\%$ & $95.813\%$ \\ \hline
+			GRU Att 3 & $93.94\%$ & $83.9\%$ & $96.582\%$ & $64.268\%$ & $96.362\%$ & $95.955\%$ & $95.718\%$ \\ \hline
+			GRU Att 4 & $93.967\%$ & $84.489\%$ & $\mathbf{96.653\%}$ & $-3.499\%$ & $\mathbf{96.504\%}$ & $\mathbf{96.119\%}$ & $95.777\%$ \\ \hline
+			GRU Linear & $-494.585\%$ & $-1205.307\%$ & $38.898\%$ & $-1601.356\%$ & $-2.838\%$ & $-33.519\%$ & $-80.079\%$ \\ \hline
+			GRU Reference & $-11.279\%$ & $-11.193\%$ & $-11.271\%$ & $-10.964\%$ & $-11.271\%$ & $-11.279\%$ & $-11.264\%$ \\ \hline
+			GRU Third & $-11.279\%$ & $-11.193\%$ & $-11.271\%$ & $-10.964\%$ & $-11.271\%$ & $-11.279\%$ & $-11.264\%$ \\ \hline
+			GRU Twice & $-11.279\%$ & $-11.193\%$ & $-11.271\%$ & $-10.964\%$ & $-11.271\%$ & $-11.279\%$ & $-11.264\%$ \\ \hline
+			LSTM Linear & $-389.792\%$ & $-984.866\%$ & $48.57\%$ & $-1491.803\%$ & $12.671\%$ & $-175.24\%$ & $-90.004\%$ \\ \hline
+			LSTM Reference & $-11.279\%$ & $-11.193\%$ & $-7.608\%$ & $-10.964\%$ & $-11.269\%$ & $-11.279\%$ & $-11.264\%$ \\ \hline
+			LSTM Third & $-11.279\%$ & $-11.193\%$ & $-11.271\%$ & $-10.964\%$ & $-11.271\%$ & $-11.279\%$ & $-11.264\%$ \\ \hline
+			LSTM Twice & $-11.279\%$ & $-11.193\%$ & $-11.308\%$ & $-10.964\%$ & $-11.271\%$ & $-11.279\%$ & $-11.264\%$ \\ \hline
+			RNN Linear & $-429.028\%$ & $-1124.798\%$ & $41.089\%$ & $-1657.415\%$ & $-1.045\%$ & $-47.491\%$ & $-97.529\%$ \\ \hline
+			RNN Reference & $-11.279\%$ & $-11.193\%$ & $-11.268\%$ & $-10.964\%$ & $-11.271\%$ & $-11.279\%$ & $-11.264\%$ \\ \hline
+			RNN Third & $-11.279\%$ & $-11.193\%$ & $-11.271\%$ & $-10.964\%$ & $-11.271\%$ & $-11.279\%$ & $-11.264\%$ \\ \hline
+			RNN Twice & $-11.279\%$ & $-11.193\%$ & $-11.271\%$ & $-10.964\%$ & $-11.27\%$ & $-11.279\%$ & $-11.264\%$ \\ \hline
+			UniTS & $-9.152\%$ & $-207.271\%$ & $90.165\%$ & $-447.606\%$ & $83.315\%$ & $74.592\%$ & $63.185\%$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average $R^{2}$ (\%) across k-fold validation datasets, with standard deviation in brackets, for the trajectories in the k-fold testing datasets estimated using speed, heading, and time, different RNN models, and forecasting times.}
+	\label{tab:all_speed_actual_dir_R2}
+\end{table}
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
+			GRU Att 1 & $38.767$ & $59.406$ & $3.297$ & $66.024$ & $\mathbf{4.071}$ & $5.195$ & $6.971$ \\ \hline
+			GRU Att 2 & $16.855$ & $36.594$ & $3.728$ & $66.131$ & $4.841$ & $5.794$ & $8.062$ \\ \hline
+			GRU Att 3 & $22.423$ & $53.359$ & $3.415$ & $73.182$ & $4.852$ & $5.93$ & $7.278$ \\ \hline
+			GRU Att 4 & $23.191$ & $54.331$ & $\mathbf{3.107}$ & $68.101$ & $4.074$ & $5.108$ & $6.443$ \\ \hline
+			GRU Linear & $67.446$ & $81.541$ & $44.066$ & $83.235$ & $49.74$ & $48.105$ & $53.709$ \\ \hline
+			GRU Reference & $62.903$ & $75.295$ & $43.339$ & $77.321$ & $55.261$ & $53.698$ & $55.557$ \\ \hline
+			GRU Third & $63.851$ & $76.651$ & $44.428$ & $78.478$ & $56.976$ & $52.848$ & $59.148$ \\ \hline
+			GRU Twice & $55.457$ & $73.927$ & $39.361$ & $81.052$ & $56.315$ & $55.954$ & $60.545$ \\ \hline
+			LSTM Linear & $69.856$ & $63.31$ & $57.668$ & $74.773$ & $55.332$ & $48.297$ & $72.32$ \\ \hline
+			LSTM Reference & $61.264$ & $70.255$ & $3.4065702032397136e+145$ & $76.725$ & $63.524$ & $59.318$ & $52.51$ \\ \hline
+			LSTM Third & $64.956$ & $79.472$ & $52.002$ & $81.426$ & $65.055$ & $60.3$ & $69.208$ \\ \hline
+			LSTM Twice & $71.395$ & $90.831$ & $77.191$ & $86.078$ & $69.765$ & $67.054$ & $84.935$ \\ \hline
+			RNN Linear & $65.659$ & $69.297$ & $178.023$ & $78.389$ & $104.258$ & $118.906$ & $83.161$ \\ \hline
+			RNN Reference & $67.281$ & $71.223$ & $168.662$ & $80.749$ & $162.556$ & $73.965$ & $81.941$ \\ \hline
+			RNN Third & $67.248$ & $93.348$ & $98.898$ & $86.375$ & $70.123$ & $71.071$ & $73.435$ \\ \hline
+			RNN Twice & $116.454$ & $99.012$ & $269.821$ & $88.749$ & $224.939$ & $255.209$ & $195.743$ \\ \hline
+			UniTS & $\mathbf{9.504}$ & $\mathbf{13.778}$ & $4.382$ & $\mathbf{18.176}$ & $4.904$ & $\mathbf{5.011}$ & $\mathbf{5.831}$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average Euclidean distance ($10^{-3}$) across k-fold validation datasets, with standard deviation in brackets, for the trajectories in the k-fold testing datasets estimated using $x$ and $y$ offset, different RNN models, and forecasting times.}
+	\label{tab:all_no_abs_euclid}
+\end{table}
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
+			GRU Att 1 & $\mathbf{1.719}$ & $\mathbf{2.762}$ & $1.328$ & $7.457$ & $1.38$ & $1.472$ & $\mathbf{1.5}$ \\ \hline
+			GRU Att 2 & $1.804$ & $2.826$ & $1.324$ & $\mathbf{3.916}$ & $1.4$ & $\mathbf{1.47}$ & $1.513$ \\ \hline
+			GRU Att 3 & $1.878$ & $2.885$ & $1.338$ & $4.008$ & $1.409$ & $1.498$ & $1.545$ \\ \hline
+			GRU Att 4 & $1.89$ & $2.847$ & $\mathbf{1.321}$ & $5.188$ & $\mathbf{1.367}$ & $1.473$ & $1.546$ \\ \hline
+			GRU Linear & $14.106$ & $21.138$ & $4.367$ & $24.04$ & $5.654$ & $6.42$ & $7.478$ \\ \hline
+			GRU Reference & $7.304$ & $7.243$ & $7.299$ & $7.151$ & $7.304$ & $7.308$ & $7.311$ \\ \hline
+			GRU Third & $7.304$ & $7.243$ & $7.299$ & $7.151$ & $7.304$ & $7.308$ & $7.311$ \\ \hline
+			GRU Twice & $7.304$ & $7.243$ & $7.299$ & $7.151$ & $7.304$ & $7.308$ & $7.311$ \\ \hline
+			LSTM Linear & $12.487$ & $19.054$ & $4.006$ & $22.897$ & $5.142$ & $7.557$ & $7.71$ \\ \hline
+			LSTM Reference & $7.304$ & $7.243$ & $3.406570203239714e+144$ & $7.151$ & $7.303$ & $7.308$ & $7.311$ \\ \hline
+			LSTM Third & $7.304$ & $7.243$ & $7.299$ & $7.151$ & $7.304$ & $7.308$ & $7.311$ \\ \hline
+			LSTM Twice & $7.304$ & $7.243$ & $7.298$ & $7.151$ & $7.304$ & $7.308$ & $7.311$ \\ \hline
+			RNN Linear & $13.118$ & $20.463$ & $4.213$ & $24.384$ & $5.624$ & $6.748$ & $7.879$ \\ \hline
+			RNN Reference & $7.304$ & $7.243$ & $7.299$ & $7.151$ & $7.304$ & $7.308$ & $7.311$ \\ \hline
+			RNN Third & $7.304$ & $7.243$ & $7.299$ & $7.151$ & $7.304$ & $7.308$ & $7.311$ \\ \hline
+			RNN Twice & $7.304$ & $7.243$ & $7.299$ & $7.151$ & $7.304$ & $7.308$ & $7.311$ \\ \hline
+			UniTS & $5.952$ & $9.918$ & $2.074$ & $13.203$ & $2.613$ & $3.086$ & $3.632$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average Euclidean distance ($10^{-2}$) across k-fold validation datasets, with standard deviation in brackets, for the trajectories in the k-fold testing datasets estimated using speed, heading, and time, different RNN models, and forecasting times.}
+	\label{tab:all_speed_actual_dir_euclid}
+\end{table}
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
+			GRU Att 1 & $43.108$ & $66.056$ & $3.666$ & $73.416$ & $\mathbf{4.527}$ & $5.777$ & $7.752$ \\ \hline
+			GRU Att 2 & $18.742$ & $40.69$ & $4.145$ & $73.534$ & $5.383$ & $6.443$ & $8.964$ \\ \hline
+			GRU Att 3 & $24.933$ & $59.333$ & $3.797$ & $81.375$ & $5.395$ & $6.593$ & $8.093$ \\ \hline
+			GRU Att 4 & $25.787$ & $60.413$ & $\mathbf{3.454}$ & $75.725$ & $4.53$ & $5.679$ & $7.164$ \\ \hline
+			GRU Linear & $74.996$ & $90.67$ & $48.999$ & $92.554$ & $55.308$ & $53.49$ & $59.722$ \\ \hline
+			GRU Reference & $69.945$ & $83.724$ & $48.191$ & $85.978$ & $61.448$ & $59.709$ & $61.777$ \\ \hline
+			GRU Third & $70.999$ & $85.232$ & $49.402$ & $87.263$ & $63.355$ & $58.764$ & $65.77$ \\ \hline
+			GRU Twice & $61.665$ & $82.203$ & $43.768$ & $90.126$ & $62.619$ & $62.219$ & $67.323$ \\ \hline
+			LSTM Linear & $77.677$ & $70.397$ & $64.124$ & $83.143$ & $61.526$ & $53.704$ & $80.416$ \\ \hline
+			LSTM Reference & $68.122$ & $78.12$ & $123.041$ & $85.314$ & $70.635$ & $65.959$ & $58.388$ \\ \hline
+			LSTM Third & $72.228$ & $88.369$ & $57.824$ & $90.542$ & $72.338$ & $67.05$ & $76.956$ \\ \hline
+			LSTM Twice & $79.388$ & $100.999$ & $85.833$ & $95.715$ & $77.575$ & $74.561$ & $94.443$ \\ \hline
+			RNN Linear & $73.009$ & $77.055$ & $197.952$ & $87.165$ & $115.93$ & $132.217$ & $92.471$ \\ \hline
+			RNN Reference & $74.813$ & $79.197$ & $187.543$ & $89.789$ & $180.754$ & $82.246$ & $91.115$ \\ \hline
+			RNN Third & $74.777$ & $103.798$ & $109.969$ & $96.044$ & $77.973$ & $79.027$ & $81.656$ \\ \hline
+			RNN Twice & $129.491$ & $110.096$ & $300.026$ & $98.685$ & $250.121$ & $283.779$ & $217.656$ \\ \hline
+			UniTS & $\mathbf{10.568}$ & $\mathbf{15.321}$ & $4.872$ & $\mathbf{20.211}$ & $5.454$ & $\mathbf{5.572}$ & $\mathbf{6.484}$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average Haversine distance ($10^{-1}$) across k-fold validation datasets, with standard deviation in brackets, for the trajectories in the k-fold testing datasets estimated using $x$ and $y$ offset, different RNN models, and forecasting times.}
+	\label{tab:all_no_abs_haversine}
+\end{table}
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
+			GRU Att 1 & $\mathbf{1.912}$ & $\mathbf{3.071}$ & $1.476$ & $8.292$ & $1.535$ & $1.637$ & $\mathbf{1.668}$ \\ \hline
+			GRU Att 2 & $2.006$ & $3.143$ & $1.473$ & $\mathbf{4.354}$ & $1.557$ & $\mathbf{1.635}$ & $1.683$ \\ \hline
+			GRU Att 3 & $2.088$ & $3.208$ & $1.488$ & $4.456$ & $1.566$ & $1.666$ & $1.718$ \\ \hline
+			GRU Att 4 & $2.101$ & $3.165$ & $\mathbf{1.469}$ & $5.769$ & $\mathbf{1.52}$ & $1.638$ & $1.719$ \\ \hline
+			GRU Linear & $15.685$ & $23.505$ & $4.856$ & $26.731$ & $6.287$ & $7.138$ & $8.315$ \\ \hline
+			GRU Reference & $8.122$ & $8.054$ & $8.116$ & $7.952$ & $8.121$ & $8.126$ & $8.129$ \\ \hline
+			GRU Third & $8.122$ & $8.054$ & $8.116$ & $7.952$ & $8.121$ & $8.126$ & $8.129$ \\ \hline
+			GRU Twice & $8.122$ & $8.054$ & $8.116$ & $7.952$ & $8.121$ & $8.126$ & $8.129$ \\ \hline
+			LSTM Linear & $13.884$ & $21.187$ & $4.454$ & $25.461$ & $5.718$ & $8.403$ & $8.573$ \\ \hline
+			LSTM Reference & $8.122$ & $8.054$ & $15.109$ & $7.952$ & $8.121$ & $8.126$ & $8.129$ \\ \hline
+			LSTM Third & $8.122$ & $8.054$ & $8.116$ & $7.952$ & $8.121$ & $8.126$ & $8.129$ \\ \hline
+			LSTM Twice & $8.122$ & $8.054$ & $8.115$ & $7.952$ & $8.121$ & $8.126$ & $8.129$ \\ \hline
+			RNN Linear & $14.587$ & $22.753$ & $4.685$ & $27.114$ & $6.254$ & $7.503$ & $8.761$ \\ \hline
+			RNN Reference & $8.122$ & $8.054$ & $8.116$ & $7.952$ & $8.121$ & $8.126$ & $8.129$ \\ \hline
+			RNN Third & $8.122$ & $8.054$ & $8.116$ & $7.952$ & $8.121$ & $8.126$ & $8.129$ \\ \hline
+			RNN Twice & $8.122$ & $8.054$ & $8.116$ & $7.952$ & $8.121$ & $8.126$ & $8.129$ \\ \hline
+			UniTS & $6.619$ & $11.028$ & $2.306$ & $14.681$ & $2.906$ & $3.432$ & $4.039$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average Haversine distance across k-fold validation datasets, with standard deviation in brackets, for the trajectories in the k-fold testing datasets estimated using speed, heading, and time, different RNN models, and forecasting times.}
+	\label{tab:all_speed_actual_dir_haversine}
+\end{table}

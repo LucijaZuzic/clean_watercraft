@@ -1,0 +1,31 @@
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
+			\multirow{2}{*}{GRU Att 1} & $\mathbf{32.74}$ & $49.41$ & $\mathbf{11.77}$ & $63.77$ & $\mathbf{15.7}$ & $\mathbf{19.33}$ & $\mathbf{21.9}$ \\
+			 & \textbf{(}$\mathbf{2.14}$\textbf{)} & ($2.48$) & \textbf{(}$\mathbf{1.29}$\textbf{)} & ($10.68$) & \textbf{(}$\mathbf{1.63}$\textbf{)} & \textbf{(}$\mathbf{1.67}$\textbf{)} & \textbf{(}$\mathbf{1.75}$\textbf{)} \\ \hline
+			\multirow{2}{*}{UniTS} & $34.91$ & $\mathbf{47.49}$ & $16.17$ & $\mathbf{55.81}$ & $19.54$ & $22.46$ & $25.04$ \\
+			 & ($2.0$) & \textbf{(}$\mathbf{2.55}$\textbf{)} & ($1.21$) & \textbf{(}$\mathbf{3.01}$\textbf{)} & ($1.41$) & ($1.56$) & ($1.68$) \\ \hline
+		\end{tabular}
+	}
+	\caption{The average MAE across k-fold validation datasets, with standard deviation in brackets, for the heading estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\label{tab:best_direction_MAE}
+\end{table}
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
+			\multirow{2}{*}{RNN Linear} & $51.75\%$ & $28.44\%$ & $\mathbf{86.11\%}$ & $16.2\%$ & $\mathbf{79.12\%}$ & $\mathbf{72.83\%}$ & $68.34\%$ \\
+			 & ($3.08\%$) & ($3.04\%$) & \textbf{(}$\mathbf{1.3\%}$\textbf{)} & ($4.48\%$) & \textbf{(}$\mathbf{2.11\%}$\textbf{)} & \textbf{(}$\mathbf{2.27\%}$\textbf{)} & ($2.23\%$) \\ \hline
+			\multirow{2}{*}{UniTS} & $\mathbf{57.72\%}$ & $\mathbf{44.0\%}$ & $77.09\%$ & $\mathbf{34.98\%}$ & $74.0\%$ & $71.12\%$ & $\mathbf{68.39\%}$ \\
+			 & \textbf{(}$\mathbf{2.76\%}$\textbf{)} & \textbf{(}$\mathbf{3.21\%}$\textbf{)} & ($1.99\%$) & \textbf{(}$\mathbf{3.79\%}$\textbf{)} & ($2.25\%$) & ($2.42\%$) & \textbf{(}$\mathbf{2.55\%}$\textbf{)} \\ \hline
+		\end{tabular}
+	}
+	\caption{The average $R^{2}$ (\%) across k-fold validation datasets, with standard deviation in brackets, for the heading estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\label{tab:best_direction_R2}
+\end{table}

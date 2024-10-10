@@ -35,7 +35,7 @@ def make_hist(list_lens, title_use):
     plt.savefig("hist_plot/" + title_use.lower().replace(" ", "_") + ".pdf", bbox_inches = "tight")
     plt.close()
 
-sf1, sf2 = 5, 1
+sf1, sf2 = 5, 3
 
 num_to_ws = [-1, 5, 6, 5, 6, 5, 6, 5, 6, 2, 10, 20, 30, 2, 10, 20, 30, 2, 10, 20, 30, 2, 10, 20, 30, 3, 3, 3, 3, 4, 4, 4, 4, 7, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9, 15, 15, 15, 15, 19, 19, 19, 19, 25, 25, 25, 25, 29, 29, 29, 29, 16, 16, 16, 16, 32, 32, 32, 32]
 
@@ -44,8 +44,8 @@ num_to_params = [-1, 1, 1, 2, 2, 3, 3, 4, 4, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3,
 actual_var = dict()
 actual_var_all = dict()
 lens_dict = dict()
-for nf1 in range(sf1):
-    for nf2 in range(sf2):
+for nf2 in [sf2]:
+    for nf1 in range(sf1):
         ride_name = "csv_results/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/"
         varnames = os.listdir("actual/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/")
         for v in varnames:
@@ -100,7 +100,6 @@ for var in actual_var_all:
     plt.subplot(2, 3, ix_plot)
     varnew = var.replace("_", " ").replace("longitude no abs", "$x$ offset").replace("direction", "heading")
     varnew = varnew.replace("latitude no abs", "$y$ offset")
-    plt.title(varnew.capitalize())
     if "time" == var:
         plt.xlabel(varnew.capitalize() + " ($s$)")
     if "speed" == var:
@@ -133,13 +132,16 @@ make_hist(list(area_x_dict.values()), "Area x")
 make_hist(list(area_y_dict.values()), "Area y")
 make_hist(list(area_total_dict.values()), "Area total")
 ix_plot = 0
-plt.figure()
+plt.figure(figsize = (10, 10 * 21 / 19), dpi = 80)
 for r in actual_var:
     ix_plot += 1
     plt.subplot(21, 19, ix_plot)
-    plt.axis("off")
+    plt.rcParams.update({'font.size': 28}) 
+    plt.rcParams['font.family'] = "serif"
+    plt.rcParams["mathtext.fontset"] = "dejavuserif"
     plt.axis("equal")
-    plt.plot(actual_var[r]["longitude_no_abs"], actual_var[r]["latitude_no_abs"], c = "k")
+    plt.axis("off")
+    plt.plot(actual_var[r]["longitude_no_abs"], actual_var[r]["latitude_no_abs"], c = "k", linewidth = 2)
 plt.savefig("hist_plot/all_trajs.png", bbox_inches = "tight")
 plt.savefig("hist_plot/all_trajs.svg", bbox_inches = "tight")
 plt.savefig("hist_plot/all_trajs.pdf", bbox_inches = "tight")

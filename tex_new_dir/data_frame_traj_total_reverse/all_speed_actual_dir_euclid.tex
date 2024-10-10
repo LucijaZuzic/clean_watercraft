@@ -1,0 +1,28 @@
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
+			GRU Att 1 & $\mathbf{1.719}$ & $\mathbf{2.762}$ & $1.328$ & $7.457$ & $1.38$ & $1.472$ & $\mathbf{1.5}$ \\ \hline
+			GRU Att 2 & $1.804$ & $2.826$ & $1.324$ & $\mathbf{3.916}$ & $1.4$ & $\mathbf{1.47}$ & $1.513$ \\ \hline
+			GRU Att 3 & $1.878$ & $2.885$ & $1.338$ & $4.008$ & $1.409$ & $1.498$ & $1.545$ \\ \hline
+			GRU Att 4 & $1.89$ & $2.847$ & $\mathbf{1.321}$ & $5.188$ & $\mathbf{1.367}$ & $1.473$ & $1.546$ \\ \hline
+			GRU Linear & $14.106$ & $21.138$ & $4.367$ & $24.04$ & $5.654$ & $6.42$ & $7.478$ \\ \hline
+			GRU Reference & $7.304$ & $7.243$ & $7.299$ & $7.151$ & $7.304$ & $7.308$ & $7.311$ \\ \hline
+			GRU Third & $7.304$ & $7.243$ & $7.299$ & $7.151$ & $7.304$ & $7.308$ & $7.311$ \\ \hline
+			GRU Twice & $7.304$ & $7.243$ & $7.299$ & $7.151$ & $7.304$ & $7.308$ & $7.311$ \\ \hline
+			LSTM Linear & $12.487$ & $19.054$ & $4.006$ & $22.897$ & $5.142$ & $7.557$ & $7.71$ \\ \hline
+			LSTM Reference & $7.304$ & $7.243$ & $3.406570203239714e+144$ & $7.151$ & $7.303$ & $7.308$ & $7.311$ \\ \hline
+			LSTM Third & $7.304$ & $7.243$ & $7.299$ & $7.151$ & $7.304$ & $7.308$ & $7.311$ \\ \hline
+			LSTM Twice & $7.304$ & $7.243$ & $7.298$ & $7.151$ & $7.304$ & $7.308$ & $7.311$ \\ \hline
+			RNN Linear & $13.118$ & $20.463$ & $4.213$ & $24.384$ & $5.624$ & $6.748$ & $7.879$ \\ \hline
+			RNN Reference & $7.304$ & $7.243$ & $7.299$ & $7.151$ & $7.304$ & $7.308$ & $7.311$ \\ \hline
+			RNN Third & $7.304$ & $7.243$ & $7.299$ & $7.151$ & $7.304$ & $7.308$ & $7.311$ \\ \hline
+			RNN Twice & $7.304$ & $7.243$ & $7.299$ & $7.151$ & $7.304$ & $7.308$ & $7.311$ \\ \hline
+			UniTS & $5.952$ & $9.918$ & $2.074$ & $13.203$ & $2.613$ & $3.086$ & $3.632$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average Euclidean distance ($10^{-2}$) across k-fold validation datasets, with standard deviation in brackets, for the trajectories in the k-fold testing datasets estimated using speed, heading, and time, different RNN models, and forecasting times.}
+	\label{tab:all_speed_actual_dir_euclid}
+\end{table}

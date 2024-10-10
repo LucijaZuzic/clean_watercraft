@@ -1,0 +1,14 @@
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
+			GRU Att 1 & $\mathbf{94.86\%}$ & $\mathbf{85.59\%}$ & $96.62\%$ & $-96.41\%$ & $96.47\%$ & $96.11\%$ & $\mathbf{96.0\%}$ \\ \hline
+			GRU Att 2 & $94.29\%$ & $84.72\%$ & $96.63\%$ & $\mathbf{66.38\%}$ & $96.37\%$ & $96.08\%$ & $95.81\%$ \\ \hline
+			GRU Att 4 & $93.97\%$ & $84.49\%$ & $\mathbf{96.65\%}$ & $-3.5\%$ & $\mathbf{96.5\%}$ & $\mathbf{96.12\%}$ & $95.78\%$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average $R^{2}$ (\%) across k-fold validation datasets, with standard deviation in brackets, for the trajectories in the k-fold testing datasets estimated using speed, heading, and time, different RNN models, and forecasting times.}
+	\label{tab:best_speed_actual_dir_R2}
+\end{table}
