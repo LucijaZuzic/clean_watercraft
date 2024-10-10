@@ -20,8 +20,8 @@ def stringify(value_round, rounding):
 
 name_list = ["data_frame_total_reverse", "data_frame_total", "data_frame_test", "data_frame_test_reverse", "data_frame_val"]
 name_list_traj = [name.replace("frame_", "frame_traj_") for name in name_list]
-name_list = ["data_frame_total_reverse"]
-name_list_traj = ["data_frame_traj_total_reverse"]
+name_list = ["data_frame_total_reverse", "data_frame_val"]
+name_list_traj = ["data_frame_traj_total_reverse", "data_frame_traj_val"]
 
 name_list_total = []
 name_list_total.extend(name_list)
@@ -30,7 +30,7 @@ name_list_total.extend(name_list_traj)
 round_val = {"R2": (100, 2, 3), "MAE": (1, 2, 1), "euclid": (1, 2, 1), "haversine": (1, 2, 1)}
 filter_add = True
 cm = 1/2.54  # centimeters in inches
-
+plot_draw = True
 legend_pos = {17: 4, 4: 2.5, 5: 3.5, 7: 3.5}
 legend_offset = {17: -0.1, 4: -0.05, 5: -0.05, 7: -0.05}
 color_for_model = {"Att": "#6699CC", "GRU": "#004488", "LSTM": "#DDAA33", "RNN": "#BB5566", "UniTS": "#000000"}
@@ -92,8 +92,8 @@ for name in name_list_total:
                         dictio[var][model][ws][metric] = dictio[var][model][ws][metric][0]
                         dictio_stdev[var][model][ws][metric] = 0
                     else:
-                        dictio[var][model][ws][metric] = np.average(dictio[var][model][ws][metric])
                         dictio_stdev[var][model][ws][metric] = np.std(dictio[var][model][ws][metric])
+                        dictio[var][model][ws][metric] = np.average(dictio[var][model][ws][metric])
                     if var not in min_max_for_metric_for_ws:
                         min_max_for_metric_for_ws[var] = dict()
                     if ws not in min_max_for_metric_for_ws[var]:
@@ -168,7 +168,8 @@ for name in name_list_total:
             print(max_times, how_to_round)
             print(string_latex)
             best_used[metric][var] = set_of_best
-
+    if not plot_draw:
+        continue
     for metric in used_metric:
         for plttype in ["all", "best"]:
             plt.figure(figsize=(21*cm, 29.7/2*cm), dpi = 300)
@@ -218,7 +219,7 @@ for name in name_list_total:
                 varnew = var.replace("_", " ").replace("longitude no abs", "$x$ offset").replace("direction", "heading")
                 varnew = varnew.replace("latitude no abs", "$y$ offset").replace("no abs", "$x$ and $y$ offset")
                 varnew = varnew.replace("speed actual dir", "speed, heading, and time")
-                plt.ylabel(varnew)
+                plt.ylabel(varnew.capitalize())
                 if ix == len(dictio) - 1 * ("time" in dictio):
                     plt.xticks(sorted_ws)
                     plt.xlabel("Forecasting length")

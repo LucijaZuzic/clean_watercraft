@@ -7,20 +7,8 @@ import os
 MAXINT = 10 ** 100
 cm = 1/2.54  # centimeters in inches
 
-def stringify(value_round, rounding):
-    if value_round == 0:
-        return "0", 0
-    if abs(value_round) >= 1:
-        return str(np.round(value_round, rounding)), 0
-    else:
-        pot = 0
-        while abs(value_round) < 1:
-            pot += 1
-            value_round *= 10
-        return str(np.round(value_round, rounding)) + " \\times 10^{-" + str(pot) + "}", pot
-    
 def plot_dict(dict_use, save_name, use_var = []):
-    plt.figure(figsize=(21*cm, 29.7/1.2*cm), dpi = 300)
+    plt.figure(figsize=(21*cm, 29.7/2.4*len(use_var)*cm), dpi = 300)
     
     plt.rcParams["svg.fonttype"] = "none"
     rc('font',**{'family':'Arial'})
@@ -43,9 +31,9 @@ def plot_dict(dict_use, save_name, use_var = []):
         if var == "time":
             continue
         ix_ws = ix_var
-        for ws in ws_list:
+        for ws in sorted(dict_use[var]):
             ix_ws += 1
-            plt.subplot(2 * len(use_var) - 1 * ("time" in use_var), 4, ix_ws)
+            plt.subplot(2 * (len(use_var) - 1 * ("time" in use_var)), 4, ix_ws)
             stepx = 1
             stepy = 1
             x = 0
@@ -55,10 +43,9 @@ def plot_dict(dict_use, save_name, use_var = []):
                     xarr = [x - stepx / 2, x + stepx / 2]
                     ymin = y - stepy / 2
                     ymax = y + stepy / 2
-                    if dict_use[var][ws][m1][m2][1] > 0.05 / (18 * 17 / 2):
-                        plt.fill_between(xarr, ymin, ymax, color = "r")
-                    else:
-                        plt.fill_between(xarr, ymin, ymax, color = "b")
+                    valu = 1 - dict_use[var][ws][m1][m2][1]
+                    hexcode = "#" + str(hex(int(np.round(valu * 255, 0)))).replace("0x", "") * 3
+                    plt.fill_between(xarr, ymin, ymax, color = hexcode)
                     y += stepy
                 x += stepx
             range_vals = np.arange(- stepx / 2, x, stepx)
@@ -74,8 +61,11 @@ def plot_dict(dict_use, save_name, use_var = []):
             varnew = varnew.replace("latitude no abs", "$y$ offset").replace("no abs", "$x$ and $y$ offset")
             varnew = varnew.replace("latitude speed", "$y$ offset - speed").replace("longitude speed", "$x$ offset - speed")
             varnew = varnew.replace("speed actual dir", "speed, heading, and time")
-            if ix_ws % 8 == 1:
-                plt.ylabel(varnew)
+            if ix_ws % 8 == 1 and len(use_var) > 1:
+                plt.ylabel(varnew.capitalize())
+            else:
+                if ix_ws % 8 == 2 and len(use_var) == 1:
+                    plt.title(varnew.capitalize())
             plt.xlabel("Forecasting length " + str(ws))
             if ix_ws % 8 == 7 and ix_var == 8 * (len(use_var) - 1 - 1 * ("time" in use_var)):
                 plt.yticks(ticks_use, labs_use)
@@ -126,6 +116,10 @@ for ix in range(len(df_dictio["variable"])):
     dicti_mann_whitney[var][ws][model1][model2] = (u, p)
     dicti_mann_whitney[var][ws][model2][model1] = (u, p)
 
+plot_dict(dicti_mann_whitney, "var_long", ["longitude_no_abs"])
+plot_dict(dicti_mann_whitney, "var_lat", ["latitude_no_abs"])
+plot_dict(dicti_mann_whitney, "var_speed", ["speed"])
+plot_dict(dicti_mann_whitney, "var_direction", ["direction"])
 plot_dict(dicti_mann_whitney, "var_long_lat", ["longitude_no_abs", "latitude_no_abs"])
 plot_dict(dicti_mann_whitney, "var_speed_direction", ["speed", "direction"])
 
@@ -158,5 +152,10 @@ for ix in range(len(df_dictio_traj["variable"])):
     dicti_mann_whitney_traj["latitude " + var][ws][model1][model2] = (ulat, plat)
     dicti_mann_whitney_traj["latitude " + var][ws][model2][model1] = (ulat, plat)
 
+
+plot_dict(dicti_mann_whitney_traj, "traj_long", ["longitude no abs"])
+plot_dict(dicti_mann_whitney_traj, "traj_lat", ["latitude no abs"])
+plot_dict(dicti_mann_whitney_traj, "traj_speed_direction_long", ["longitude speed actual dir"])
+plot_dict(dicti_mann_whitney_traj, "traj_speed_direction_lat", ["latitude speed actual dir"])
 plot_dict(dicti_mann_whitney_traj, "traj_long_lat", ["longitude no abs", "latitude no abs"])
 plot_dict(dicti_mann_whitney_traj, "traj_speed_direction", ["longitude speed actual dir", "latitude speed actual dir"])

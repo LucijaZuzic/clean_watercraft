@@ -1,10 +1,7 @@
 import os
 import numpy as np
 import matplotlib.pyplot as plt
-from utilities import load_object, save_object, compare_traj_and_sample
-import math
-from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
-import pdb
+import pandas as pd
 
 def str_convert_new(val):
     new_val = val
@@ -20,9 +17,8 @@ def str_convert_new(val):
     return rounded + "$"
 
 def new_metric_translate(metric_name):
-    new_metric_name = {"trapz x": "$x$ integration", 
-              "trapz y": "$y$ integration",
-              "euclidean": "Euclidean distance"}
+    new_metric_name = {"euclid": "Euclidean distance",
+                       "haversine": "Haversine distance"}
     if metric_name in new_metric_name:
         return new_metric_name[metric_name]
     else:
@@ -40,7 +36,7 @@ def translate_category(long):
     else:
         return long
     
-def draw_mosaic(rides_actual, rides_predicted, name):
+def draw_mosaic(rides_actual, rides_predicted, name, last_name):
     
     x_dim_rides = int(np.sqrt(len(rides_actual)))
     y_dim_rides = x_dim_rides
@@ -66,10 +62,14 @@ def draw_mosaic(rides_actual, rides_predicted, name):
     
         plt.plot(x_actual, y_actual, c = "k", linewidth = 2, label = "Original")
 
-    plt.savefig(name, bbox_inches = "tight")
+    if not os.path.isdir(name):
+        os.makedirs(name)
+    plt.savefig(name + last_name + ".png", bbox_inches = "tight")
+    plt.savefig(name + last_name + ".svg", bbox_inches = "tight")
+    plt.savefig(name + last_name + ".pdf", bbox_inches = "tight")
     plt.close()
     
-def draw_mosaic_one(x_actual, y_actual, x_predicted, y_predicted, k, model_name, name, ws_use, hidden_use, dist_name):
+def draw_mosaic_one(x_actual, y_actual, x_predicted, y_predicted, k, model_name, name, ws_use, hidden_use, dist_name, metric_dist, dist_val):
      
     plt.figure(figsize = (10, 10), dpi = 80)
     plt.rcParams.update({'font.size': 28}) 
@@ -90,334 +90,65 @@ def draw_mosaic_one(x_actual, y_actual, x_predicted, y_predicted, k, model_name,
     title_new = "Vehicle " + vehicle + " Ride " + ride + "\n" + model_name.replace("_", " ") + " model\n" + "Window size " + str(ws_use) + "\n" + "Hidden layers " + str(hidden_use) + "\n" 
 
     title_new += translate_category(dist_name) + "\n" 
-    for metric in distance_predicted_new:
-        if "simpson" in metric:
-            continue
-        title_new += new_metric_translate(metric) + ": " + str_convert_new(distance_predicted_new[metric][model_name][ws_use][hidden_use][dist_name][k]) + "\n"
+    
+    title_new += metric_dist + ": " + str_convert_new(dist_val) + "\n"
 
     plt.title(title_new)
     plt.legend()
     plt.savefig(name, bbox_inches = "tight")
     plt.close()
- 
-modes = ["Reference", "Third", "Linear", "Twice"]
 
-dicti_to_print = dict()
-use_draw = True
+vehicle_zero = os.listdir("csv_results_traj/1/1/")[0]
+ride_zero = os.listdir("csv_results_traj/1/1/" + vehicle_zero)[0]
+var_list = os.listdir("csv_results_traj/1/1/" + vehicle_zero + "/" + ride_zero + "/")
+model_list = os.listdir("csv_results_traj/1/1/" + vehicle_zero + "/" + ride_zero + "/" + var_list[0] + "/")
+ws_long_list = os.listdir("csv_results_traj/1/1/" + vehicle_zero + "/" + ride_zero + "/" + var_list[0] + "/" + model_list[0] + "/")
 
-dicti_all_traj = dict()
-if os.path.isfile("dicti_all_traj"):
-    dicti_all_traj = load_object("dicti_all_traj")
+round_val = ["R2", "MAE", "euclid", "haversine"]
+
+df_dictio = pd.read_csv("data_frame_traj_val.csv", index_col = False)
+
+dictio = dict()
+for ix in range(len(df_dictio["variable"])):
+    var = df_dictio["variable"][ix]
+    if "time" in var:
+        continue
+    model = df_dictio["model"][ix]
+    ws = df_dictio["ws"][ix]
+    if var not in dictio:
+        dictio[var] = dict()
+    if model not in dictio[var]:
+        dictio[var][model] = dict()
+    if ws not in dictio[var][model]:
+        dictio[var][model][ws] = dict()
+    for metric in round_val:
+        if metric not in df_dictio:
+            continue
+        if metric not in dictio[var][model][ws]:
+            dictio[var][model][ws][metric] = []
+        else:
+            use_stdev = True
+        dictio[var][model][ws][metric].append(df_dictio[metric][ix])
 
 sf1, sf2 = 5, 5
-sf3, sf4 = 0, 0
-
-for nf1 in range(sf3, sf1):
-    
-    dicti_to_print[nf1] = dict()
-
-    if nf1 not in dicti_all_traj:
-        dicti_all_traj[nf1] = dict()
-
-    for nf2 in range(sf4, sf2):
-    
-        dicti_to_print[nf1][nf2] = dict()
-
-        if nf2 not in dicti_all_traj[nf1]:
-            dicti_all_traj[nf1][nf2] = dict()
-
-        for mod_use in modes:
-
-            errored = True
-
-            while errored:
-                try:
-                    predicted_all = load_object("pytorch_result/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use + "/predicted_all")
-                    y_test_all = load_object("pytorch_result/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use + "/y_test_all")
-                    ws_all = load_object("pytorch_result/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use + "/ws_all")
-
-                    actual_long = load_object("pytorch_result/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use + "/actual_long")
-                    actual_lat = load_object("pytorch_result/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use + "/actual_lat")
-                    predicted_long = load_object("pytorch_result/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use + "/predicted_long")
-                    predicted_lat = load_object("pytorch_result/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use + "/predicted_lat")
-                    errored = False
-                except:
-                    print("err")
-                    continue
-
-            distance_predicted_new = dict()
-
-            if os.path.isfile("pytorch_result/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use + "/distance_predicted_new"):
-                distance_predicted_new = load_object("pytorch_result/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use + "/distance_predicted_new")
-
-            metric_names = ["euclidean"] 
-
-            if not os.path.isdir("mosaic_pytorch/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use):
-                os.makedirs("mosaic_pytorch/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use)
-
-            if not os.path.isdir("mosaic_pytorch_all/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use):
-                os.makedirs("mosaic_pytorch_all/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use)
-
-            for metric in metric_names:
-
-                if metric not in distance_predicted_new:
-                    distance_predicted_new[metric] = dict()
-
-                for model_name in predicted_long:
-
-                    if model_name not in distance_predicted_new[metric]:
-                        distance_predicted_new[metric][model_name] = dict()
-
-                    for ws_use in predicted_long[model_name]:
-
-                        if ws_use not in distance_predicted_new[metric][model_name]:
-                            distance_predicted_new[metric][model_name][ws_use] = dict()
-
-                        for hidden_use in predicted_long[model_name][ws_use]:
-
-                            if hidden_use not in distance_predicted_new[metric][model_name][ws_use]:
-                                distance_predicted_new[metric][model_name][ws_use][hidden_use] = dict()
-
-                            for dist_name in predicted_long[model_name][ws_use][hidden_use]:
-
-                                if nf1 in dicti_all_traj:
-                                    if nf2 in dicti_all_traj[nf1]:
-                                        if dist_name in dicti_all_traj[nf1][nf2]:
-                                            if model_name + "_"  + str(hidden_use) in dicti_all_traj[nf1][nf2][dist_name]:
-                                                if str(ws_use) in dicti_all_traj[nf1][nf2][dist_name][model_name + "_"  + str(hidden_use)]:
-                                                    print(nf1, nf2, dist_name, model_name + "_"  + str(hidden_use), str(ws_use))
-                                                    continue
-
-                                if dist_name not in distance_predicted_new[metric][model_name][ws_use][hidden_use]:
-                                    distance_predicted_new[metric][model_name][ws_use][hidden_use][dist_name] = dict()
-
-                                all_actual = []
-                                all_predicted = []
-
-                                actual_long_lat = []
-                                actual_long_lat_time = []
-                                predicted_long_lat = []
-                                predicted_long_lat_time = []
-
-                                vals_avg = []
-                                
-                                int_veh = sorted([int(k.split("/")[0].split("_")[1]) for k in predicted_long[model_name][ws_use][hidden_use][dist_name].keys()])
-
-                                min_k = ""
-                                min_dist = 1000000
-                                max_k = ""
-                                max_dist = - 1000000
-
-                                for v in set(int_veh):
-
-                                    all_actual_vehicle = []
-                                    all_predicted_vehicle = []
-                                    
-                                    for k in predicted_long[model_name][ws_use][hidden_use][dist_name]:
-                                        veh_new = int(k.split("/")[0].split("_")[1])
-                                        
-                                        if veh_new != v:
-                                            continue 
-
-                                        actual_long_one = actual_long[model_name][ws_use][hidden_use][k]
-                                        actual_lat_one = actual_lat[model_name][ws_use][hidden_use][k]
-
-                                        predicted_long_one = predicted_long[model_name][ws_use][hidden_use][dist_name][k]
-                                        predicted_lat_one = predicted_lat[model_name][ws_use][hidden_use][dist_name.replace("long", "lat")][k]
-
-                                        use_len = min(len(actual_long_one), len(predicted_long_one))
-                                        
-                                        actual_long_one = actual_long_one[:use_len]
-                                        actual_lat_one = actual_lat_one[:use_len]
-
-                                        predicted_long_one = predicted_long_one[:use_len]
-                                        predicted_lat_one = predicted_lat_one[:use_len]
-                                        
-                                        time_actual = y_test_all["time"][model_name][ws_use][hidden_use][k]
-                                        time_predicted = predicted_all["time"][model_name][ws_use][hidden_use][k]
-
-                                        time_actual_cumulative = [0]
-                                        time_predicted_cumulative = [0]
-                                        
-                                        for ix in range(len(time_actual)):
-                                            time_actual_cumulative.append(time_actual_cumulative[-1] + time_actual[ix])
-                                            time_predicted_cumulative.append(time_predicted_cumulative[-1] + time_predicted[ix])
-                                            
-                                        use_len_time = min(use_len, len(time_actual_cumulative))
-
-                                        actual_long_one = actual_long_one[:use_len_time]
-                                        actual_lat_one = actual_lat_one[:use_len_time]
-
-                                        predicted_long_one = predicted_long_one[:use_len_time]
-                                        predicted_lat_one = predicted_lat_one[:use_len_time]
-                                        
-                                        time_actual_cumulative = time_actual_cumulative[:use_len_time]
-                                        time_predicted_cumulative = time_predicted_cumulative[:use_len_time]
-
-                                        if k not in distance_predicted_new[metric][model_name][ws_use][hidden_use][dist_name]:
-                                            distance_predicted_new[metric][model_name][ws_use][hidden_use][dist_name][k] = compare_traj_and_sample(actual_long_one, actual_lat_one, time_actual_cumulative, {"long": predicted_long_one, "lat": predicted_lat_one, "time": time_predicted_cumulative}, metric)
-                                        
-                                        if distance_predicted_new[metric][model_name][ws_use][hidden_use][dist_name][k] < min_dist:
-                                            min_k = k
-                                            min_dist = distance_predicted_new[metric][model_name][ws_use][hidden_use][dist_name][k]
-
-                                        if distance_predicted_new[metric][model_name][ws_use][hidden_use][dist_name][k] > max_dist:
-                                            max_k = k
-                                            max_dist = distance_predicted_new[metric][model_name][ws_use][hidden_use][dist_name][k]
-
-                                        split_file_veh = k.split("/")
-                                        vehicle = split_file_veh[0].replace("Vehicle_", "")
-                                        ride = split_file_veh[-1].replace("events_", "").replace(".csv", "")
-
-                                        if use_draw:
-
-                                            filename = "mosaic_pytorch_all/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use + "/Vehicle_" + vehicle + "_events_" + ride + "_" + model_name + "_" + str(ws_use) + "_" + str(hidden_use) + "_" + dist_name + "_" + dist_name.replace("long", "lat") + "_test_mosaic.png"
-                                            draw_mosaic_one(actual_long_one, actual_lat_one, predicted_long_one, predicted_lat_one, k, model_name, filename, ws_use, hidden_use, dist_name)
-
-                                        all_actual.append({"long": actual_long_one, "lat": actual_lat_one})
-                                        all_predicted.append({"long": predicted_long_one, "lat": predicted_lat_one})
-
-                                        vals_avg.append(distance_predicted_new[metric][model_name][ws_use][hidden_use][dist_name][k])
-
-                                        all_actual_vehicle.append({"long": actual_long_one, "lat": actual_lat_one})
-                                        all_predicted_vehicle.append({"long": predicted_long_one, "lat": predicted_lat_one})
-
-                                        for ix_use_len in range(use_len_time):
-
-                                            actual_long_lat.append([actual_long_one[ix_use_len], actual_lat_one[ix_use_len]])
-                                            actual_long_lat_time.append([actual_long_one[ix_use_len], actual_lat_one[ix_use_len], time_actual_cumulative[ix_use_len]])
-                                            
-                                            predicted_long_lat.append([predicted_long_one[ix_use_len], predicted_lat_one[ix_use_len]])
-                                            predicted_long_lat_time.append([predicted_long_one[ix_use_len], predicted_lat_one[ix_use_len], time_predicted_cumulative[ix_use_len]])
-
-                                    if use_draw:
-
-                                        filename_veh = "mosaic_pytorch/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use + "/Vehicle_" + str(v) + "_" + model_name + "_" + str(ws_use) + "_" + str(hidden_use) + "_" + dist_name.replace("long", "lat") + "_test_mosaic.png"
-                                        draw_mosaic(all_actual_vehicle, all_predicted, filename_veh)
-
-                                if use_draw:
-
-                                    filename = "mosaic_pytorch/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use + "/all_" + model_name + "_" + str(ws_use) + "_" + str(hidden_use) + "_" + dist_name.replace("long", "lat") + "_test_mosaic.png"
-                                    draw_mosaic(all_actual, all_predicted, filename)
-
-                                print(nf1 + 1, nf2 + 1, model_name + "_" + str(ws_use) + "_" + str(hidden_use) + "_" + dist_name, np.round(np.average(vals_avg), 6))
-
-                                print(min_k, min_dist)
-                                print(max_k, max_dist)
-
-                                r2_pred_wt = r2_score(actual_long_lat_time, predicted_long_lat_time)
-
-                                mae_pred_wt = mean_absolute_error(actual_long_lat_time, predicted_long_lat_time)
-
-                                rmse_pred_wt = math.sqrt(mean_squared_error(actual_long_lat_time, predicted_long_lat_time))
-
-                                r2_pred = r2_score(actual_long_lat, predicted_long_lat)
-                        
-                                mae_pred = mean_absolute_error(actual_long_lat, predicted_long_lat)
-
-                                rmse_pred = math.sqrt(mean_squared_error(actual_long_lat, predicted_long_lat))
-                                
-                                print("R2", np.round(r2_pred * 100, 2), "MAE", np.round(mae_pred, 6), "RMSE", np.round(rmse_pred, 6), "R2_wt", np.round(r2_pred_wt * 100, 2), "MAE_wt", np.round(mae_pred_wt, 6), "RMSE_wt", np.round(rmse_pred_wt, 6))
-
-                                if dist_name not in dicti_to_print[nf1][nf2]:
-                                    dicti_to_print[nf1][nf2][dist_name] = dict()
-
-                                if model_name + "_"  + str(hidden_use) not in dicti_to_print[nf1][nf2][dist_name]:
-                                    dicti_to_print[nf1][nf2][dist_name][model_name + "_"  + str(hidden_use)] = dict()
-                                    
-                                if str(ws_use) not in dicti_to_print[nf1][nf2][dist_name][model_name + "_"  + str(hidden_use)]:
-                                    dicti_to_print[nf1][nf2][dist_name][model_name + "_"  + str(hidden_use)][str(ws_use)] = dict()
-
-                                dicti_to_print[nf1][nf2][dist_name][model_name + "_"  + str(hidden_use)][str(ws_use)]["R2_wt"] = r2_pred_wt
-                                dicti_to_print[nf1][nf2][dist_name][model_name + "_"  + str(hidden_use)][str(ws_use)]["MAE_wt"] = mae_pred_wt
-                                dicti_to_print[nf1][nf2][dist_name][model_name + "_"  + str(hidden_use)][str(ws_use)]["RMSE_wt"] = rmse_pred_wt
-                                dicti_to_print[nf1][nf2][dist_name][model_name + "_"  + str(hidden_use)][str(ws_use)]["Euclid"] = np.average(vals_avg)
-                                dicti_to_print[nf1][nf2][dist_name][model_name + "_"  + str(hidden_use)][str(ws_use)]["R2"] = r2_pred
-                                dicti_to_print[nf1][nf2][dist_name][model_name + "_"  + str(hidden_use)][str(ws_use)]["MAE"] = mae_pred
-                                dicti_to_print[nf1][nf2][dist_name][model_name + "_"  + str(hidden_use)][str(ws_use)]["RMSE"] = rmse_pred 
-                                
-                                if dist_name not in dicti_all_traj[nf1][nf2]:
-                                    dicti_all_traj[nf1][nf2][dist_name] = dict()
-
-                                if model_name + "_"  + str(hidden_use) not in dicti_all_traj[nf1][nf2][dist_name]:
-                                    dicti_all_traj[nf1][nf2][dist_name][model_name + "_"  + str(hidden_use)] = dict()
-                                    
-                                if str(ws_use) not in dicti_all_traj[nf1][nf2][dist_name][model_name + "_"  + str(hidden_use)]:
-                                    dicti_all_traj[nf1][nf2][dist_name][model_name + "_"  + str(hidden_use)][str(ws_use)] = dict()
-
-                                dicti_all_traj[nf1][nf2][dist_name][model_name + "_"  + str(hidden_use)][str(ws_use)]["R2_wt"] = r2_pred_wt
-                                dicti_all_traj[nf1][nf2][dist_name][model_name + "_"  + str(hidden_use)][str(ws_use)]["MAE_wt"] = mae_pred_wt
-                                dicti_all_traj[nf1][nf2][dist_name][model_name + "_"  + str(hidden_use)][str(ws_use)]["RMSE_wt"] = rmse_pred_wt
-                                dicti_all_traj[nf1][nf2][dist_name][model_name + "_"  + str(hidden_use)][str(ws_use)]["Euclid"] = np.average(vals_avg)
-                                dicti_all_traj[nf1][nf2][dist_name][model_name + "_"  + str(hidden_use)][str(ws_use)]["R2"] = r2_pred
-                                dicti_all_traj[nf1][nf2][dist_name][model_name + "_"  + str(hidden_use)][str(ws_use)]["MAE"] = mae_pred
-                                dicti_all_traj[nf1][nf2][dist_name][model_name + "_"  + str(hidden_use)][str(ws_use)]["RMSE"] = rmse_pred 
-
-                                save_object("pytorch_result/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + mod_use + "/distance_predicted_new", distance_predicted_new)
-
-                                save_object("dicti_all_traj", dicti_all_traj)
-
-rv_metric = {"R2": 2, "RMSE": 6, "MAE": 6, "R2_wt": 2, "RMSE_wt": 6, "MAE_wt": 6, "Euclid": 6}
-mul_metric = {"R2": 100, "RMSE": 1, "MAE": 1, "R2_wt": 100, "RMSE_wt": 1, "MAE_wt": 1, "Euclid": 1}
-list_ws = sorted([int(x) for x in dicti_all_traj[0][0]["long no abs"]["LSTM_Reference_256"]])
-list_ws = [2, 3, 4, 5, 10, 20, 30]
-
-for nf1 in range(sf1):
-    for nf2 in range(sf2):
-        for metric_name_use in list(rv_metric.keys()):
-            for varname in dicti_all_traj[nf1][nf2]:
-                str_pr = ""
-                first_line = str(nf1 + 1) + " " +  str(nf2 + 1) + " " + metric_name_use + " " + varname
-                for model_name_use in dicti_all_traj[nf1][nf2][varname]:
-                    for val_ws in list_ws:
-                        first_line += " & $" + str(val_ws) + "$s"
-                    break
-                #print(first_line + " \\\\ \\hline")
-                for model_name_use in dicti_all_traj[nf1][nf2][varname]:
-                    str_pr += str(nf1 + 1) + " " +  str(nf2 + 1) + " " + varname + " " + metric_name_use + " " + model_name_use
-                    for val_ws in list_ws:
-                        vv = dicti_all_traj[nf1][nf2][varname][model_name_use][str(val_ws)][metric_name_use]
-                        if nf1 not in dicti_all_traj:
-                            dicti_all_traj[nf1]  = dict()
-                        if nf2 not in dicti_all_traj[nf1]:
-                            dicti_all_traj[nf1][nf2] = dict()
-                        if varname not in dicti_all_traj[nf1][nf2]:
-                            dicti_all_traj[nf1][nf2][varname] = dict()
-                        if model_name_use not in dicti_all_traj[nf1][nf2][varname]:
-                            dicti_all_traj[nf1][nf2][varname][model_name_use] = dict()
-                        if str(val_ws) not in dicti_all_traj[nf1][nf2][varname][model_name_use]:
-                            dicti_all_traj[nf1][nf2][varname][model_name_use][str(val_ws)] = dict()
-                        dicti_all_traj[nf1][nf2][varname][model_name_use][str(val_ws)][metric_name_use] = vv
-                        vv = np.round(vv * mul_metric[metric_name_use], rv_metric[metric_name_use])
-                        str_pr += " & $" + str(vv) + "$"
-                    str_pr += " \\\\ \\hline\n"
-                #print(str_pr)
-
-        for metric_name_use in list(rv_metric.keys()):
-            for model_name_use in dicti_all_traj[0][0]["long no abs"]:
-                str_pr = ""
-                first_line = str(nf1 + 1) + " " +  str(nf2 + 1) + " " + metric_name_use + " " + model_name_use
-                for varname in dicti_all_traj[nf1][nf2]:
-                    for val_ws in list_ws:
-                        first_line += " & $" + str(val_ws) + "$s"
-                    break
-                print(first_line + " \\\\ \\hline")
-                for varname in dicti_all_traj[nf1][nf2]:
-                    str_pr += str(nf1 + 1) + " " +  str(nf2 + 1) + " " + varname + " " + metric_name_use + " " + model_name_use
-                    for val_ws in list_ws: 
-                        vv = dicti_all_traj[nf1][nf2][varname][model_name_use][str(val_ws)][metric_name_use]
-                        if nf1 not in dicti_all_traj:
-                            dicti_all_traj[nf1]  = dict()
-                        if nf2 not in dicti_all_traj[nf1]:
-                            dicti_all_traj[nf1][nf2] = dict()
-                        if varname not in dicti_all_traj[nf1][nf2]:
-                            dicti_all_traj[nf1][nf2][varname] = dict()
-                        if model_name_use not in dicti_all_traj[nf1][nf2][varname]:
-                            dicti_all_traj[nf1][nf2][varname][model_name_use] = dict()
-                        if str(val_ws) not in dicti_all_traj[nf1][nf2][varname][model_name_use]:
-                            dicti_all_traj[nf1][nf2][varname][model_name_use][str(val_ws)] = dict()
-                        dicti_all_traj[nf1][nf2][varname][model_name_use][str(val_ws)][metric_name_use] = vv
-                        vv = np.round(vv * mul_metric[metric_name_use], rv_metric[metric_name_use])
-                        str_pr += " & $" + str(vv) + "$"
-                    str_pr += " \\\\ \\hline\n"
-                print(str_pr)
+for var in var_list:
+    for model in model_list:
+        for ws_long in ws_long_list:
+            for nf2 in range(sf2):
+                actual_rides = dict()
+                predicted_rides = dict()
+                ix_r = 0
+                for nf1 in range(sf1):
+                    for vehicle in os.listdir("csv_results_traj/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/"):
+                        for ride in os.listdir("csv_results_traj/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + vehicle):
+                            traj_path = "csv_results_traj/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + vehicle  + "/" + ride + "/" + var + "/" + model + "/" + ws_long
+                            pd_file = pd.read_csv(traj_path, index_col = False)
+                            predicted_rides[ix_r] = dict()
+                            actual_rides[ix_r] = dict()
+                            predicted_rides[ix_r]["long"] = pd_file["predicted long"]
+                            actual_rides[ix_r]["long"] = pd_file["actual long"]
+                            predicted_rides[ix_r]["lat"] = pd_file["predicted lat"]
+                            actual_rides[ix_r]["lat"] = pd_file["actual lat"]
+                            ix_r += 1
+                print(var + "/" + model + "/" + str(nf2 + 1) + "/" + ws_long, len(actual_rides))
+                draw_mosaic(actual_rides, predicted_rides, "compile_images/" + var + "/" + model + "/" + str(nf2 + 1) + "/", ws_long.replace("_predicted.csv", "_merge_val"))
