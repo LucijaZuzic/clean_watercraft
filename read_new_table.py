@@ -28,7 +28,6 @@ name_list_total.extend(name_list)
 name_list_total.extend(name_list_traj)
 
 round_val = {"R2": (100, 2, 3), "MAE": (1, 2, 1), "euclid": (1, 2, 1), "haversine": (1, 2, 1)}
-filter_add = False
 cm = 1/2.54  # centimeters in inches
 plot_draw = True
 legend_pos = {17: 8, 4: 4, 5: 5, 7: 5}
@@ -182,8 +181,15 @@ for name in name_list_total:
                                 row_str += "($" + str_val_round + "$) & "
                         string_latex += row_str[:-2] + "\\\\ \\hline\n"
                 metricnew = metric.replace("R2", "$R^{2}$ (\%)")
-                metricnew = metricnew.replace("euclid", "Euclidean distance")
-                metricnew = metricnew.replace("haversine", "Haversine distance")
+                metricnew = metricnew.replace("euclid", "Euclidean distance in $\\degree$")
+                metricnew = metricnew.replace("haversine", "haversine distance in $km$")
+                if "MAE" in metricnew:
+                    if "speed" in var and "actual" not in var:
+                        metricnew += " in $km/h$"
+                    if "direction" in var:
+                        metricnew += " in $\\degree$"
+                    if "abs" in var or "actual" in var:
+                        metricnew += " in $\\degree$"
                 varnew = var.replace("_", " ").replace("longitude no abs", "$x$ offset").replace("direction", "heading")
                 varnew = varnew.replace("latitude no abs", "$y$ offset").replace("no abs", "$x$ and $y$ offset")
                 varnew = varnew.replace("speed actual dir", "speed, heading, and time")
@@ -274,8 +280,8 @@ for name in name_list_total:
                 plt.subplot(len(dictio) - 1 * ("time" in dictio), 1, ix)
                 if ix == 1:
                     metricnew = metric.replace("R2", "$R^{2}$ (%)")
-                    metricnew = metricnew.replace("euclid", "Euclidean distance")
-                    metricnew = metricnew.replace("haversine", "Haversine distance")
+                    metricnew = metricnew.replace("euclid", "Euclidean distance ($\degree$)")
+                    metricnew = metricnew.replace("haversine", "Haversine distance ($km$)")
                     plt.title(metricnew)
                 sorted_ws = sorted(list(dictio[var][model].keys()))
                 miny = MAXINT
@@ -294,10 +300,17 @@ for name in name_list_total:
                 varnew = var.replace("_", " ").replace("longitude no abs", "$x$ offset").replace("direction", "heading")
                 varnew = varnew.replace("latitude no abs", "$y$ offset").replace("no abs", "$x$ and $y$ offset")
                 varnew = varnew.replace("speed actual dir", "speed, heading, and time")
+                if "MAE" in metricnew:
+                    if "speed" == varnew:
+                        varnew += " ($km/h$)"
+                    if "heading" == varnew:
+                        varnew += " ($\\degree$)"
+                    if "offset" in varnew or " time" in varnew:
+                        varnew += " ($\\degree$)"
                 plt.ylabel(varnew.capitalize())
                 if ix == len(dictio) - 1 * ("time" in dictio):
                     plt.xticks(sorted_ws)
-                    plt.xlabel("Forecasting length")
+                    plt.xlabel("Forecasting time")
                 else:
                     plt.xticks([])
                 plt.xlim(min(sorted_ws), max(sorted_ws))

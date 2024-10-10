@@ -62,10 +62,10 @@ def plot_dict(dict_use, save_name, subtitle, use_ws = []):
                 labs_use.append(varnew.capitalize())
             modelnew = model.replace("_", " ")
             if ix_ws % 20 == 1 and len(use_ws) > 1:
-                plt.ylabel("Forecasting length " + str(ws) + "\n" + subtitle)
+                plt.ylabel("Forecasting time " + str(ws) + "\n" + subtitle)
             else:
                 if ix_ws % 20 == 2 and len(use_ws) == 1:
-                    plt.title("Forecasting length " + str(ws) + "\n" + subtitle)
+                    plt.title("Forecasting time " + str(ws) + "\n" + subtitle)
             plt.xlabel(modelnew)
             if ix_ws % 20 == 17 and ix_var == 20 * (len(use_ws) - 1):
                 plt.yticks(ticks_use, labs_use)

@@ -66,7 +66,7 @@ def plot_dict(dict_use, save_name, subtitle, use_model = []):
             else:
                 if ix_ws % 8 == 2 and len(use_model) == 1:
                     plt.title(modelnew + "\n" + subtitle)
-            plt.xlabel("Forecasting length " + str(ws))
+            plt.xlabel("Forecasting time " + str(ws))
             if ix_ws % 8 == 7 and ix_var == 8 * (len(use_model) - 1):
                 plt.yticks(ticks_use, labs_use)
                 plt.gca().yaxis.tick_right()
