@@ -2,15 +2,37 @@ from utilities import load_object
 import os
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib import rc
+import pandas as pd
+
+cm = 1/2.54  # centimeters in inches
+
+def set_params():
+    
+    plt.rcParams["svg.fonttype"] = "none"
+    rc('font',**{'family':'Arial'})
+    #plt.rcParams.update({"font.size": 7})
+    SMALL_SIZE = 7
+    MEDIUM_SIZE = 7
+    BIGGER_SIZE = 7
+
+    plt.rc('font', size=SMALL_SIZE)          # controls default text sizes
+    plt.rc('axes', titlesize=SMALL_SIZE)     # fontsize of the axes title
+    plt.rc('axes', labelsize=MEDIUM_SIZE)    # fontsize of the x and y labels
+    plt.rc('xtick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
+    plt.rc('ytick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
+    plt.rc('legend', fontsize=SMALL_SIZE)    # legend fontsize
+    plt.rc('figure', titlesize=BIGGER_SIZE)  # fontsize of the figure title
 
 def make_hist(list_lens, title_use):
     print(title_use)
     print(min(list_lens), max(list_lens), np.average(list_lens), np.mean(list_lens), np.median(list_lens))
     print(np.percentile(list_lens, 0), np.percentile(list_lens, 25), np.percentile(list_lens, 50), np.percentile(list_lens, 75), np.percentile(list_lens, 100))
-    plt.figure()
+    plt.figure(figsize=(29.7/4*cm, 29.7/4*cm), dpi = 300)
+    set_params()
     varnew = title_use.replace("_", " ").replace("longitude no abs", "$x$ offset").replace("direction", "heading")
     varnew = varnew.replace("latitude no abs", "$y$ offset").replace("Area x", "Area $x$").replace("Area y", "Area $y$")
-    plt.hist(list_lens)
+    plt.hist(list_lens, color = "#004488")
     if "time" == title_use:
         plt.xlabel(varnew.capitalize() + " ($s$)")
     if "speed" == title_use:
@@ -69,7 +91,8 @@ for var in lens_dict:
 for var in actual_var_all:
     make_hist(actual_var_all[var], var)
 ix_plot = 0
-plt.figure()
+plt.figure(figsize=(21*cm, 29.7/1.8*cm), dpi = 300)
+set_params()
 for var in actual_var_all:
     if "time" in var:
         continue
@@ -86,7 +109,7 @@ for var in actual_var_all:
     if "direction" == var:
         plt.xlabel(varnew.capitalize() + " ($\degree$)")
     plt.ylabel("Frequency")
-    plt.hist(actual_var_all[var])
+    plt.hist(actual_var_all[var], color = "#004488")
     if not os.path.isdir("hist_plot"):
         os.makedirs("hist_plot")
 plt.savefig("hist_plot/all_var_no_time_hist.png", bbox_inches = "tight")
@@ -94,10 +117,11 @@ plt.savefig("hist_plot/all_var_no_time_hist.svg", bbox_inches = "tight")
 plt.savefig("hist_plot/all_var_no_time_hist.pdf", bbox_inches = "tight")
 plt.close()
 ix_plot = 0
-plt.figure()
+plt.figure(figsize=(21*cm, 29.7/1.4*cm), dpi = 300)
+set_params()
 for var in actual_var_all:
     ix_plot += 1
-    plt.subplot(2, 3, ix_plot)
+    plt.subplot(3, 2, ix_plot)
     varnew = var.replace("_", " ").replace("longitude no abs", "$x$ offset").replace("direction", "heading")
     varnew = varnew.replace("latitude no abs", "$y$ offset")
     if "time" == var:
@@ -111,7 +135,7 @@ for var in actual_var_all:
     if "direction" == var:
         plt.xlabel(varnew.capitalize() + " ($\degree$)")
     plt.ylabel("Frequency")
-    plt.hist(actual_var_all[var])
+    plt.hist(actual_var_all[var], color = "#004488")
     if not os.path.isdir("hist_plot"):
         os.makedirs("hist_plot")
 plt.savefig("hist_plot/all_var_hist.png", bbox_inches = "tight")
@@ -132,7 +156,8 @@ make_hist(list(area_x_dict.values()), "Area x")
 make_hist(list(area_y_dict.values()), "Area y")
 make_hist(list(area_total_dict.values()), "Area total")
 ix_plot = 0
-plt.figure(figsize = (10, 10 * 21 / 19), dpi = 80)
+plt.figure(figsize = (10, 10 * 21 / 19), dpi = 300)
+set_params()
 for r in actual_var:
     ix_plot += 1
     plt.subplot(21, 19, ix_plot)
@@ -146,3 +171,52 @@ plt.savefig("hist_plot/all_trajs.png", bbox_inches = "tight")
 plt.savefig("hist_plot/all_trajs.svg", bbox_inches = "tight")
 plt.savefig("hist_plot/all_trajs.pdf", bbox_inches = "tight")
 plt.close()
+
+read_UniTS_4 = dict()
+
+vehicle_zero = os.listdir("csv_results_traj/1/1/")[0]
+ride_zero = os.listdir("csv_results_traj/1/1/" + vehicle_zero)[0]
+var_list = os.listdir("csv_results_traj/1/1/" + vehicle_zero + "/" + ride_zero + "/")
+model_list = os.listdir("csv_results_traj/1/1/" + vehicle_zero + "/" + ride_zero + "/" + var_list[0] + "/")
+ws_long_list = os.listdir("csv_results_traj/1/1/" + vehicle_zero + "/" + ride_zero + "/" + var_list[0] + "/" + model_list[0] + "/")
+
+sf1, sf2 = 5, 3
+for var in ["no abs"]:
+    for model in ["UniTS"]:
+        for ws_long in ["2_predictions.csv"]:
+            for nf2 in [sf2]:
+                actual_rides = dict()
+                predicted_rides = dict()
+                for nf1 in range(sf1):
+                    for vehicle in os.listdir("csv_results_traj/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/"):
+                        for ride in os.listdir("csv_results_traj/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + vehicle):
+                            traj_path = "csv_results_traj/" + str(nf1 + 1) + "/" + str(nf2 + 1) + "/" + vehicle  + "/" + ride + "/" + var + "/" + model + "/" + ws_long
+                            pd_file = pd.read_csv(traj_path, index_col = False)
+                            predicted_rides[vehicle + "/" + ride] = dict()
+                            actual_rides[vehicle + "/" + ride] = dict()
+                            predicted_rides[vehicle + "/" + ride]["long"] = pd_file["predicted long"]
+                            actual_rides[vehicle + "/" + ride]["long"] = pd_file["actual long"]
+                            predicted_rides[vehicle + "/" + ride]["lat"] = pd_file["predicted lat"]
+                            actual_rides[vehicle + "/" + ride]["lat"] = pd_file["actual lat"]
+                ix_plot = 0
+                plt.figure(figsize = (10, 10 * 21 / 19), dpi = 300)
+                set_params()
+                for r in actual_var:
+                    ix_plot += 1
+                    plt.subplot(21, 19, ix_plot)
+                    plt.rcParams.update({'font.size': 28}) 
+                    plt.rcParams['font.family'] = "serif"
+                    plt.rcParams["mathtext.fontset"] = "dejavuserif"
+                    plt.axis("equal")
+                    plt.axis("off")
+                    plt.plot(actual_var[r]["longitude_no_abs"], actual_var[r]["latitude_no_abs"], c = "k", linewidth = 2)
+                    plt.plot(predicted_rides[r]["long"], predicted_rides[r]["lat"], c  = "#004488", linewidth = 2)
+                
+                filepath = "hist_plot/" + var + "/" + model + "/" + str(nf2 + 1) + "/"
+                if not os.path.isdir(filepath):
+                    os.makedirs(filepath)
+                filename = ws_long.replace("_predictions.csv", "_merge_val")
+                plt.savefig(filepath + filename + ".png", bbox_inches = "tight")
+                plt.savefig(filepath + filename + ".svg", bbox_inches = "tight")
+                plt.savefig(filepath + filename + ".pdf", bbox_inches = "tight")
+                plt.close()

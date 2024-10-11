@@ -99,11 +99,12 @@ for name in name_list_total:
             for var in ["no abs"]:
                 for metric in ["R2"]:
                     for model in ["UniTS"]:
-                            print(ws, var, metric)
+                            #print(ws, var, metric)
                             averages = []
                             for ps in range(5):
                                 list_new = dictio[var][model][ws][metric][ps*5:(ps+1)*5]
                                 averages.append(np.average(list_new))
+                            continue
                             if "R2" in metric:
                                 print(averages, np.argmax(averages) + 1)
                             else:
