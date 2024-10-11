@@ -3,10 +3,10 @@
 	\resizebox{\linewidth}{!}{
 		\begin{tabular}{|c|c|c|c|c|c|c|c|}
 			\hline
-			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
-			GRU Att 1 & $\mathbf{1.719}$ & $\mathbf{2.762}$ & $1.328$ & $7.457$ & $1.38$ & $1.472$ & $\mathbf{1.5}$ \\ \hline
-			GRU Att 2 & $1.804$ & $2.826$ & $1.324$ & $\mathbf{3.916}$ & $1.4$ & $\mathbf{1.47}$ & $1.513$ \\ \hline
-			GRU Att 4 & $1.89$ & $2.847$ & $\mathbf{1.321}$ & $5.188$ & $\mathbf{1.367}$ & $1.473$ & $1.546$ \\ \hline
+			Model & $2$s & $3$s & $4$s & $5$s & $10$s & $20$s & $30$s\\ \hline
+			GRU Att 1 & $1.328$ & $1.38$ & $1.472$ & $\mathbf{1.5}$ & $\mathbf{1.719}$ & $\mathbf{2.762}$ & $7.457$ \\ \hline
+			GRU Att 2 & $1.324$ & $1.4$ & $\mathbf{1.47}$ & $1.513$ & $1.804$ & $2.826$ & $\mathbf{3.916}$ \\ \hline
+			GRU Att 4 & $\mathbf{1.321}$ & $\mathbf{1.367}$ & $1.473$ & $1.546$ & $1.89$ & $2.847$ & $5.188$ \\ \hline
 		\end{tabular}
 	}
 	\caption{The average Euclidean distance in $\degree$ ($10^{-2}$) across k-fold validation datasets, with standard deviation in brackets, for the trajectories in the k-fold testing datasets estimated using speed, heading, and time, different RNN models, and forecasting times.}

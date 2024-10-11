@@ -3,11 +3,11 @@
 	\resizebox{\linewidth}{!}{
 		\begin{tabular}{|c|c|c|c|c|c|c|c|}
 			\hline
-			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
-			\multirow{2}{*}{GRU Att 4} & $25.99$ & $60.56$ & $\mathbf{3.46}$ & $75.67$ & $\mathbf{4.52}$ & $5.69$ & $7.19$ \\
-			 & ($5.77$) & ($8.34$) & \textbf{(}$\mathbf{0.46}$\textbf{)} & ($18.68$) & \textbf{(}$\mathbf{0.52}$\textbf{)} & ($0.55$) & ($0.73$) \\ \hline
-			\multirow{2}{*}{UniTS} & $\mathbf{10.59}$ & $\mathbf{15.36}$ & $4.85$ & $\mathbf{20.25}$ & $5.42$ & $\mathbf{5.58}$ & $\mathbf{6.53}$ \\
-			 & \textbf{(}$\mathbf{1.24}$\textbf{)} & \textbf{(}$\mathbf{1.57}$\textbf{)} & ($3.65$) & \textbf{(}$\mathbf{2.09}$\textbf{)} & ($3.38$) & \textbf{(}$\mathbf{0.71}$\textbf{)} & \textbf{(}$\mathbf{0.98}$\textbf{)} \\ \hline
+			Model & $2$s & $3$s & $4$s & $5$s & $10$s & $20$s & $30$s\\ \hline
+			\multirow{2}{*}{GRU Att 4} & $\mathbf{3.46}$ & $\mathbf{4.52}$ & $5.69$ & $7.19$ & $25.99$ & $60.56$ & $75.67$ \\
+			 & \textbf{(}$\mathbf{0.46}$\textbf{)} & \textbf{(}$\mathbf{0.52}$\textbf{)} & ($0.55$) & ($0.73$) & ($5.77$) & ($8.34$) & ($18.68$) \\ \hline
+			\multirow{2}{*}{UniTS} & $4.85$ & $5.42$ & $\mathbf{5.58}$ & $\mathbf{6.53}$ & $\mathbf{10.59}$ & $\mathbf{15.36}$ & $\mathbf{20.25}$ \\
+			 & ($3.65$) & ($3.38$) & \textbf{(}$\mathbf{0.71}$\textbf{)} & \textbf{(}$\mathbf{0.98}$\textbf{)} & \textbf{(}$\mathbf{1.24}$\textbf{)} & \textbf{(}$\mathbf{1.57}$\textbf{)} & \textbf{(}$\mathbf{2.09}$\textbf{)} \\ \hline
 		\end{tabular}
 	}
 	\caption{The average haversine distance in $km$ ($10^{-1}$) across k-fold validation datasets, with standard deviation in brackets, for the trajectories in the k-fold testing datasets estimated using $x$ and $y$ offset, different RNN models, and forecasting times.}

@@ -79,7 +79,7 @@ for name in name_list_total:
     dictio_stdev = dict()
     for var in dictio:
         for model in dictio[var]:
-            for ws in dictio[var][model]:
+            for ws in sorted(list(dictio[var][model].keys())):
                 for metric in dictio[var][model][ws]:
                     if var not in dictio_stdev:
                         dictio_stdev[var] = dict()
@@ -126,7 +126,7 @@ for name in name_list_total:
             set_of_best = set()
             set_of_best_all = set()
             for model in dictio[var]:
-                for ws in dictio[var][model]:
+                for ws in sorted(list(dictio[var][model].keys())):
                     if model == min_max_for_metric_for_ws[var][ws][metric][ix_best]:
                         set_of_best.add(model)
                     set_of_best_all.add(model)
@@ -141,7 +141,7 @@ for name in name_list_total:
                     found_error = False
                     max_times = 0
                     for model in sorted(list(set_some)):
-                        for ws in dictio[var][model]:
+                        for ws in sorted(list(dictio[var][model].keys())):
                             val_round, times_part = stringify(dictio[var][model][ws][metric] * round_val[metric][0], how_to_round, metric == "R2")
                             max_times = max(times_part, max_times)
                             if val_round not in set_str:    
@@ -157,7 +157,7 @@ for name in name_list_total:
                         row_str = "\t\t\t\\multirow{2}{*}{" + model.replace("_", " ") + "} & "
                     else:
                         row_str = "\t\t\t" + model.replace("_", " ") + " & "
-                    for ws in dictio[var][model]:
+                    for ws in sorted(list(dictio[var][model].keys())):
                         str_val_round, times_part = stringify(dictio[var][model][ws][metric] * round_val[metric][0] * (10 ** max_times), how_to_round, metric == "R2")
                         if round_val[metric][0] == 100:
                             str_val_round += "\%"
@@ -171,7 +171,7 @@ for name in name_list_total:
                         string_latex += row_str[:-2] + "\\\\ \\hline\n"
                     if use_stdev:
                         row_str = "\t\t\t & "
-                        for ws in dictio_stdev[var][model]:
+                        for ws in sorted(list(dictio_stdev[var][model].keys())):
                             str_val_round, times_part = stringify(dictio_stdev[var][model][ws][metric] * round_val[metric][0] * (10 ** max_times), how_to_round, True)
                             if round_val[metric][0] == 100:
                                 str_val_round += "\%"
@@ -205,7 +205,7 @@ for name in name_list_total:
                 start_latex = "\\begin{table}[!ht]\n\t\\centering\n\t\\resizebox{\\linewidth}{!}{\n\t\t\\begin{tabular}{|c|c|c|c|c|c|c|c|}\n\t\t\t\\hline\n"
                 end_latex = "\t\t\end{tabular}\n\t}\n\t\\caption{" + desc + "}\n\t" + label_name + "\n\\end{table}"
                 header_latex = "\t\t\tModel"
-                for ws in dictio[var][model]:
+                for ws in sorted(list(dictio[var][model].keys())):
                     header_latex += " & $" + str(ws) + "$s"
                 header_latex += "\\\\ \\hline\n"
                 if not os.path.isdir("tex_new_dir/" + name):

@@ -3,9 +3,9 @@
 	\resizebox{\linewidth}{!}{
 		\begin{tabular}{|c|c|c|c|c|c|c|c|}
 			\hline
-			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
-			LSTM Linear & $6.743$ & $7.885$ & $\mathbf{2.451}$ & $8.424$ & $3.405$ & $4.205$ & $4.852$ \\ \hline
-			UniTS & $\mathbf{5.671}$ & $\mathbf{6.983}$ & $2.744$ & $\mathbf{7.614}$ & $\mathbf{3.297}$ & $\mathbf{3.781}$ & $\mathbf{4.205}$ \\ \hline
+			Model & $2$s & $3$s & $4$s & $5$s & $10$s & $20$s & $30$s\\ \hline
+			LSTM Linear & $\mathbf{2.451}$ & $3.405$ & $4.205$ & $4.852$ & $6.743$ & $7.885$ & $8.424$ \\ \hline
+			UniTS & $2.744$ & $\mathbf{3.297}$ & $\mathbf{3.781}$ & $\mathbf{4.205}$ & $\mathbf{5.671}$ & $\mathbf{6.983}$ & $\mathbf{7.614}$ \\ \hline
 		\end{tabular}
 	}
 	\caption{The average MAE in $km/h$ across k-fold validation datasets, with standard deviation in brackets, for the speed estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
@@ -17,9 +17,9 @@
 	\resizebox{\linewidth}{!}{
 		\begin{tabular}{|c|c|c|c|c|c|c|c|}
 			\hline
-			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
-			LSTM Linear & $63.14\%$ & $55.37\%$ & $\mathbf{94.44\%}$ & $51.84\%$ & $89.19\%$ & $83.81\%$ & $78.7\%$ \\ \hline
-			UniTS & $\mathbf{73.1\%}$ & $\mathbf{61.82\%}$ & $93.51\%$ & $\mathbf{56.54\%}$ & $\mathbf{90.57\%}$ & $\mathbf{87.58\%}$ & $\mathbf{84.66\%}$ \\ \hline
+			Model & $2$s & $3$s & $4$s & $5$s & $10$s & $20$s & $30$s\\ \hline
+			LSTM Linear & $\mathbf{94.44\%}$ & $89.19\%$ & $83.81\%$ & $78.7\%$ & $63.14\%$ & $55.37\%$ & $51.84\%$ \\ \hline
+			UniTS & $93.51\%$ & $\mathbf{90.57\%}$ & $\mathbf{87.58\%}$ & $\mathbf{84.66\%}$ & $\mathbf{73.1\%}$ & $\mathbf{61.82\%}$ & $\mathbf{56.54\%}$ \\ \hline
 		\end{tabular}
 	}
 	\caption{The average $R^{2}$ (\%) across k-fold validation datasets, with standard deviation in brackets, for the speed estimated on the k-fold testing datasets by different RNN models, and forecasting times.}

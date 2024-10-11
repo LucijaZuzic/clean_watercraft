@@ -3,10 +3,10 @@
 	\resizebox{\linewidth}{!}{
 		\begin{tabular}{|c|c|c|c|c|c|c|c|}
 			\hline
-			Model & $10$s & $20$s & $2$s & $30$s & $3$s & $4$s & $5$s\\ \hline
-			GRU Att 1 & $43.108$ & $66.056$ & $3.666$ & $73.416$ & $\mathbf{4.527}$ & $5.777$ & $7.752$ \\ \hline
-			GRU Att 4 & $25.787$ & $60.413$ & $\mathbf{3.454}$ & $75.725$ & $4.53$ & $5.679$ & $7.164$ \\ \hline
-			UniTS & $\mathbf{10.568}$ & $\mathbf{15.321}$ & $4.872$ & $\mathbf{20.211}$ & $5.454$ & $\mathbf{5.572}$ & $\mathbf{6.484}$ \\ \hline
+			Model & $2$s & $3$s & $4$s & $5$s & $10$s & $20$s & $30$s\\ \hline
+			GRU Att 1 & $3.666$ & $\mathbf{4.527}$ & $5.777$ & $7.752$ & $43.108$ & $66.056$ & $73.416$ \\ \hline
+			GRU Att 4 & $\mathbf{3.454}$ & $4.53$ & $5.679$ & $7.164$ & $25.787$ & $60.413$ & $75.725$ \\ \hline
+			UniTS & $4.872$ & $5.454$ & $\mathbf{5.572}$ & $\mathbf{6.484}$ & $\mathbf{10.568}$ & $\mathbf{15.321}$ & $\mathbf{20.211}$ \\ \hline
 		\end{tabular}
 	}
 	\caption{The average haversine distance in $km$ ($10^{-1}$) across k-fold validation datasets, with standard deviation in brackets, for the trajectories in the k-fold testing datasets estimated using $x$ and $y$ offset, different RNN models, and forecasting times.}
