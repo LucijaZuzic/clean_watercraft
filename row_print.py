@@ -1065,6 +1065,12 @@ for name in name_list_total:
                     print_sentence_ws(var, model, metric, ws)
                     print_sentence_metric(var, model, metric, ws)
 
+    if "traj" in name:
+        for var in sorted(var_list):
+            print(var, "$" + stringify(dictio_avg[var]["UniTS"][2]["R2"] * 100, 2, True)[0] + "\%$", "$" + stringify(dictio_avg[var]["UniTS"][30]["R2"] * 100, 2, True)[0] + "\%$")
+            print(var, "$" + stringify(dictio_avg[var]["UniTS"][2]["MAE"] * (10 ** 3), 3, True)[0] + " \\times 10^{-3}$ $\\degree$", "$" + stringify(dictio_avg[var]["UniTS"][30]["MAE"] * (10 ** 3), 3, True)[0] + " \\times 10^{-3}$ $\\degree$")
+            print(var, "$" + stringify(dictio_avg[var]["UniTS"][2]["haversine"], 3, True)[0] + "$ $km$", "$" + stringify(dictio_avg[var]["UniTS"][30]["haversine"], 3, True)[0] + "$ $km$")
+
     only_best_second = True
     for var in sorted(var_list):
         if "time" in var:
@@ -1088,7 +1094,7 @@ for name in name_list_total:
                 sth = print_sentence(var, model, ws).strip()
                 while "\n" in sth:
                     sth = sth.replace("\n", "")
-                print(sth)
+                #print(sth)
                 usep = oldusep
 
 my_text_total_file = open("my_text_total.tex", "w")
