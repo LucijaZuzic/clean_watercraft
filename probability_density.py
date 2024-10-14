@@ -202,7 +202,9 @@ plt.savefig("hist_plot/all_trajs.png", bbox_inches = "tight")
 plt.savefig("hist_plot/all_trajs.svg", bbox_inches = "tight")
 plt.savefig("hist_plot/all_trajs.pdf", bbox_inches = "tight")
 plt.close()
-if not os.path.isfile("hist_plot/all_trajs_compared.pdf"):
+redo_res = True
+redo_all = False
+if redo_res:
     read_UniTS_4 = dict()
 
     vehicle_zero = os.listdir("csv_results_traj/1/1/")[0]
@@ -213,7 +215,7 @@ if not os.path.isfile("hist_plot/all_trajs_compared.pdf"):
 
     for var in ["no abs"]:
         for model in ["UniTS"]:
-            for ws_long in ["2_predictions.csv"]:
+            for ws_long in ["30_predictions.csv"]:
                 for nf2 in [sf2]:
                     actual_rides = dict()
                     predicted_rides = dict()
@@ -250,7 +252,8 @@ if not os.path.isfile("hist_plot/all_trajs_compared.pdf"):
                     plt.savefig(filepath + filename + ".svg", bbox_inches = "tight")
                     plt.savefig(filepath + filename + ".pdf", bbox_inches = "tight")
                     plt.close()
-
+                    if not redo_all or ws_long != "2_predictions.csv" or model != "UniTS" or var != "no abs":
+                        continue
                     ix_plot = 0
                     plt.figure(figsize = (10, 10 * 21 / 19), dpi = 300)
                     set_params()
