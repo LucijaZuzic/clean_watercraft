@@ -36,6 +36,8 @@ def make_hist(list_lens, title_use):
     plt.hist(list_lens, color = "#004488")
     if "time" == title_use:
         plt.xlabel(varnew.capitalize() + " ($s$)")
+    if "duration" == title_use:
+        plt.xlabel(varnew.capitalize() + " ($s$)")
     if "speed" == title_use:
         plt.xlabel(varnew.capitalize() + " ($km/h$)")
     if "longitude_no_abs" == title_use:
@@ -146,6 +148,7 @@ plt.close()
 area_x_dict = dict()
 area_y_dict = dict()
 area_total_dict = dict()
+duration_total_dict = dict()
 for r in actual_var:
     list_long = actual_var[r]["longitude_no_abs"]
     cumulative_long = list(np.cumsum(list_long))
@@ -158,10 +161,13 @@ for r in actual_var:
     area_x_dict[r] = max(cumulative_long) - min(cumulative_long)
     area_y_dict[r] = max(cumulative_lat) - min(cumulative_lat)
     area_total_dict[r] = area_x_dict[r] * area_y_dict[r]
+    list_time = actual_var[r]["time"]
+    duration_total_dict[r] = np.sum(list_time)
 list_lens = list(area_x_dict.values())
 make_hist(list(area_x_dict.values()), "Area x")
 make_hist(list(area_y_dict.values()), "Area y")
 make_hist(list(area_total_dict.values()), "Area total")
+make_hist(list(duration_total_dict.values()), "duration")
 plt.figure(figsize=(21*cm, 29.7/1.8*cm), dpi = 300)
 set_params()
 plt.subplot(2, 2, 1)
@@ -186,6 +192,34 @@ plt.savefig("hist_plot/all_traj_features.png", bbox_inches = "tight")
 plt.savefig("hist_plot/all_traj_features.svg", bbox_inches = "tight")
 plt.savefig("hist_plot/all_traj_features.pdf", bbox_inches = "tight")
 plt.close()
+plt.figure(figsize=(21*cm, 29.7/1.4*cm), dpi = 300)
+set_params()
+plt.subplot(3, 2, 1)
+plt.xlabel("Number of points")
+plt.ylabel("Frequency")
+plt.hist(list(lens_dict["speed"].values()), color = "#004488")
+plt.subplot(3, 2, 2)
+plt.xlabel("Duration ($s$)")
+plt.ylabel("Frequency")
+plt.hist(list(duration_total_dict.values()), color = "#004488")
+plt.subplot(3, 2, 3)
+plt.xlabel("Longitude range ($\degree$)")
+plt.ylabel("Frequency")
+plt.hist(list(area_x_dict.values()), color = "#004488")
+plt.subplot(3, 2, 4)
+plt.xlabel("Latitude range ($\degree$)")
+plt.ylabel("Frequency")
+plt.hist(list(area_y_dict.values()), color = "#004488")
+plt.subplot(3, 2, 5)
+plt.xlabel("Total area ($\degree^{2}$)")
+plt.ylabel("Frequency")
+plt.hist(list(area_total_dict.values()), color = "#004488")
+if not os.path.isdir("hist_plot"):
+    os.makedirs("hist_plot")
+plt.savefig("hist_plot/all_traj_features_time.png", bbox_inches = "tight")
+plt.savefig("hist_plot/all_traj_features_time.svg", bbox_inches = "tight")
+plt.savefig("hist_plot/all_traj_features_time.pdf", bbox_inches = "tight")
+plt.close()
 ix_plot = 0
 plt.figure(figsize = (10, 10 * 21 / 19), dpi = 300)
 set_params()
@@ -202,7 +236,7 @@ plt.savefig("hist_plot/all_trajs.png", bbox_inches = "tight")
 plt.savefig("hist_plot/all_trajs.svg", bbox_inches = "tight")
 plt.savefig("hist_plot/all_trajs.pdf", bbox_inches = "tight")
 plt.close()
-redo_res = True
+redo_res = False
 redo_all = False
 if redo_res:
     read_UniTS_4 = dict()
