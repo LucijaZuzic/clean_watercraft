@@ -62,10 +62,10 @@ def plot_dict(dict_use, save_name, use_ws = []):
             varnew = varnew.replace("latitude speed", "$y$ offset - speed").replace("longitude speed", "$x$ offset - speed")
             varnew = varnew.replace("speed actual dir", "speed, heading, and time")
             if ix_ws % 4 == 1 and len(use_ws) > 1:
-                plt.ylabel("Forecasting time " + str(ws))
+                plt.ylabel("Forecasting time $" + str(ws) + "$ $s$")
             else:
                 if ix_ws % 4 == 2 and len(use_ws) == 1:
-                    plt.title("Forecasting time " + str(ws))
+                    plt.title("Forecasting time $" + str(ws) + "$ $s$")
             plt.xlabel(varnew.capitalize())
             if ix_ws % 4 == 0 and ix_var == 4 * (len(use_ws) - 1):
                 plt.yticks(ticks_use, labs_use)

@@ -142,7 +142,7 @@ for name in name_list_total:
                     max_times = 0
                     for model in sorted(list(set_some)):
                         for ws in sorted(list(dictio[var][model].keys())):
-                            val_round, times_part = stringify(dictio[var][model][ws][metric] * round_val[metric][0], how_to_round, metric == "R2")
+                            val_round, times_part = stringify(dictio[var][model][ws][metric] * round_val[metric][0], how_to_round, metric == "R2" or metric == "haversine")
                             max_times = max(times_part, max_times)
                             if val_round not in set_str:    
                                 set_str.add(val_round)
@@ -152,13 +152,16 @@ for name in name_list_total:
                 if round_val[metric][0] == 100:
                     max_times = 0
                 how_to_round -= 1
+                if metric == "haversine":
+                    max_times = 0
+                    how_to_round = 3
                 for model in sorted(list(set_some)):
                     if use_stdev:
                         row_str = "\t\t\t\\multirow{2}{*}{" + model.replace("_", " ") + "} & "
                     else:
                         row_str = "\t\t\t" + model.replace("_", " ") + " & "
                     for ws in sorted(list(dictio[var][model].keys())):
-                        str_val_round, times_part = stringify(dictio[var][model][ws][metric] * round_val[metric][0] * (10 ** max_times), how_to_round, metric == "R2")
+                        str_val_round, times_part = stringify(dictio[var][model][ws][metric] * round_val[metric][0] * (10 ** max_times), how_to_round, metric == "R2" or metric == "haversine")
                         if round_val[metric][0] == 100:
                             str_val_round += "\%"
                         if model == min_max_for_metric_for_ws[var][ws][metric][ix_best]:
@@ -193,21 +196,21 @@ for name in name_list_total:
                 varnew = var.replace("_", " ").replace("longitude no abs", "$x$ offset").replace("direction", "heading")
                 varnew = varnew.replace("latitude no abs", "$y$ offset").replace("no abs", "$x$ and $y$ offset")
                 varnew = varnew.replace("speed actual dir", "speed, heading, and time")
-                desc_var = "The average " + metricnew + " across k-fold validation datasets, with standard deviation in brackets, for the " + varnew + " estimated on the k-fold testing datasets by different RNN models, and forecasting times."
-                desc_traj = "The average " + metricnew + " across k-fold validation datasets, with standard deviation in brackets, for the trajectories in the k-fold testing datasets estimated using " + varnew + ", different RNN models, and forecasting times."
+                desc_var = "The average " + metricnew + ", with standard deviation in brackets, across k-fold validation datasets for the " + varnew + " estimated on the k-fold testing datasets by different RNN models, and forecasting times."
+                desc_traj = "The average " + metricnew + ", with standard deviation in brackets, across k-fold validation datasets for the trajectories in the k-fold testing datasets estimated using " + varnew + ", different RNN models, and forecasting times."
                 desc = desc_var
                 if "no abs" == var or "actual" in var:
                     desc = desc_traj
                 if max_times > 0:
-                    str_pot = "($10^{-" + str(max_times) + "}$)"
-                    desc = desc.replace(metricnew, metricnew + " " + str_pot)
+                    str_pot = "($\\times 10^{-" + str(max_times) + "}$)"
+                    desc = desc.replace(metricnew, metricnew + " " + str_pot).replace("$km$ ($\\times 10^{-1}$)", "$hm$ ($100$ $m$)")
                 label_name = "\\label{tab:" + set_some_key + "_" + var.replace(" ", "_") + "_" + metric + "}"
                 start_latex = "\\begin{table}[!ht]\n\t\\centering\n\t\\resizebox{\\linewidth}{!}{\n\t\t\\begin{tabular}{|c|c|c|c|c|c|c|c|}\n\t\t\t\\hline\n"
-                end_latex = "\t\t\end{tabular}\n\t}\n\t\\caption{" + desc + "}\n\t" + label_name + "\n\\end{table}"
+                end_latex = "\t\t\\end{tabular}\n\t}\n\t\\caption{" + desc + "}\n\t" + label_name + "\n\\end{table}"
                 header_latex = "\t\t\tModel"
                 for ws in sorted(list(dictio[var][model].keys())):
-                    header_latex += " & $" + str(ws) + "$s"
-                header_latex += "\\\\ \\hline\n"
+                    header_latex += " & $" + str(ws) + "$ $s$"
+                header_latex += " \\\\ \\hline\n"
                 if not os.path.isdir("tex_new_dir/" + name):
                     os.makedirs("tex_new_dir/" + name)
                 save_name = "tex_new_dir/" + name + "/" + set_some_key + "_" + var.replace(" ", "_") + "_" + metric + ".tex"

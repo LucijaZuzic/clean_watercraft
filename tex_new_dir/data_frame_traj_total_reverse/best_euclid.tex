@@ -3,13 +3,13 @@
 	\resizebox{\linewidth}{!}{
 		\begin{tabular}{|c|c|c|c|c|c|c|c|}
 			\hline
-			Model & $2$s & $3$s & $4$s & $5$s & $10$s & $20$s & $30$s\\ \hline
+			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
 			GRU Att 1 & $3.297$ & $\mathbf{4.071}$ & $5.195$ & $6.971$ & $38.767$ & $59.406$ & $66.024$ \\ \hline
 			GRU Att 4 & $\mathbf{3.107}$ & $4.074$ & $5.108$ & $6.443$ & $23.191$ & $54.331$ & $68.101$ \\ \hline
 			UniTS & $4.382$ & $4.904$ & $\mathbf{5.011}$ & $\mathbf{5.831}$ & $\mathbf{9.504}$ & $\mathbf{13.778}$ & $\mathbf{18.176}$ \\ \hline
 		\end{tabular}
 	}
-	\caption{The average Euclidean distance in $\degree$ ($10^{-3}$) across k-fold validation datasets, with standard deviation in brackets, for the trajectories in the k-fold testing datasets estimated using $x$ and $y$ offset, different RNN models, and forecasting times.}
+	\caption{The average Euclidean distance in $\degree$ ($\times 10^{-3}$), with standard deviation in brackets, across k-fold validation datasets for the trajectories in the k-fold testing datasets estimated using $x$ and $y$ offset, different RNN models, and forecasting times.}
 	\label{tab:best_no_abs_euclid}
 \end{table}
 
@@ -18,12 +18,12 @@
 	\resizebox{\linewidth}{!}{
 		\begin{tabular}{|c|c|c|c|c|c|c|c|}
 			\hline
-			Model & $2$s & $3$s & $4$s & $5$s & $10$s & $20$s & $30$s\\ \hline
+			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
 			GRU Att 1 & $1.328$ & $1.38$ & $1.472$ & $\mathbf{1.5}$ & $\mathbf{1.719}$ & $\mathbf{2.762}$ & $7.457$ \\ \hline
 			GRU Att 2 & $1.324$ & $1.4$ & $\mathbf{1.47}$ & $1.513$ & $1.804$ & $2.826$ & $\mathbf{3.916}$ \\ \hline
 			GRU Att 4 & $\mathbf{1.321}$ & $\mathbf{1.367}$ & $1.473$ & $1.546$ & $1.89$ & $2.847$ & $5.188$ \\ \hline
 		\end{tabular}
 	}
-	\caption{The average Euclidean distance in $\degree$ ($10^{-2}$) across k-fold validation datasets, with standard deviation in brackets, for the trajectories in the k-fold testing datasets estimated using speed, heading, and time, different RNN models, and forecasting times.}
+	\caption{The average Euclidean distance in $\degree$ ($\times 10^{-2}$), with standard deviation in brackets, across k-fold validation datasets for the trajectories in the k-fold testing datasets estimated using speed, heading, and time, different RNN models, and forecasting times.}
 	\label{tab:best_speed_actual_dir_euclid}
 \end{table}

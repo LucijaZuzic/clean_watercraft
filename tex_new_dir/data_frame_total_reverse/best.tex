@@ -3,12 +3,12 @@
 	\resizebox{\linewidth}{!}{
 		\begin{tabular}{|c|c|c|c|c|c|c|c|}
 			\hline
-			Model & $2$s & $3$s & $4$s & $5$s & $10$s & $20$s & $30$s\\ \hline
+			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
 			GRU Att 1 & $\mathbf{11.73}$ & $\mathbf{15.61}$ & $\mathbf{19.25}$ & $\mathbf{21.8}$ & $\mathbf{32.6}$ & $49.24$ & $63.63$ \\ \hline
 			UniTS & $16.1$ & $19.45$ & $22.36$ & $24.94$ & $34.77$ & $\mathbf{47.32}$ & $\mathbf{55.62}$ \\ \hline
 		\end{tabular}
 	}
-	\caption{The average MAE in $\degree$ across k-fold validation datasets, with standard deviation in brackets, for the heading estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\caption{The average MAE in $\degree$, with standard deviation in brackets, across k-fold validation datasets for the heading estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
 	\label{tab:best_direction_MAE}
 \end{table}
 
@@ -17,14 +17,14 @@
 	\resizebox{\linewidth}{!}{
 		\begin{tabular}{|c|c|c|c|c|c|c|c|}
 			\hline
-			Model & $2$s & $3$s & $4$s & $5$s & $10$s & $20$s & $30$s\\ \hline
+			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
 			GRU Att 1 & $\mathbf{5.535}$ & $\mathbf{7.423}$ & $8.847$ & $10.121$ & $20.574$ & $28.248$ & $32.557$ \\ \hline
 			GRU Att 2 & $6.16$ & $7.865$ & $\mathbf{8.779}$ & $\mathbf{10.08}$ & $16.46$ & $23.824$ & $29.595$ \\ \hline
 			GRU Att 4 & $5.838$ & $8.199$ & $9.899$ & $11.336$ & $\mathbf{16.126}$ & $26.695$ & $32.355$ \\ \hline
 			UniTS & $7.144$ & $8.723$ & $10.134$ & $11.412$ & $16.478$ & $\mathbf{23.085}$ & $\mathbf{27.212}$ \\ \hline
 		\end{tabular}
 	}
-	\caption{The average MAE in $\degree$ ($10^{-5}$) across k-fold validation datasets, with standard deviation in brackets, for the $y$ offset estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\caption{The average MAE in $\degree$ ($\times 10^{-5}$), with standard deviation in brackets, across k-fold validation datasets for the $y$ offset estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
 	\label{tab:best_latitude_no_abs_MAE}
 \end{table}
 
@@ -33,13 +33,13 @@
 	\resizebox{\linewidth}{!}{
 		\begin{tabular}{|c|c|c|c|c|c|c|c|}
 			\hline
-			Model & $2$s & $3$s & $4$s & $5$s & $10$s & $20$s & $30$s\\ \hline
+			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
 			GRU Att 1 & $\mathbf{6.77}$ & $\mathbf{9.07}$ & $\mathbf{11.33}$ & $\mathbf{12.71}$ & $25.25$ & $37.81$ & $42.42$ \\ \hline
 			GRU Att 2 & $7.11$ & $9.61$ & $11.52$ & $13.06$ & $\mathbf{20.5}$ & $31.74$ & $40.43$ \\ \hline
 			UniTS & $8.97$ & $10.98$ & $12.78$ & $14.41$ & $20.93$ & $\mathbf{29.56}$ & $\mathbf{35.0}$ \\ \hline
 		\end{tabular}
 	}
-	\caption{The average MAE in $\degree$ ($10^{-5}$) across k-fold validation datasets, with standard deviation in brackets, for the $x$ offset estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\caption{The average MAE in $\degree$ ($\times 10^{-5}$), with standard deviation in brackets, across k-fold validation datasets for the $x$ offset estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
 	\label{tab:best_longitude_no_abs_MAE}
 \end{table}
 
@@ -48,12 +48,12 @@
 	\resizebox{\linewidth}{!}{
 		\begin{tabular}{|c|c|c|c|c|c|c|c|}
 			\hline
-			Model & $2$s & $3$s & $4$s & $5$s & $10$s & $20$s & $30$s\\ \hline
+			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
 			LSTM Linear & $\mathbf{2.451}$ & $3.405$ & $4.205$ & $4.852$ & $6.743$ & $7.885$ & $8.424$ \\ \hline
 			UniTS & $2.744$ & $\mathbf{3.297}$ & $\mathbf{3.781}$ & $\mathbf{4.205}$ & $\mathbf{5.671}$ & $\mathbf{6.983}$ & $\mathbf{7.614}$ \\ \hline
 		\end{tabular}
 	}
-	\caption{The average MAE in $km/h$ across k-fold validation datasets, with standard deviation in brackets, for the speed estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\caption{The average MAE in $km/h$, with standard deviation in brackets, across k-fold validation datasets for the speed estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
 	\label{tab:best_speed_MAE}
 \end{table}
 
@@ -62,12 +62,12 @@
 	\resizebox{\linewidth}{!}{
 		\begin{tabular}{|c|c|c|c|c|c|c|c|}
 			\hline
-			Model & $2$s & $3$s & $4$s & $5$s & $10$s & $20$s & $30$s\\ \hline
+			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
 			RNN Linear & $\mathbf{86.18\%}$ & $\mathbf{79.24\%}$ & $\mathbf{72.95\%}$ & $68.47\%$ & $51.9\%$ & $28.62\%$ & $16.41\%$ \\ \hline
 			UniTS & $77.21\%$ & $74.14\%$ & $71.27\%$ & $\mathbf{68.56\%}$ & $\mathbf{57.9\%}$ & $\mathbf{44.22\%}$ & $\mathbf{35.22\%}$ \\ \hline
 		\end{tabular}
 	}
-	\caption{The average $R^{2}$ (\%) across k-fold validation datasets, with standard deviation in brackets, for the heading estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\caption{The average $R^{2}$ (\%), with standard deviation in brackets, across k-fold validation datasets for the heading estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
 	\label{tab:best_direction_R2}
 \end{table}
 
@@ -76,14 +76,14 @@
 	\resizebox{\linewidth}{!}{
 		\begin{tabular}{|c|c|c|c|c|c|c|c|}
 			\hline
-			Model & $2$s & $3$s & $4$s & $5$s & $10$s & $20$s & $30$s\\ \hline
+			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
 			GRU Att 2 & $93.18\%$ & $89.94\%$ & $\mathbf{87.67\%}$ & $\mathbf{84.0\%}$ & $61.65\%$ & $28.86\%$ & $2.49\%$ \\ \hline
 			GRU Reference & $\mathbf{95.59\%}$ & $87.48\%$ & $80.09\%$ & $74.46\%$ & $45.85\%$ & $2.6\%$ & $-20.45\%$ \\ \hline
 			LSTM Third & $93.85\%$ & $\mathbf{90.91\%}$ & $82.65\%$ & $77.23\%$ & $46.11\%$ & $1.71\%$ & $-20.43\%$ \\ \hline
 			UniTS & $92.68\%$ & $89.9\%$ & $86.86\%$ & $83.72\%$ & $\mathbf{68.0\%}$ & $\mathbf{41.74\%}$ & $\mathbf{24.27\%}$ \\ \hline
 		\end{tabular}
 	}
-	\caption{The average $R^{2}$ (\%) across k-fold validation datasets, with standard deviation in brackets, for the $y$ offset estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\caption{The average $R^{2}$ (\%), with standard deviation in brackets, across k-fold validation datasets for the $y$ offset estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
 	\label{tab:best_latitude_no_abs_R2}
 \end{table}
 
@@ -92,13 +92,13 @@
 	\resizebox{\linewidth}{!}{
 		\begin{tabular}{|c|c|c|c|c|c|c|c|}
 			\hline
-			Model & $2$s & $3$s & $4$s & $5$s & $10$s & $20$s & $30$s\\ \hline
+			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
 			GRU Att 1 & $95.28\%$ & $\mathbf{91.82\%}$ & $87.72\%$ & $84.58\%$ & $50.23\%$ & $14.4\%$ & $2.92\%$ \\ \hline
 			LSTM Third & $\mathbf{96.89\%}$ & $90.01\%$ & $83.68\%$ & $76.18\%$ & $47.71\%$ & $-0.66\%$ & $-22.14\%$ \\ \hline
 			UniTS & $93.99\%$ & $91.16\%$ & $\mathbf{88.16\%}$ & $\mathbf{85.06\%}$ & $\mathbf{69.49\%}$ & $\mathbf{42.52\%}$ & $\mathbf{23.32\%}$ \\ \hline
 		\end{tabular}
 	}
-	\caption{The average $R^{2}$ (\%) across k-fold validation datasets, with standard deviation in brackets, for the $x$ offset estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\caption{The average $R^{2}$ (\%), with standard deviation in brackets, across k-fold validation datasets for the $x$ offset estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
 	\label{tab:best_longitude_no_abs_R2}
 \end{table}
 
@@ -107,11 +107,11 @@
 	\resizebox{\linewidth}{!}{
 		\begin{tabular}{|c|c|c|c|c|c|c|c|}
 			\hline
-			Model & $2$s & $3$s & $4$s & $5$s & $10$s & $20$s & $30$s\\ \hline
+			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
 			LSTM Linear & $\mathbf{94.44\%}$ & $89.19\%$ & $83.81\%$ & $78.7\%$ & $63.14\%$ & $55.37\%$ & $51.84\%$ \\ \hline
 			UniTS & $93.51\%$ & $\mathbf{90.57\%}$ & $\mathbf{87.58\%}$ & $\mathbf{84.66\%}$ & $\mathbf{73.1\%}$ & $\mathbf{61.82\%}$ & $\mathbf{56.54\%}$ \\ \hline
 		\end{tabular}
 	}
-	\caption{The average $R^{2}$ (\%) across k-fold validation datasets, with standard deviation in brackets, for the speed estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\caption{The average $R^{2}$ (\%), with standard deviation in brackets, across k-fold validation datasets for the speed estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
 	\label{tab:best_speed_R2}
 \end{table}

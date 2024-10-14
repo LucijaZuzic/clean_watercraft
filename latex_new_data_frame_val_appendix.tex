@@ -1,0 +1,414 @@
+\appendix
+\section{Appendix A}
+\label{appA}
+
+The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, heading, and a forecasting time of $2$ $s$ are listed in Table~\ref{tab:direction:p:2}.
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & GRU Att 1 & GRU Att 2 & GRU Att 3 & GRU Att 4 & RNN Linear & UniTS & actual \\ \hline
+			GRU Att 1 & / & $\mathbf{0.002}$ & $0.0$ & $\mathbf{0.042}$ & $\mathbf{0.115}$ & $\mathbf{0.001}$ & $0.0$ \\ \hline
+			GRU Att 2 & $\mathbf{0.002}$ & / & $\mathbf{0.336}$ & $\mathbf{0.314}$ & $\mathbf{0.119}$ & $\mathbf{0.87}$ & $\mathbf{0.119}$ \\ \hline
+			GRU Att 3 & $0.0$ & $\mathbf{0.336}$ & / & $\mathbf{0.042}$ & $\mathbf{0.007}$ & $\mathbf{0.395}$ & $\mathbf{0.601}$ \\ \hline
+			GRU Att 4 & $\mathbf{0.042}$ & $\mathbf{0.314}$ & $\mathbf{0.042}$ & / & $\mathbf{0.412}$ & $\mathbf{0.225}$ & $\mathbf{0.009}$ \\ \hline
+			RNN Linear & $\mathbf{0.115}$ & $\mathbf{0.119}$ & $\mathbf{0.007}$ & $\mathbf{0.412}$ & / & $\mathbf{0.002}$ & $\mathbf{0.0}$ \\ \hline
+			UniTS & $\mathbf{0.001}$ & $\mathbf{0.87}$ & $\mathbf{0.395}$ & $\mathbf{0.225}$ & $\mathbf{0.002}$ & / & $\mathbf{0.16}$ \\ \hline
+			actual & $0.0$ & $\mathbf{0.119}$ & $\mathbf{0.601}$ & $\mathbf{0.009}$ & $\mathbf{0.0}$ & $\mathbf{0.16}$ & / \\ \hline
+		\end{tabular}
+	}
+	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, heading, and a forecasting time of $2$ $s$.}
+	\label{tab:direction:p:2}
+\end{table}
+
+The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, heading, and a forecasting time of $5$ $s$ are listed in Table~\ref{tab:direction:p:5}.
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & GRU Att 1 & GRU Att 2 & GRU Att 3 & GRU Att 4 & RNN Linear & UniTS & actual \\ \hline
+			GRU Att 1 & / & $\mathbf{0.068}$ & $0.0$ & $0.0$ & $0.0$ & $\mathbf{0.001}$ & $\mathbf{0.081}$ \\ \hline
+			GRU Att 2 & $\mathbf{0.068}$ & / & $0.0$ & $0.0$ & $0.0$ & $0.0$ & $\mathbf{0.905}$ \\ \hline
+			GRU Att 3 & $0.0$ & $0.0$ & / & $\mathbf{0.474}$ & $\mathbf{0.694}$ & $\mathbf{0.433}$ & $0.0$ \\ \hline
+			GRU Att 4 & $0.0$ & $0.0$ & $\mathbf{0.474}$ & / & $\mathbf{0.107}$ & $\mathbf{0.099}$ & $0.0$ \\ \hline
+			RNN Linear & $0.0$ & $0.0$ & $\mathbf{0.694}$ & $\mathbf{0.107}$ & / & $\mathbf{0.443}$ & $0.0$ \\ \hline
+			UniTS & $\mathbf{0.001}$ & $0.0$ & $\mathbf{0.433}$ & $\mathbf{0.099}$ & $\mathbf{0.443}$ & / & $0.0$ \\ \hline
+			actual & $\mathbf{0.081}$ & $\mathbf{0.905}$ & $0.0$ & $0.0$ & $0.0$ & $0.0$ & / \\ \hline
+		\end{tabular}
+	}
+	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, heading, and a forecasting time of $5$ $s$.}
+	\label{tab:direction:p:5}
+\end{table}
+
+The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, heading, and a forecasting time of $10$ $s$ are listed in Table~\ref{tab:direction:p:10}.
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|}
+			\hline
+			Model & GRU Att 1 & GRU Att 2 & GRU Att 3 & GRU Att 4 & UniTS & actual \\ \hline
+			GRU Att 1 & / & $\mathbf{0.535}$ & $0.0$ & $0.0$ & $0.0$ & $\mathbf{0.008}$ \\ \hline
+			GRU Att 2 & $\mathbf{0.535}$ & / & $0.0$ & $0.0$ & $0.0$ & $\mathbf{0.039}$ \\ \hline
+			GRU Att 3 & $0.0$ & $0.0$ & / & $\mathbf{0.015}$ & $\mathbf{0.132}$ & $0.0$ \\ \hline
+			GRU Att 4 & $0.0$ & $0.0$ & $\mathbf{0.015}$ & / & $\mathbf{0.228}$ & $0.0$ \\ \hline
+			UniTS & $0.0$ & $0.0$ & $\mathbf{0.132}$ & $\mathbf{0.228}$ & / & $0.0$ \\ \hline
+			actual & $\mathbf{0.008}$ & $\mathbf{0.039}$ & $0.0$ & $0.0$ & $0.0$ & / \\ \hline
+		\end{tabular}
+	}
+	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, heading, and a forecasting time of $10$ $s$.}
+	\label{tab:direction:p:10}
+\end{table}
+
+The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, heading, and a forecasting time of $3$ $s$ are listed in Table~\ref{tab:direction:p:3}.
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|}
+			\hline
+			Model & GRU Att 1 & GRU Att 3 & GRU Att 4 & GRU Linear & LSTM Linear & UniTS \\ \hline
+			GRU Att 1 & / & $\mathbf{0.823}$ & $\mathbf{0.958}$ & $\mathbf{0.776}$ & $\mathbf{0.904}$ & $\mathbf{0.485}$ \\ \hline
+			GRU Att 3 & $\mathbf{0.823}$ & / & $\mathbf{0.879}$ & $\mathbf{0.681}$ & $\mathbf{0.946}$ & $\mathbf{0.648}$ \\ \hline
+			GRU Att 4 & $\mathbf{0.958}$ & $\mathbf{0.879}$ & / & $\mathbf{0.53}$ & $\mathbf{0.883}$ & $\mathbf{0.487}$ \\ \hline
+			GRU Linear & $\mathbf{0.776}$ & $\mathbf{0.681}$ & $\mathbf{0.53}$ & / & $\mathbf{0.004}$ & $\mathbf{0.817}$ \\ \hline
+			LSTM Linear & $\mathbf{0.904}$ & $\mathbf{0.946}$ & $\mathbf{0.883}$ & $\mathbf{0.004}$ & / & $\mathbf{0.721}$ \\ \hline
+			UniTS & $\mathbf{0.485}$ & $\mathbf{0.648}$ & $\mathbf{0.487}$ & $\mathbf{0.817}$ & $\mathbf{0.721}$ & / \\ \hline
+		\end{tabular}
+	}
+	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, heading, and a forecasting time of $3$ $s$.}
+	\label{tab:direction:p:3}
+\end{table}
+
+The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, heading, and a forecasting time of $4$ $s$ are listed in Table~\ref{tab:direction:p:4}.
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & GRU Att 1 & GRU Att 2 & GRU Att 3 & GRU Att 4 & GRU Linear & LSTM Linear & UniTS & actual \\ \hline
+			GRU Att 1 & / & $\mathbf{0.078}$ & $\mathbf{0.041}$ & $\mathbf{0.002}$ & $\mathbf{0.538}$ & $\mathbf{0.002}$ & $\mathbf{0.005}$ & $\mathbf{0.011}$ \\ \hline
+			GRU Att 2 & $\mathbf{0.078}$ & / & $0.0$ & $0.0$ & $\mathbf{0.006}$ & $0.0$ & $0.0$ & $\mathbf{0.458}$ \\ \hline
+			GRU Att 3 & $\mathbf{0.041}$ & $0.0$ & / & $\mathbf{0.272}$ & $\mathbf{0.272}$ & $\mathbf{0.133}$ & $\mathbf{0.446}$ & $0.0$ \\ \hline
+			GRU Att 4 & $\mathbf{0.002}$ & $0.0$ & $\mathbf{0.272}$ & / & $\mathbf{0.006}$ & $\mathbf{0.956}$ & $\mathbf{0.743}$ & $0.0$ \\ \hline
+			GRU Linear & $\mathbf{0.538}$ & $\mathbf{0.006}$ & $\mathbf{0.272}$ & $\mathbf{0.006}$ & / & $\mathbf{0.318}$ & $\mathbf{0.024}$ & $0.0$ \\ \hline
+			LSTM Linear & $\mathbf{0.002}$ & $0.0$ & $\mathbf{0.133}$ & $\mathbf{0.956}$ & $\mathbf{0.318}$ & / & $\mathbf{0.605}$ & $0.0$ \\ \hline
+			UniTS & $\mathbf{0.005}$ & $0.0$ & $\mathbf{0.446}$ & $\mathbf{0.743}$ & $\mathbf{0.024}$ & $\mathbf{0.605}$ & / & $0.0$ \\ \hline
+			actual & $\mathbf{0.011}$ & $\mathbf{0.458}$ & $0.0$ & $0.0$ & $0.0$ & $0.0$ & $0.0$ & / \\ \hline
+		\end{tabular}
+	}
+	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, heading, and a forecasting time of $4$ $s$.}
+	\label{tab:direction:p:4}
+\end{table}
+
+The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, $y$ offset, and a forecasting time of $4$ $s$ are listed in Table~\ref{tab:latitude:no:abs:p:4}.
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & GRU Att 1 & GRU Att 2 & GRU Att 3 & GRU Att 4 & GRU Third & UniTS & actual \\ \hline
+			GRU Att 1 & / & $\mathbf{0.178}$ & $\mathbf{0.004}$ & $\mathbf{0.909}$ & $\mathbf{0.005}$ & $\mathbf{0.01}$ & $\mathbf{0.094}$ \\ \hline
+			GRU Att 2 & $\mathbf{0.178}$ & / & $\mathbf{0.219}$ & $\mathbf{0.236}$ & $\mathbf{0.001}$ & $\mathbf{0.0}$ & $\mathbf{0.509}$ \\ \hline
+			GRU Att 3 & $\mathbf{0.004}$ & $\mathbf{0.219}$ & / & $\mathbf{0.009}$ & $0.0$ & $0.0$ & $\mathbf{0.449}$ \\ \hline
+			GRU Att 4 & $\mathbf{0.909}$ & $\mathbf{0.236}$ & $\mathbf{0.009}$ & / & $\mathbf{0.015}$ & $\mathbf{0.008}$ & $\mathbf{0.098}$ \\ \hline
+			GRU Third & $\mathbf{0.005}$ & $\mathbf{0.001}$ & $0.0$ & $\mathbf{0.015}$ & / & $\mathbf{0.178}$ & $0.0$ \\ \hline
+			UniTS & $\mathbf{0.01}$ & $\mathbf{0.0}$ & $0.0$ & $\mathbf{0.008}$ & $\mathbf{0.178}$ & / & $0.0$ \\ \hline
+			actual & $\mathbf{0.094}$ & $\mathbf{0.509}$ & $\mathbf{0.449}$ & $\mathbf{0.098}$ & $0.0$ & $0.0$ & / \\ \hline
+		\end{tabular}
+	}
+	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, $y$ offset, and a forecasting time of $4$ $s$.}
+	\label{tab:latitude:no:abs:p:4}
+\end{table}
+
+The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, $y$ offset, and a forecasting time of $5$ $s$ are listed in Table~\ref{tab:latitude:no:abs:p:5}.
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|}
+			\hline
+			Model & GRU Att 1 & GRU Att 2 & GRU Att 3 & GRU Att 4 & UniTS & actual \\ \hline
+			GRU Att 1 & / & $\mathbf{0.069}$ & $\mathbf{0.001}$ & $\mathbf{0.043}$ & $\mathbf{0.344}$ & $\mathbf{0.009}$ \\ \hline
+			GRU Att 2 & $\mathbf{0.069}$ & / & $\mathbf{0.153}$ & $\mathbf{0.789}$ & $\mathbf{0.018}$ & $\mathbf{0.209}$ \\ \hline
+			GRU Att 3 & $\mathbf{0.001}$ & $\mathbf{0.153}$ & / & $\mathbf{0.207}$ & $0.0$ & $\mathbf{0.785}$ \\ \hline
+			GRU Att 4 & $\mathbf{0.043}$ & $\mathbf{0.789}$ & $\mathbf{0.207}$ & / & $\mathbf{0.004}$ & $\mathbf{0.429}$ \\ \hline
+			UniTS & $\mathbf{0.344}$ & $\mathbf{0.018}$ & $0.0$ & $\mathbf{0.004}$ & / & $\mathbf{0.003}$ \\ \hline
+			actual & $\mathbf{0.009}$ & $\mathbf{0.209}$ & $\mathbf{0.785}$ & $\mathbf{0.429}$ & $\mathbf{0.003}$ & / \\ \hline
+		\end{tabular}
+	}
+	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, $y$ offset, and a forecasting time of $5$ $s$.}
+	\label{tab:latitude:no:abs:p:5}
+\end{table}
+
+The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, $y$ offset, and a forecasting time of $10$ $s$ are listed in Table~\ref{tab:latitude:no:abs:p:10}.
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & GRU Att 2 & GRU Att 3 & GRU Att 4 & LSTM Linear & LSTM Third & UniTS & actual \\ \hline
+			GRU Att 2 & / & $\mathbf{0.012}$ & $\mathbf{0.001}$ & $0.0$ & $\mathbf{0.758}$ & $\mathbf{0.664}$ & $\mathbf{0.019}$ \\ \hline
+			GRU Att 3 & $\mathbf{0.012}$ & / & $0.0$ & $0.0$ & $\mathbf{0.001}$ & $\mathbf{0.052}$ & $0.0$ \\ \hline
+			GRU Att 4 & $\mathbf{0.001}$ & $0.0$ & / & $\mathbf{0.0}$ & $\mathbf{0.006}$ & $0.0$ & $\mathbf{0.214}$ \\ \hline
+			LSTM Linear & $0.0$ & $0.0$ & $\mathbf{0.0}$ & / & $0.0$ & $0.0$ & $0.0$ \\ \hline
+			LSTM Third & $\mathbf{0.758}$ & $\mathbf{0.001}$ & $\mathbf{0.006}$ & $0.0$ & / & $\mathbf{0.068}$ & $\mathbf{0.404}$ \\ \hline
+			UniTS & $\mathbf{0.664}$ & $\mathbf{0.052}$ & $0.0$ & $0.0$ & $\mathbf{0.068}$ & / & $\mathbf{0.019}$ \\ \hline
+			actual & $\mathbf{0.019}$ & $0.0$ & $\mathbf{0.214}$ & $0.0$ & $\mathbf{0.404}$ & $\mathbf{0.019}$ & / \\ \hline
+		\end{tabular}
+	}
+	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, $y$ offset, and a forecasting time of $10$ $s$.}
+	\label{tab:latitude:no:abs:p:10}
+\end{table}
+
+The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, $y$ offset, and a forecasting time of $20$ $s$ are listed in Table~\ref{tab:latitude:no:abs:p:20}.
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|}
+			\hline
+			Model & GRU Att 4 & GRU Third & RNN Twice & UniTS & actual \\ \hline
+			GRU Att 4 & / & $\mathbf{0.092}$ & $\mathbf{0.006}$ & $\mathbf{0.054}$ & $\mathbf{0.902}$ \\ \hline
+			GRU Third & $\mathbf{0.092}$ & / & $\mathbf{0.001}$ & $\mathbf{0.002}$ & $0.0$ \\ \hline
+			RNN Twice & $\mathbf{0.006}$ & $\mathbf{0.001}$ & / & $\mathbf{0.464}$ & $\mathbf{0.818}$ \\ \hline
+			UniTS & $\mathbf{0.054}$ & $\mathbf{0.002}$ & $\mathbf{0.464}$ & / & $\mathbf{0.538}$ \\ \hline
+			actual & $\mathbf{0.902}$ & $0.0$ & $\mathbf{0.818}$ & $\mathbf{0.538}$ & / \\ \hline
+		\end{tabular}
+	}
+	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, $y$ offset, and a forecasting time of $20$ $s$.}
+	\label{tab:latitude:no:abs:p:20}
+\end{table}
+
+The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, $y$ offset, and a forecasting time of $30$ $s$ are listed in Table~\ref{tab:latitude:no:abs:p:30}.
+
+\begin{table}[!ht]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		Model & GRU Att 2 & GRU Att 4 & UniTS & actual \\ \hline
+		GRU Att 2 & / & $0.0$ & $\mathbf{0.093}$ & $0.0$ \\ \hline
+		GRU Att 4 & $0.0$ & / & $\mathbf{0.472}$ & $\mathbf{0.001}$ \\ \hline
+		UniTS & $\mathbf{0.093}$ & $\mathbf{0.472}$ & / & $\mathbf{0.152}$ \\ \hline
+		actual & $0.0$ & $\mathbf{0.001}$ & $\mathbf{0.152}$ & / \\ \hline
+	\end{tabular}
+	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, $y$ offset, and a forecasting time of $30$ $s$.}
+	\label{tab:latitude:no:abs:p:30}
+\end{table}
+
+The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, $y$ offset, and a forecasting time of $2$ $s$ are listed in Table~\ref{tab:latitude:no:abs:p:2}.
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|}
+			\hline
+			Model & GRU Att 1 & GRU Att 2 & GRU Att 3 & GRU Att 4 & UniTS & actual \\ \hline
+			GRU Att 1 & / & $\mathbf{0.948}$ & $\mathbf{0.048}$ & $\mathbf{0.378}$ & $\mathbf{0.011}$ & $\mathbf{0.494}$ \\ \hline
+			GRU Att 2 & $\mathbf{0.948}$ & / & $\mathbf{0.065}$ & $\mathbf{0.381}$ & $\mathbf{0.013}$ & $\mathbf{0.501}$ \\ \hline
+			GRU Att 3 & $\mathbf{0.048}$ & $\mathbf{0.065}$ & / & $\mathbf{0.267}$ & $0.0$ & $\mathbf{0.343}$ \\ \hline
+			GRU Att 4 & $\mathbf{0.378}$ & $\mathbf{0.381}$ & $\mathbf{0.267}$ & / & $\mathbf{0.001}$ & $\mathbf{0.882}$ \\ \hline
+			UniTS & $\mathbf{0.011}$ & $\mathbf{0.013}$ & $0.0$ & $\mathbf{0.001}$ & / & $\mathbf{0.003}$ \\ \hline
+			actual & $\mathbf{0.494}$ & $\mathbf{0.501}$ & $\mathbf{0.343}$ & $\mathbf{0.882}$ & $\mathbf{0.003}$ & / \\ \hline
+		\end{tabular}
+	}
+	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, $y$ offset, and a forecasting time of $2$ $s$.}
+	\label{tab:latitude:no:abs:p:2}
+\end{table}
+
+The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, $y$ offset, and a forecasting time of $3$ $s$ are listed in Table~\ref{tab:latitude:no:abs:p:3}.
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & GRU Att 1 & GRU Att 2 & GRU Att 3 & GRU Att 4 & LSTM Linear & LSTM Twice & actual \\ \hline
+			GRU Att 1 & / & $\mathbf{0.766}$ & $\mathbf{0.273}$ & $\mathbf{0.7}$ & $\mathbf{0.017}$ & $\mathbf{0.102}$ & $\mathbf{0.453}$ \\ \hline
+			GRU Att 2 & $\mathbf{0.766}$ & / & $\mathbf{0.518}$ & $\mathbf{0.992}$ & $\mathbf{0.028}$ & $\mathbf{0.446}$ & $\mathbf{0.762}$ \\ \hline
+			GRU Att 3 & $\mathbf{0.273}$ & $\mathbf{0.518}$ & / & $\mathbf{0.487}$ & $\mathbf{0.114}$ & $\mathbf{0.551}$ & $\mathbf{0.858}$ \\ \hline
+			GRU Att 4 & $\mathbf{0.7}$ & $\mathbf{0.992}$ & $\mathbf{0.487}$ & / & $\mathbf{0.03}$ & $\mathbf{0.912}$ & $\mathbf{0.778}$ \\ \hline
+			LSTM Linear & $\mathbf{0.017}$ & $\mathbf{0.028}$ & $\mathbf{0.114}$ & $\mathbf{0.03}$ & / & $0.0$ & $\mathbf{0.136}$ \\ \hline
+			LSTM Twice & $\mathbf{0.102}$ & $\mathbf{0.446}$ & $\mathbf{0.551}$ & $\mathbf{0.912}$ & $0.0$ & / & $\mathbf{0.009}$ \\ \hline
+			actual & $\mathbf{0.453}$ & $\mathbf{0.762}$ & $\mathbf{0.858}$ & $\mathbf{0.778}$ & $\mathbf{0.136}$ & $\mathbf{0.009}$ & / \\ \hline
+		\end{tabular}
+	}
+	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, $y$ offset, and a forecasting time of $3$ $s$.}
+	\label{tab:latitude:no:abs:p:3}
+\end{table}
+
+The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, $x$ offset, and a forecasting time of $3$ $s$ are listed in Table~\ref{tab:longitude:no:abs:p:3}.
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & GRU Att 1 & GRU Att 2 & GRU Att 3 & GRU Att 4 & GRU Linear & LSTM Linear & RNN Third & actual \\ \hline
+			GRU Att 1 & / & $\mathbf{0.175}$ & $\mathbf{0.968}$ & $\mathbf{0.571}$ & $\mathbf{0.304}$ & $\mathbf{0.004}$ & $\mathbf{0.023}$ & $\mathbf{0.9}$ \\ \hline
+			GRU Att 2 & $\mathbf{0.175}$ & / & $\mathbf{0.159}$ & $\mathbf{0.055}$ & $\mathbf{0.436}$ & $0.0$ & $0.0$ & $\mathbf{0.185}$ \\ \hline
+			GRU Att 3 & $\mathbf{0.968}$ & $\mathbf{0.159}$ & / & $\mathbf{0.592}$ & $\mathbf{0.484}$ & $\mathbf{0.001}$ & $\mathbf{0.008}$ & $\mathbf{0.886}$ \\ \hline
+			GRU Att 4 & $\mathbf{0.571}$ & $\mathbf{0.055}$ & $\mathbf{0.592}$ & / & $\mathbf{0.188}$ & $\mathbf{0.007}$ & $\mathbf{0.039}$ & $\mathbf{0.635}$ \\ \hline
+			GRU Linear & $\mathbf{0.304}$ & $\mathbf{0.436}$ & $\mathbf{0.484}$ & $\mathbf{0.188}$ & / & $0.0$ & $\mathbf{0.004}$ & $\mathbf{0.12}$ \\ \hline
+			LSTM Linear & $\mathbf{0.004}$ & $0.0$ & $\mathbf{0.001}$ & $\mathbf{0.007}$ & $0.0$ & / & $\mathbf{0.442}$ & $\mathbf{0.018}$ \\ \hline
+			RNN Third & $\mathbf{0.023}$ & $0.0$ & $\mathbf{0.008}$ & $\mathbf{0.039}$ & $\mathbf{0.004}$ & $\mathbf{0.442}$ & / & $\mathbf{0.092}$ \\ \hline
+			actual & $\mathbf{0.9}$ & $\mathbf{0.185}$ & $\mathbf{0.886}$ & $\mathbf{0.635}$ & $\mathbf{0.12}$ & $\mathbf{0.018}$ & $\mathbf{0.092}$ & / \\ \hline
+		\end{tabular}
+	}
+	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, $x$ offset, and a forecasting time of $3$ $s$.}
+	\label{tab:longitude:no:abs:p:3}
+\end{table}
+
+The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, $x$ offset, and a forecasting time of $2$ $s$ are listed in Table~\ref{tab:longitude:no:abs:p:2}.
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & GRU Att 1 & GRU Att 2 & GRU Att 3 & GRU Att 4 & LSTM Linear & LSTM Reference & LSTM Third & LSTM Twice & UniTS & actual \\ \hline
+			GRU Att 1 & / & $\mathbf{0.954}$ & $\mathbf{0.611}$ & $\mathbf{0.524}$ & $\mathbf{0.052}$ & $0.0$ & $0.0$ & $\mathbf{0.02}$ & $\mathbf{0.265}$ & $\mathbf{0.412}$ \\ \hline
+			GRU Att 2 & $\mathbf{0.954}$ & / & $\mathbf{0.637}$ & $\mathbf{0.574}$ & $\mathbf{0.022}$ & $0.0$ & $0.0$ & $\mathbf{0.009}$ & $\mathbf{0.271}$ & $\mathbf{0.449}$ \\ \hline
+			GRU Att 3 & $\mathbf{0.611}$ & $\mathbf{0.637}$ & / & $\mathbf{0.93}$ & $\mathbf{0.007}$ & $0.0$ & $0.0$ & $0.0$ & $\mathbf{0.107}$ & $\mathbf{0.774}$ \\ \hline
+			GRU Att 4 & $\mathbf{0.524}$ & $\mathbf{0.574}$ & $\mathbf{0.93}$ & / & $\mathbf{0.007}$ & $0.0$ & $0.0$ & $\mathbf{0.0}$ & $\mathbf{0.058}$ & $\mathbf{0.914}$ \\ \hline
+			LSTM Linear & $\mathbf{0.052}$ & $\mathbf{0.022}$ & $\mathbf{0.007}$ & $\mathbf{0.007}$ & / & $0.0$ & $0.0$ & $0.0$ & $\mathbf{0.726}$ & $\mathbf{0.042}$ \\ \hline
+			LSTM Reference & $0.0$ & $0.0$ & $0.0$ & $0.0$ & $0.0$ & / & $\mathbf{0.063}$ & $\mathbf{0.002}$ & $0.0$ & $0.0$ \\ \hline
+			LSTM Third & $0.0$ & $0.0$ & $0.0$ & $0.0$ & $0.0$ & $\mathbf{0.063}$ & / & $0.0$ & $0.0$ & $0.0$ \\ \hline
+			LSTM Twice & $\mathbf{0.02}$ & $\mathbf{0.009}$ & $0.0$ & $\mathbf{0.0}$ & $0.0$ & $\mathbf{0.002}$ & $0.0$ & / & $\mathbf{0.28}$ & $\mathbf{0.029}$ \\ \hline
+			UniTS & $\mathbf{0.265}$ & $\mathbf{0.271}$ & $\mathbf{0.107}$ & $\mathbf{0.058}$ & $\mathbf{0.726}$ & $0.0$ & $0.0$ & $\mathbf{0.28}$ & / & $\mathbf{0.122}$ \\ \hline
+			actual & $\mathbf{0.412}$ & $\mathbf{0.449}$ & $\mathbf{0.774}$ & $\mathbf{0.914}$ & $\mathbf{0.042}$ & $0.0$ & $0.0$ & $\mathbf{0.029}$ & $\mathbf{0.122}$ & / \\ \hline
+		\end{tabular}
+	}
+	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, $x$ offset, and a forecasting time of $2$ $s$.}
+	\label{tab:longitude:no:abs:p:2}
+\end{table}
+
+The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, $x$ offset, and a forecasting time of $4$ $s$ are listed in Table~\ref{tab:longitude:no:abs:p:4}.
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & GRU Att 1 & GRU Att 2 & GRU Att 3 & GRU Att 4 & LSTM Twice & RNN Linear & UniTS & actual \\ \hline
+			GRU Att 1 & / & $\mathbf{0.063}$ & $\mathbf{0.45}$ & $\mathbf{0.756}$ & $\mathbf{0.728}$ & $\mathbf{0.054}$ & $0.0$ & $\mathbf{0.417}$ \\ \hline
+			GRU Att 2 & $\mathbf{0.063}$ & / & $\mathbf{0.008}$ & $\mathbf{0.12}$ & $\mathbf{0.009}$ & $\mathbf{0.709}$ & $0.0$ & $\mathbf{0.016}$ \\ \hline
+			GRU Att 3 & $\mathbf{0.45}$ & $\mathbf{0.008}$ & / & $\mathbf{0.244}$ & $\mathbf{0.193}$ & $\mathbf{0.001}$ & $\mathbf{0.002}$ & $\mathbf{0.647}$ \\ \hline
+			GRU Att 4 & $\mathbf{0.756}$ & $\mathbf{0.12}$ & $\mathbf{0.244}$ & / & $\mathbf{0.647}$ & $\mathbf{0.087}$ & $0.0$ & $\mathbf{0.318}$ \\ \hline
+			LSTM Twice & $\mathbf{0.728}$ & $\mathbf{0.009}$ & $\mathbf{0.193}$ & $\mathbf{0.647}$ & / & $\mathbf{0.293}$ & $0.0$ & $\mathbf{0.089}$ \\ \hline
+			RNN Linear & $\mathbf{0.054}$ & $\mathbf{0.709}$ & $\mathbf{0.001}$ & $\mathbf{0.087}$ & $\mathbf{0.293}$ & / & $0.0$ & $\mathbf{0.0}$ \\ \hline
+			UniTS & $0.0$ & $0.0$ & $\mathbf{0.002}$ & $0.0$ & $0.0$ & $0.0$ & / & $\mathbf{0.003}$ \\ \hline
+			actual & $\mathbf{0.417}$ & $\mathbf{0.016}$ & $\mathbf{0.647}$ & $\mathbf{0.318}$ & $\mathbf{0.089}$ & $\mathbf{0.0}$ & $\mathbf{0.003}$ & / \\ \hline
+		\end{tabular}
+	}
+	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, $x$ offset, and a forecasting time of $4$ $s$.}
+	\label{tab:longitude:no:abs:p:4}
+\end{table}
+
+The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, $x$ offset, and a forecasting time of $5$ $s$ are listed in Table~\ref{tab:longitude:no:abs:p:5}.
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & GRU Att 1 & GRU Att 2 & GRU Att 3 & GRU Att 4 & GRU Twice & LSTM Third & UniTS & actual \\ \hline
+			GRU Att 1 & / & $\mathbf{0.031}$ & $\mathbf{0.332}$ & $\mathbf{0.574}$ & $0.0$ & $0.0$ & $0.0$ & $\mathbf{0.595}$ \\ \hline
+			GRU Att 2 & $\mathbf{0.031}$ & / & $\mathbf{0.002}$ & $\mathbf{0.173}$ & $0.0$ & $0.0$ & $0.0$ & $\mathbf{0.012}$ \\ \hline
+			GRU Att 3 & $\mathbf{0.332}$ & $\mathbf{0.002}$ & / & $\mathbf{0.088}$ & $0.0$ & $0.0$ & $\mathbf{0.016}$ & $\mathbf{0.348}$ \\ \hline
+			GRU Att 4 & $\mathbf{0.574}$ & $\mathbf{0.173}$ & $\mathbf{0.088}$ & / & $0.0$ & $0.0$ & $0.0$ & $\mathbf{0.253}$ \\ \hline
+			GRU Twice & $0.0$ & $0.0$ & $0.0$ & $0.0$ & / & $\mathbf{0.594}$ & $\mathbf{0.003}$ & $0.0$ \\ \hline
+			LSTM Third & $0.0$ & $0.0$ & $0.0$ & $0.0$ & $\mathbf{0.594}$ & / & $\mathbf{0.063}$ & $0.0$ \\ \hline
+			UniTS & $0.0$ & $0.0$ & $\mathbf{0.016}$ & $0.0$ & $\mathbf{0.003}$ & $\mathbf{0.063}$ & / & $\mathbf{0.005}$ \\ \hline
+			actual & $\mathbf{0.595}$ & $\mathbf{0.012}$ & $\mathbf{0.348}$ & $\mathbf{0.253}$ & $0.0$ & $0.0$ & $\mathbf{0.005}$ & / \\ \hline
+		\end{tabular}
+	}
+	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, $x$ offset, and a forecasting time of $5$ $s$.}
+	\label{tab:longitude:no:abs:p:5}
+\end{table}
+
+The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, $x$ offset, and a forecasting time of $10$ $s$ are listed in Table~\ref{tab:longitude:no:abs:p:10}.
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & GRU Att 2 & GRU Att 3 & LSTM Reference & LSTM Third & LSTM Twice & UniTS & actual \\ \hline
+			GRU Att 2 & / & $\mathbf{0.055}$ & $0.0$ & $\mathbf{0.145}$ & $0.0$ & $\mathbf{0.046}$ & $\mathbf{0.037}$ \\ \hline
+			GRU Att 3 & $\mathbf{0.055}$ & / & $0.0$ & $\mathbf{0.009}$ & $0.0$ & $\mathbf{0.54}$ & $0.0$ \\ \hline
+			LSTM Reference & $0.0$ & $0.0$ & / & $0.0$ & $\mathbf{0.448}$ & $\mathbf{0.007}$ & $0.0$ \\ \hline
+			LSTM Third & $\mathbf{0.145}$ & $\mathbf{0.009}$ & $0.0$ & / & $0.0$ & $0.0$ & $\mathbf{0.09}$ \\ \hline
+			LSTM Twice & $0.0$ & $0.0$ & $\mathbf{0.448}$ & $0.0$ & / & $\mathbf{0.001}$ & $0.0$ \\ \hline
+			UniTS & $\mathbf{0.046}$ & $\mathbf{0.54}$ & $\mathbf{0.007}$ & $0.0$ & $\mathbf{0.001}$ & / & $\mathbf{0.0}$ \\ \hline
+			actual & $\mathbf{0.037}$ & $0.0$ & $0.0$ & $\mathbf{0.09}$ & $0.0$ & $\mathbf{0.0}$ & / \\ \hline
+		\end{tabular}
+	}
+	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, $x$ offset, and a forecasting time of $10$ $s$.}
+	\label{tab:longitude:no:abs:p:10}
+\end{table}
+
+The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, $x$ offset, and a forecasting time of $20$ $s$ are listed in Table~\ref{tab:longitude:no:abs:p:20}.
+
+\begin{table}[!ht]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline
+		Model & GRU Att 3 & GRU Third & UniTS \\ \hline
+		GRU Att 3 & / & $0.0$ & $\mathbf{0.976}$ \\ \hline
+		GRU Third & $0.0$ & / & $\mathbf{0.204}$ \\ \hline
+		UniTS & $\mathbf{0.976}$ & $\mathbf{0.204}$ & / \\ \hline
+	\end{tabular}
+	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, $x$ offset, and a forecasting time of $20$ $s$.}
+	\label{tab:longitude:no:abs:p:20}
+\end{table}
+
+The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, speed, and a forecasting time of $2$ $s$ are listed in Table~\ref{tab:speed:p:2}.
+
+\begin{table}[!ht]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		Model & GRU Linear & LSTM Linear \\ \hline
+		GRU Linear & / & $\mathbf{0.084}$ \\ \hline
+		LSTM Linear & $\mathbf{0.084}$ & / \\ \hline
+	\end{tabular}
+	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, speed, and a forecasting time of $2$ $s$.}
+	\label{tab:speed:p:2}
+\end{table}
+
+The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, speed, and a forecasting time of $4$ $s$ are listed in Table~\ref{tab:speed:p:4}.
+
+\begin{table}[!ht]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		Model & UniTS & actual \\ \hline
+		UniTS & / & $\mathbf{0.002}$ \\ \hline
+		actual & $\mathbf{0.002}$ & / \\ \hline
+	\end{tabular}
+	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, speed, and a forecasting time of $4$ $s$.}
+	\label{tab:speed:p:4}
+\end{table}
+
+The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, speed, and a forecasting time of $5$ $s$ are listed in Table~\ref{tab:speed:p:5}.
+
+\begin{table}[!ht]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		Model & UniTS & actual \\ \hline
+		UniTS & / & $\mathbf{0.051}$ \\ \hline
+		actual & $\mathbf{0.051}$ & / \\ \hline
+	\end{tabular}
+	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the k-fold testing datasets using different RNN models, speed, and a forecasting time of $5$ $s$.}
+	\label{tab:speed:p:5}
+\end{table}
+

@@ -54,7 +54,7 @@ def plot_dict(dict_use, save_name, subtitle, use_var = []):
             plt.xlim(- stepx / 2, x - stepx / 2)
             plt.ylim(- stepy / 2, y - stepy / 2)
             ticks_use = [ix * stepx for ix in range(len(dict_use[var][model]))]
-            labs_use = [str(ws) for ws in dict_use[var][model]]
+            labs_use = ["$" + str(ws) + "$ $s$" for ws in dict_use[var][model]]
             varnew = var.replace("_", " ").replace("longitude no abs", "$x$ offset").replace("direction", "heading")
             varnew = varnew.replace("latitude no abs", "$y$ offset").replace("no abs", "$x$ and $y$ offset")
             varnew = varnew.replace("speed actual dir", "speed, heading, and time")
