@@ -36,11 +36,11 @@ def read_dict(dict_p_path, usable_cols):
             metricnew = metric.replace("R2", "$R^{2}$ (\%)")
             metricnew = metricnew.replace("euclid", "Euclidean distance")
             metricnew = metricnew.replace("haversine", "haversine distance")
-            captext += metricnew + " values across k-fold validation datasets for the k-fold testing datasets"
+            captext += metricnew + " values across $k$-fold validation datasets for the $k$-fold testing datasets"
             found_metric = True
             break
     if not found_metric:
-        captext += "actual and predicted values across k-fold validation datasets for the k-fold testing datasets"
+        captext += "actual and predicted values across $k$-fold validation datasets for the $k$-fold testing datasets"
     var_curr = ""
     for varn in var_list:
         if varn in dict_p_path:
@@ -895,7 +895,7 @@ for name in name_list_total:
             var_fig = var.replace("_", " ").replace("longitude no abs", "$x$ offset").replace("direction", "heading")
             var_fig = var_fig.replace("latitude no abs", "$y$ offset").replace("no abs", "trajectories estimated using $x$ and $y$ offset")
             var_fig = var_fig.replace("speed actual dir", "trajectories estimated using speed, heading, and time")
-            sentence_add = " Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because each model is equal to itself."
+            sentence_add = " Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because models equal themselves."
             if "traj" in name:
                 var_fig1 = var_fig.replace("trajectories", "the longitude of trajectories")
                 var_fig2 = var_fig.replace("trajectories", "the latitude of trajectories")
@@ -905,8 +905,8 @@ for name in name_list_total:
                 else:
                     label_mod1 = "traj_long"
                     label_mod2 = "traj_lat"
-                text_mod1 = "$p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for " + var_fig1 + " in the k-fold testing datasets using different RNN models, and forecasting times."
-                text_mod2 = "$p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for " + var_fig1 + " in the k-fold testing datasets using different RNN models, and forecasting times."
+                text_mod1 = "$p$-values for the Mann-Whitney $U$-test on actual and predicted values across $k$-fold validation datasets for " + var_fig1 + " in the $k$-fold testing datasets using different RNN models, and forecasting times."
+                text_mod2 = "$p$-values for the Mann-Whitney $U$-test on actual and predicted values across $k$-fold validation datasets for " + var_fig1 + " in the $k$-fold testing datasets using different RNN models, and forecasting times."
                 my_text_var += "\n\n\nFigure~\\ref{fig:" + label_mod1 + "} represents the " + text_mod1 + sentence_add
                 my_text_var += "\n\n\\begin{figure}[!ht]\n\t\\centering\n\t\\includegraphics[width = 0.99 \\linewidth]{" + label_mod1 + ".pdf}"
                 my_text_var += "\n\t\\caption{The " + text_mod1 + "}\n\t\\label{fig:" + label_mod1 + "}\n\\end{figure}\n\n\n"
@@ -915,7 +915,7 @@ for name in name_list_total:
                 my_text_var += "\n\t\\caption{The " + text_mod2 + "}\n\t\\label{fig:" + label_mod2 + "}\n\\end{figure}\n\n\n"
             else:    
                 label_mod = "var_" + var.replace("itude_no_abs", "")
-                text_mod = "$p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the " + var_fig + " in the k-fold testing datasets using different RNN models, and forecasting times."
+                text_mod = "$p$-values for the Mann-Whitney $U$-test on actual and predicted values across $k$-fold validation datasets for the " + var_fig + " in the $k$-fold testing datasets using different RNN models, and forecasting times."
                 my_text_var += "\n\n\nFigure~\\ref{fig:" + label_mod + "} represents the " + text_mod + sentence_add
                 my_text_var += "\n\n\\begin{figure}[!ht]\n\t\\centering\n\t\\includegraphics[width = 0.99 \\linewidth]{" + label_mod + ".pdf}"
                 my_text_var += "\n\t\\caption{The " + text_mod + sentence_add + "}\n\t\\label{fig:" + label_mod + "}\n\\end{figure}\n\n\n"
@@ -928,7 +928,7 @@ for name in name_list_total:
                 metricfigure = metric.replace("R2", "$R^{2}$ (\%)")
                 metricfigure = metricfigure.replace("euclid", "Euclidean distance in $\\degree$")
                 metricfigure = metricfigure.replace("haversine", "haversine distance in $km$")
-                text_mod = "average " + metricfigure + " across k-fold testing datasets using different validation datasets for all variables estimated in nested k-fold cross-validation by different RNN models, and forecasting times."
+                text_mod = "average " + metricfigure + " across $k$-fold testing datasets using different validation datasets for all variables estimated in nested $k$-fold cross-validation by different RNN models, and forecasting times."
                 if "traj" in name:
                     text_mod = text_mod.replace("variables", "trajectories").replace("different", "different trajectory estimation methods,")
                     label_mod = "best_" + metric + "_traj_val"

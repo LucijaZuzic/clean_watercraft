@@ -196,8 +196,8 @@ for name in name_list_total:
                 varnew = var.replace("_", " ").replace("longitude no abs", "$x$ offset").replace("direction", "heading")
                 varnew = varnew.replace("latitude no abs", "$y$ offset").replace("no abs", "$x$ and $y$ offset")
                 varnew = varnew.replace("speed actual dir", "speed, heading, and time")
-                desc_var = "The average " + metricnew + ", with standard deviation in brackets, across k-fold validation datasets for the " + varnew + " estimated on the k-fold testing datasets by different RNN models, and forecasting times."
-                desc_traj = "The average " + metricnew + ", with standard deviation in brackets, across k-fold validation datasets for the trajectories in the k-fold testing datasets estimated using " + varnew + ", different RNN models, and forecasting times."
+                desc_var = "The average " + metricnew + ", with standard deviation in brackets, across $k$-fold validation datasets for the " + varnew + " estimated on the $k$-fold testing datasets by different RNN models, and forecasting times."
+                desc_traj = "The average " + metricnew + ", with standard deviation in brackets, across $k$-fold validation datasets for the trajectories in the $k$-fold testing datasets estimated using " + varnew + ", different RNN models, and forecasting times."
                 desc = desc_var
                 if "no abs" == var or "actual" in var:
                     desc = desc_traj

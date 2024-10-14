@@ -2,25 +2,25 @@
 %\label{subsec:direction_results}
 %\vspace{10pt}
 
-Figure~\ref{fig:var_direction} represents the $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the heading in the k-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because each model is equal to itself.
+Figure~\ref{fig:var_direction} represents the $p$-values for the Mann-Whitney $U$-test on actual and predicted values across $k$-fold validation datasets for the heading in the $k$-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because models equal themselves.
 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width = 0.99 \linewidth]{var_direction.pdf}
-	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the heading in the k-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because each model is equal to itself.}
+	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across $k$-fold validation datasets for the heading in the $k$-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because models equal themselves.}
 	\label{fig:var_direction}
 \end{figure}
 
-Figure~\ref{fig:best_R2_val} contains the average $R^{2}$ (\%) across k-fold testing datasets using different validation datasets for all variables estimated in nested k-fold cross-validation by different RNN models, and forecasting times.
+Figure~\ref{fig:best_R2_val} contains the average $R^{2}$ (\%) across $k$-fold testing datasets using different validation datasets for all variables estimated in nested $k$-fold cross-validation by different RNN models, and forecasting times.
 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width = 0.99 \linewidth]{best_R2_val.pdf}
-	\caption{The average $R^{2}$ (\%) across k-fold testing datasets using different validation datasets for all variables estimated in nested k-fold cross-validation by different RNN models, and forecasting times.}
+	\caption{The average $R^{2}$ (\%) across $k$-fold testing datasets using different validation datasets for all variables estimated in nested $k$-fold cross-validation by different RNN models, and forecasting times.}
 	\label{fig:best_R2_val}
 \end{figure}
 
-The average $R^{2}$ (\%), with standard deviation in brackets, across k-fold validation datasets for the heading estimated on the k-fold testing datasets by different RNN models, and forecasting times is listed in Table~\ref{tab:best_direction_R2}.
+The average $R^{2}$ (\%), with standard deviation in brackets, across $k$-fold validation datasets for the heading estimated on the $k$-fold testing datasets by different RNN models, and forecasting times is listed in Table~\ref{tab:best_direction_R2}.
 
 \begin{table}[!ht]
 	\centering
@@ -34,7 +34,7 @@ The average $R^{2}$ (\%), with standard deviation in brackets, across k-fold val
 			 & ($1.99\%$) & ($2.25\%$) & ($2.42\%$) & \textbf{(}$\mathbf{2.55\%}$\textbf{)} & \textbf{(}$\mathbf{2.76\%}$\textbf{)} & \textbf{(}$\mathbf{3.21\%}$\textbf{)} & \textbf{(}$\mathbf{3.79\%}$\textbf{)} \\ \hline
 		\end{tabular}
 	}
-	\caption{The average $R^{2}$ (\%), with standard deviation in brackets, across k-fold validation datasets for the heading estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\caption{The average $R^{2}$ (\%), with standard deviation in brackets, across $k$-fold validation datasets for the heading estimated on the $k$-fold testing datasets by different RNN models, and forecasting times.}
 	\label{tab:best_direction_R2}
 \end{table}
 
@@ -48,16 +48,16 @@ The UniTS model does not make statistically significantly different predictions 
 
 The UniTS model does not make statistically significantly different predictions than the GRU Att 3, and GRU Att 4 models for heading using a forecasting time of $10$ $s$, with $p$-values equaling $0.132$, and $0.228$.
 
-Figure~\ref{fig:best_MAE_val} contains the average MAE across k-fold testing datasets using different validation datasets for all variables estimated in nested k-fold cross-validation by different RNN models, and forecasting times.
+Figure~\ref{fig:best_MAE_val} contains the average MAE across $k$-fold testing datasets using different validation datasets for all variables estimated in nested $k$-fold cross-validation by different RNN models, and forecasting times.
 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width = 0.99 \linewidth]{best_MAE_val.pdf}
-	\caption{The average MAE across k-fold testing datasets using different validation datasets for all variables estimated in nested k-fold cross-validation by different RNN models, and forecasting times.}
+	\caption{The average MAE across $k$-fold testing datasets using different validation datasets for all variables estimated in nested $k$-fold cross-validation by different RNN models, and forecasting times.}
 	\label{fig:best_MAE_val}
 \end{figure}
 
-The average MAE in $\degree$, with standard deviation in brackets, across k-fold validation datasets for the heading estimated on the k-fold testing datasets by different RNN models, and forecasting times is listed in Table~\ref{tab:best_direction_MAE}.
+The average MAE in $\degree$, with standard deviation in brackets, across $k$-fold validation datasets for the heading estimated on the $k$-fold testing datasets by different RNN models, and forecasting times is listed in Table~\ref{tab:best_direction_MAE}.
 
 \begin{table}[!ht]
 	\centering
@@ -71,7 +71,7 @@ The average MAE in $\degree$, with standard deviation in brackets, across k-fold
 			 & ($1.21$) & ($1.41$) & ($1.56$) & ($1.68$) & ($2.0$) & \textbf{(}$\mathbf{2.55}$\textbf{)} & \textbf{(}$\mathbf{3.01}$\textbf{)} \\ \hline
 		\end{tabular}
 	}
-	\caption{The average MAE in $\degree$, with standard deviation in brackets, across k-fold validation datasets for the heading estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\caption{The average MAE in $\degree$, with standard deviation in brackets, across $k$-fold validation datasets for the heading estimated on the $k$-fold testing datasets by different RNN models, and forecasting times.}
 	\label{tab:best_direction_MAE}
 \end{table}
 
@@ -93,16 +93,16 @@ The UniTS model achieved the lowest MAE for heading, and a forecasting time of $
 %\label{subsec:latitude_no_abs_results}
 %\vspace{10pt}
 
-Figure~\ref{fig:var_lat} represents the $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the $y$ offset in the k-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because each model is equal to itself.
+Figure~\ref{fig:var_lat} represents the $p$-values for the Mann-Whitney $U$-test on actual and predicted values across $k$-fold validation datasets for the $y$ offset in the $k$-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because models equal themselves.
 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width = 0.99 \linewidth]{var_lat.pdf}
-	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the $y$ offset in the k-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because each model is equal to itself.}
+	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across $k$-fold validation datasets for the $y$ offset in the $k$-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because models equal themselves.}
 	\label{fig:var_lat}
 \end{figure}
 
-The average $R^{2}$ (\%), with standard deviation in brackets, across k-fold validation datasets for the $y$ offset estimated on the k-fold testing datasets by different RNN models, and forecasting times is listed in Table~\ref{tab:best_latitude_no_abs_R2}.
+The average $R^{2}$ (\%), with standard deviation in brackets, across $k$-fold validation datasets for the $y$ offset estimated on the $k$-fold testing datasets by different RNN models, and forecasting times is listed in Table~\ref{tab:best_latitude_no_abs_R2}.
 
 \begin{table}[!ht]
 	\centering
@@ -120,7 +120,7 @@ The average $R^{2}$ (\%), with standard deviation in brackets, across k-fold val
 			 & ($1.98\%$) & ($1.67\%$) & ($1.63\%$) & ($1.67\%$) & \textbf{(}$\mathbf{2.31\%}$\textbf{)} & \textbf{(}$\mathbf{3.95\%}$\textbf{)} & \textbf{(}$\mathbf{4.68\%}$\textbf{)} \\ \hline
 		\end{tabular}
 	}
-	\caption{The average $R^{2}$ (\%), with standard deviation in brackets, across k-fold validation datasets for the $y$ offset estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\caption{The average $R^{2}$ (\%), with standard deviation in brackets, across $k$-fold validation datasets for the $y$ offset estimated on the $k$-fold testing datasets by different RNN models, and forecasting times.}
 	\label{tab:best_latitude_no_abs_R2}
 \end{table}
 
@@ -142,7 +142,7 @@ The UniTS model does not make statistically significantly different predictions 
 
 The UniTS model does not make statistically significantly different predictions than the GRU Att 2, GRU Att 4, and actual value models for $y$ offset using a forecasting time of $30$ $s$, with $p$-values equaling $0.093$, $0.472$, and $0.152$.
 
-The average MAE in $\degree$ ($\times 10^{-5}$), with standard deviation in brackets, across k-fold validation datasets for the $y$ offset estimated on the k-fold testing datasets by different RNN models, and forecasting times is listed in Table~\ref{tab:best_latitude_no_abs_MAE}.
+The average MAE in $\degree$ ($\times 10^{-5}$), with standard deviation in brackets, across $k$-fold validation datasets for the $y$ offset estimated on the $k$-fold testing datasets by different RNN models, and forecasting times is listed in Table~\ref{tab:best_latitude_no_abs_MAE}.
 
 \begin{table}[!ht]
 	\centering
@@ -160,7 +160,7 @@ The average MAE in $\degree$ ($\times 10^{-5}$), with standard deviation in brac
 			 & ($0.607$) & ($0.759$) & ($0.88$) & ($0.988$) & ($1.426$) & \textbf{(}$\mathbf{2.001}$\textbf{)} & \textbf{(}$\mathbf{2.3}$\textbf{)} \\ \hline
 		\end{tabular}
 	}
-	\caption{The average MAE in $\degree$ ($\times 10^{-5}$), with standard deviation in brackets, across k-fold validation datasets for the $y$ offset estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\caption{The average MAE in $\degree$ ($\times 10^{-5}$), with standard deviation in brackets, across $k$-fold validation datasets for the $y$ offset estimated on the $k$-fold testing datasets by different RNN models, and forecasting times.}
 	\label{tab:best_latitude_no_abs_MAE}
 \end{table}
 
@@ -190,16 +190,16 @@ The UniTS model does not make statistically significantly different predictions 
 %\label{subsec:longitude_no_abs_results}
 %\vspace{10pt}
 
-Figure~\ref{fig:var_long} represents the $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the $x$ offset in the k-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because each model is equal to itself.
+Figure~\ref{fig:var_long} represents the $p$-values for the Mann-Whitney $U$-test on actual and predicted values across $k$-fold validation datasets for the $x$ offset in the $k$-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because models equal themselves.
 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width = 0.99 \linewidth]{var_long.pdf}
-	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the $x$ offset in the k-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because each model is equal to itself.}
+	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across $k$-fold validation datasets for the $x$ offset in the $k$-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because models equal themselves.}
 	\label{fig:var_long}
 \end{figure}
 
-The average $R^{2}$ (\%), with standard deviation in brackets, across k-fold validation datasets for the $x$ offset estimated on the k-fold testing datasets by different RNN models, and forecasting times is listed in Table~\ref{tab:best_longitude_no_abs_R2}.
+The average $R^{2}$ (\%), with standard deviation in brackets, across $k$-fold validation datasets for the $x$ offset estimated on the $k$-fold testing datasets by different RNN models, and forecasting times is listed in Table~\ref{tab:best_longitude_no_abs_R2}.
 
 \begin{table}[!ht]
 	\centering
@@ -215,7 +215,7 @@ The average $R^{2}$ (\%), with standard deviation in brackets, across k-fold val
 			 & ($0.83\%$) & ($1.05\%$) & \textbf{(}$\mathbf{1.32\%}$\textbf{)} & \textbf{(}$\mathbf{1.57\%}$\textbf{)} & \textbf{(}$\mathbf{2.54\%}$\textbf{)} & \textbf{(}$\mathbf{3.68\%}$\textbf{)} & \textbf{(}$\mathbf{4.0\%}$\textbf{)} \\ \hline
 		\end{tabular}
 	}
-	\caption{The average $R^{2}$ (\%), with standard deviation in brackets, across k-fold validation datasets for the $x$ offset estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\caption{The average $R^{2}$ (\%), with standard deviation in brackets, across $k$-fold validation datasets for the $x$ offset estimated on the $k$-fold testing datasets by different RNN models, and forecasting times.}
 	\label{tab:best_longitude_no_abs_R2}
 \end{table}
 
@@ -237,7 +237,7 @@ The UniTS model does not make statistically significantly different predictions 
 
 The UniTS model does not make statistically significantly different predictions than the GRU Att 3, and GRU Third models for $x$ offset using a forecasting time of $20$ $s$, with $p$-values equaling $0.976$, and $0.204$.
 
-The average MAE in $\degree$ ($\times 10^{-5}$), with standard deviation in brackets, across k-fold validation datasets for the $x$ offset estimated on the k-fold testing datasets by different RNN models, and forecasting times is listed in Table~\ref{tab:best_longitude_no_abs_MAE}.
+The average MAE in $\degree$ ($\times 10^{-5}$), with standard deviation in brackets, across $k$-fold validation datasets for the $x$ offset estimated on the $k$-fold testing datasets by different RNN models, and forecasting times is listed in Table~\ref{tab:best_longitude_no_abs_MAE}.
 
 \begin{table}[!ht]
 	\centering
@@ -253,7 +253,7 @@ The average MAE in $\degree$ ($\times 10^{-5}$), with standard deviation in brac
 			 & ($0.96$) & ($1.19$) & ($1.38$) & ($1.55$) & ($2.2$) & \textbf{(}$\mathbf{3.04}$\textbf{)} & \textbf{(}$\mathbf{3.37}$\textbf{)} \\ \hline
 		\end{tabular}
 	}
-	\caption{The average MAE in $\degree$ ($\times 10^{-5}$), with standard deviation in brackets, across k-fold validation datasets for the $x$ offset estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\caption{The average MAE in $\degree$ ($\times 10^{-5}$), with standard deviation in brackets, across $k$-fold validation datasets for the $x$ offset estimated on the $k$-fold testing datasets by different RNN models, and forecasting times.}
 	\label{tab:best_longitude_no_abs_MAE}
 \end{table}
 
@@ -279,16 +279,16 @@ The UniTS model does not make statistically significantly different predictions 
 %\label{subsec:speed_results}
 %\vspace{10pt}
 
-Figure~\ref{fig:var_speed} represents the $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the speed in the k-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because each model is equal to itself.
+Figure~\ref{fig:var_speed} represents the $p$-values for the Mann-Whitney $U$-test on actual and predicted values across $k$-fold validation datasets for the speed in the $k$-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because models equal themselves.
 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width = 0.99 \linewidth]{var_speed.pdf}
-	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the speed in the k-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because each model is equal to itself.}
+	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across $k$-fold validation datasets for the speed in the $k$-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because models equal themselves.}
 	\label{fig:var_speed}
 \end{figure}
 
-The average $R^{2}$ (\%), with standard deviation in brackets, across k-fold validation datasets for the speed estimated on the k-fold testing datasets by different RNN models, and forecasting times is listed in Table~\ref{tab:best_speed_R2}.
+The average $R^{2}$ (\%), with standard deviation in brackets, across $k$-fold validation datasets for the speed estimated on the $k$-fold testing datasets by different RNN models, and forecasting times is listed in Table~\ref{tab:best_speed_R2}.
 
 \begin{table}[!ht]
 	\centering
@@ -302,7 +302,7 @@ The average $R^{2}$ (\%), with standard deviation in brackets, across k-fold val
 			 & ($0.64\%$) & \textbf{(}$\mathbf{0.92\%}$\textbf{)} & \textbf{(}$\mathbf{1.21\%}$\textbf{)} & \textbf{(}$\mathbf{1.49\%}$\textbf{)} & \textbf{(}$\mathbf{2.68\%}$\textbf{)} & \textbf{(}$\mathbf{3.89\%}$\textbf{)} & \textbf{(}$\mathbf{3.92\%}$\textbf{)} \\ \hline
 		\end{tabular}
 	}
-	\caption{The average $R^{2}$ (\%), with standard deviation in brackets, across k-fold validation datasets for the speed estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\caption{The average $R^{2}$ (\%), with standard deviation in brackets, across $k$-fold validation datasets for the speed estimated on the $k$-fold testing datasets by different RNN models, and forecasting times.}
 	\label{tab:best_speed_R2}
 \end{table}
 
@@ -316,7 +316,7 @@ The UniTS model does not make statistically significantly different predictions 
 
 The UniTS model does not make statistically significantly different predictions than the actual value model for speed using a forecasting time of $5$ $s$, with a $p$-value equaling $0.051$.
 
-The average MAE in $km/h$, with standard deviation in brackets, across k-fold validation datasets for the speed estimated on the k-fold testing datasets by different RNN models, and forecasting times is listed in Table~\ref{tab:best_speed_MAE}.
+The average MAE in $km/h$, with standard deviation in brackets, across $k$-fold validation datasets for the speed estimated on the $k$-fold testing datasets by different RNN models, and forecasting times is listed in Table~\ref{tab:best_speed_MAE}.
 
 \begin{table}[!ht]
 	\centering
@@ -330,7 +330,7 @@ The average MAE in $km/h$, with standard deviation in brackets, across k-fold va
 			 & ($0.26$) & \textbf{(}$\mathbf{0.31}$\textbf{)} & \textbf{(}$\mathbf{0.36}$\textbf{)} & \textbf{(}$\mathbf{0.4}$\textbf{)} & \textbf{(}$\mathbf{0.55}$\textbf{)} & \textbf{(}$\mathbf{0.66}$\textbf{)} & \textbf{(}$\mathbf{0.67}$\textbf{)} \\ \hline
 		\end{tabular}
 	}
-	\caption{The average MAE in $km/h$, with standard deviation in brackets, across k-fold validation datasets for the speed estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\caption{The average MAE in $km/h$, with standard deviation in brackets, across $k$-fold validation datasets for the speed estimated on the $k$-fold testing datasets by different RNN models, and forecasting times.}
 	\label{tab:best_speed_MAE}
 \end{table}
 

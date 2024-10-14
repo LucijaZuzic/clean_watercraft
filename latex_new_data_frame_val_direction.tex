@@ -2,25 +2,25 @@
 %\label{subsec:direction_results}
 %\vspace{10pt}
 
-Figure~\ref{fig:var_direction} represents the $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the heading in the k-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because each model is equal to itself.
+Figure~\ref{fig:var_direction} represents the $p$-values for the Mann-Whitney $U$-test on actual and predicted values across $k$-fold validation datasets for the heading in the $k$-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because models equal themselves.
 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width = 0.99 \linewidth]{var_direction.pdf}
-	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the heading in the k-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because each model is equal to itself.}
+	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across $k$-fold validation datasets for the heading in the $k$-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because models equal themselves.}
 	\label{fig:var_direction}
 \end{figure}
 
-Figure~\ref{fig:best_R2_val} contains the average $R^{2}$ (\%) across k-fold testing datasets using different validation datasets for all variables estimated in nested k-fold cross-validation by different RNN models, and forecasting times.
+Figure~\ref{fig:best_R2_val} contains the average $R^{2}$ (\%) across $k$-fold testing datasets using different validation datasets for all variables estimated in nested $k$-fold cross-validation by different RNN models, and forecasting times.
 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width = 0.99 \linewidth]{best_R2_val.pdf}
-	\caption{The average $R^{2}$ (\%) across k-fold testing datasets using different validation datasets for all variables estimated in nested k-fold cross-validation by different RNN models, and forecasting times.}
+	\caption{The average $R^{2}$ (\%) across $k$-fold testing datasets using different validation datasets for all variables estimated in nested $k$-fold cross-validation by different RNN models, and forecasting times.}
 	\label{fig:best_R2_val}
 \end{figure}
 
-The average $R^{2}$ (\%), with standard deviation in brackets, across k-fold validation datasets for the heading estimated on the k-fold testing datasets by different RNN models, and forecasting times is listed in Table~\ref{tab:best_direction_R2}.
+The average $R^{2}$ (\%), with standard deviation in brackets, across $k$-fold validation datasets for the heading estimated on the $k$-fold testing datasets by different RNN models, and forecasting times is listed in Table~\ref{tab:best_direction_R2}.
 
 \begin{table}[!ht]
 	\centering
@@ -34,7 +34,7 @@ The average $R^{2}$ (\%), with standard deviation in brackets, across k-fold val
 			 & ($1.99\%$) & ($2.25\%$) & ($2.42\%$) & \textbf{(}$\mathbf{2.55\%}$\textbf{)} & \textbf{(}$\mathbf{2.76\%}$\textbf{)} & \textbf{(}$\mathbf{3.21\%}$\textbf{)} & \textbf{(}$\mathbf{3.79\%}$\textbf{)} \\ \hline
 		\end{tabular}
 	}
-	\caption{The average $R^{2}$ (\%), with standard deviation in brackets, across k-fold validation datasets for the heading estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\caption{The average $R^{2}$ (\%), with standard deviation in brackets, across $k$-fold validation datasets for the heading estimated on the $k$-fold testing datasets by different RNN models, and forecasting times.}
 	\label{tab:best_direction_R2}
 \end{table}
 
@@ -54,16 +54,16 @@ The UniTS model does not make statistically significantly different predictions 
 
 \markertable{tab:\label{tab:direction:p:10}}
 
-Figure~\ref{fig:best_MAE_val} contains the average MAE across k-fold testing datasets using different validation datasets for all variables estimated in nested k-fold cross-validation by different RNN models, and forecasting times.
+Figure~\ref{fig:best_MAE_val} contains the average MAE across $k$-fold testing datasets using different validation datasets for all variables estimated in nested $k$-fold cross-validation by different RNN models, and forecasting times.
 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width = 0.99 \linewidth]{best_MAE_val.pdf}
-	\caption{The average MAE across k-fold testing datasets using different validation datasets for all variables estimated in nested k-fold cross-validation by different RNN models, and forecasting times.}
+	\caption{The average MAE across $k$-fold testing datasets using different validation datasets for all variables estimated in nested $k$-fold cross-validation by different RNN models, and forecasting times.}
 	\label{fig:best_MAE_val}
 \end{figure}
 
-The average MAE in $\degree$, with standard deviation in brackets, across k-fold validation datasets for the heading estimated on the k-fold testing datasets by different RNN models, and forecasting times is listed in Table~\ref{tab:best_direction_MAE}.
+The average MAE in $\degree$, with standard deviation in brackets, across $k$-fold validation datasets for the heading estimated on the $k$-fold testing datasets by different RNN models, and forecasting times is listed in Table~\ref{tab:best_direction_MAE}.
 
 \begin{table}[!ht]
 	\centering
@@ -77,7 +77,7 @@ The average MAE in $\degree$, with standard deviation in brackets, across k-fold
 			 & ($1.21$) & ($1.41$) & ($1.56$) & ($1.68$) & ($2.0$) & \textbf{(}$\mathbf{2.55}$\textbf{)} & \textbf{(}$\mathbf{3.01}$\textbf{)} \\ \hline
 		\end{tabular}
 	}
-	\caption{The average MAE in $\degree$, with standard deviation in brackets, across k-fold validation datasets for the heading estimated on the k-fold testing datasets by different RNN models, and forecasting times.}
+	\caption{The average MAE in $\degree$, with standard deviation in brackets, across $k$-fold validation datasets for the heading estimated on the $k$-fold testing datasets by different RNN models, and forecasting times.}
 	\label{tab:best_direction_MAE}
 \end{table}
 
