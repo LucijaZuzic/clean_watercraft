@@ -213,9 +213,9 @@ if redo_res:
     model_list = os.listdir("csv_results_traj/1/1/" + vehicle_zero + "/" + ride_zero + "/" + var_list[0] + "/")
     ws_long_list = os.listdir("csv_results_traj/1/1/" + vehicle_zero + "/" + ride_zero + "/" + var_list[0] + "/" + model_list[0] + "/")
 
-    for var in ["no abs"]:
+    for var in ["speed actual dir"]:
         for model in ["UniTS"]:
-            for ws_long in ["30_predictions.csv"]:
+            for ws_long in ["2_predictions.csv", "30_predictions.csv"]:
                 for nf2 in [sf2]:
                     actual_rides = dict()
                     predicted_rides = dict()
