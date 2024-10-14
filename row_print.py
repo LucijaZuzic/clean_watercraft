@@ -19,7 +19,7 @@ print_pred_res = True
 
 def read_dict(dict_p_path, usable_cols):
     if not usep:
-        return ""
+        return "", "", ""
     use_resizebox = len(usable_cols) > 4
     df_p_path = pd.read_csv(dict_p_path, index_col = False)
     if useu:
@@ -1066,10 +1066,10 @@ for name in name_list_total:
                     print_sentence_metric(var, model, metric, ws)
 
     only_best_second = True
-    for model in sorted(model_list):
-        for var in sorted(var_list):
-            if "time" in var:
-                continue
+    for var in sorted(var_list):
+        if "time" in var:
+            continue
+        for model in sorted(model_list):
             for ws in sorted(ws_list):
                 if only_best_second:
                     best_for_any = False
@@ -1083,7 +1083,13 @@ for name in name_list_total:
                             break
                     if not best_for_any:
                         continue
-                print_sentence(var, model, ws)
+                oldusep = usep
+                usep = False
+                sth = print_sentence(var, model, ws).strip()
+                while "\n" in sth:
+                    sth = sth.replace("\n", "")
+                print(sth)
+                usep = oldusep
 
 my_text_total_file = open("my_text_total.tex", "w")
 my_text_total_file.write(my_text_total)
