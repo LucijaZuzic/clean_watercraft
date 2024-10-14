@@ -2,15 +2,6 @@
 %\label{subsec:no_abs_results}
 %\vspace{10pt}
 
-Figure~\ref{fig:var_no abs.png} represents the $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the trajectories estimated using $x$ and $y$ offset in the k-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black beacuse each model is equal to itself.
-
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width = 0.99 \linewidth]{var_no abs.png.pdf}
-	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the trajectories estimated using $x$ and $y$ offset in the k-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black beacuse each model is equal to itself.}
-	\label{fig:var_no abs.png}
-\end{figure}
-
 Figure~\ref{fig:best_R2_traj_val} contains the average $R^{2}$ (\%) across k-fold testing datasets using different trajectory estimation methods, validation datasets for all trajectories estimated in nested k-fold cross-validation by different trajectory estimation methods, RNN models, and forecasting times.
 
 \begin{figure}[!ht]
@@ -40,23 +31,7 @@ The average $R^{2}$ (\%), with standard deviation in brackets, across k-fold val
 
 The GRU Att 4 model achieved the highest $R^{2}$ (\%) for trajectories estimated using $x$ and $y$ offset, and a forecasting time of $2$, and $3$ $s$ with average values and standard deviation (in brackets) that equal $99.75$\% ($0.11$\%), and $99.59$\% ($0.14$\%) respectively.
 
-The GRU Att 4 model does not make statistically significantly different predictions for longitude than the GRU Att 1, GRU Att 2, GRU Att 3, UniTS, and actual value models when estimating trajectories using $x$ and $y$ offset and a forecasting time of $2$ $s$, with $p$-values equaling $0.428$, $0.146$, $0.813$, $0.013$, and $0.014$.
-
-The GRU Att 4 model does not make statistically significantly different predictions for latitude than the GRU Att 2, GRU Att 3, and UniTS models when estimating trajectories $x$ and $y$ offset, and a forecasting time of $2$ $s$, with $p$-values equaling $0.123$, $0.096$, and $0.02$.
-
-The GRU Att 4 model does not make statistically significantly different predictions for longitude than the GRU Att 1, and actual value models when estimating trajectories using $x$ and $y$ offset and a forecasting time of $3$ $s$, with $p$-values equaling $0.033$, and $0.626$.
-
-The GRU Att 4 model does not make statistically significantly different predictions for latitude than the GRU Att 2, LSTM Linear, LSTM Twice, and actual value models when estimating trajectories $x$ and $y$ offset, and a forecasting time of $3$ $s$, with $p$-values equaling $0.002$, $0.045$, $0.093$, and $0.003$.
-
 The UniTS model achieved the highest $R^{2}$ (\%) for trajectories estimated using $x$ and $y$ offset, and a forecasting time of $4$, $5$, $10$, $20$, and $30$ $s$ with average values and standard deviation (in brackets) that equal $99.45$\% ($0.2$\%), $99.15$\% ($0.4$\%), $98.01$\% ($0.77$\%), $96.12$\% ($1.27$\%), and $93.37$\% ($2.52$\%) respectively.
-
-The UniTS model does not make statistically significantly different predictions for longitude than the RNN Linear model when estimating trajectories using $x$ and $y$ offset and a forecasting time of $4$ $s$, with a $p$-value equaling $0.004$.
-
-The UniTS model does not make statistically significantly different predictions for latitude than the GRU Att 1, and LSTM Third models when estimating trajectories $x$ and $y$ offset, and a forecasting time of $4$ $s$, with $p$-values equaling $0.312$, and $0.116$.
-
-The UniTS model does not make statistically significantly different predictions for longitude than the LSTM Twice model when estimating trajectories using $x$ and $y$ offset and a forecasting time of $10$ $s$, with a $p$-value equaling $0.276$.
-
-The UniTS model does not make statistically significantly different predictions for latitude than the GRU Att 2, and GRU Att 3 models when estimating trajectories $x$ and $y$ offset, and a forecasting time of $10$ $s$, with $p$-values equaling $0.401$, and $0.801$.
 
 Figure~\ref{fig:best_MAE_traj_val} contains the average MAE across k-fold testing datasets using different trajectory estimation methods, validation datasets for all trajectories estimated in nested k-fold cross-validation by different trajectory estimation methods, RNN models, and forecasting times.
 
@@ -89,25 +64,9 @@ The average MAE in $\degree$ ($\times 10^{-3}$), with standard deviation in brac
 
 The GRU Att 1 model achieved the lowest MAE for trajectories estimated using $x$ and $y$ offset, and a forecasting time of $3$ $s$ with an average value and standard deviation (in brackets) that equals $2.54 \times 10^{-3}$ $\degree$ ($0.28 \times 10^{-3}$ $\degree$).
 
-The GRU Att 1 model does not make statistically significantly different predictions for longitude than the GRU Att 3, GRU Att 4, and actual value models when estimating trajectories using $x$ and $y$ offset and a forecasting time of $3$ $s$, with $p$-values equaling $0.015$, $0.033$, and $0.095$.
-
-The GRU Att 1 model does not make statistically significantly different predictions for latitude than the GRU Twice, LSTM Linear, LSTM Twice, and actual value models when estimating trajectories $x$ and $y$ offset, and a forecasting time of $3$ $s$, with $p$-values equaling $0.04$, $0.01$, $0.001$, and $0.003$.
-
 The GRU Att 4 model achieved the lowest MAE for trajectories estimated using $x$ and $y$ offset, and a forecasting time of $2$ $s$ with an average value and standard deviation (in brackets) that equals $1.95 \times 10^{-3}$ $\degree$ ($0.27 \times 10^{-3}$ $\degree$).
 
-The GRU Att 4 model does not make statistically significantly different predictions for longitude than the GRU Att 1, GRU Att 2, GRU Att 3, UniTS, and actual value models when estimating trajectories using $x$ and $y$ offset and a forecasting time of $2$ $s$, with $p$-values equaling $0.428$, $0.146$, $0.813$, $0.013$, and $0.014$.
-
-The GRU Att 4 model does not make statistically significantly different predictions for latitude than the GRU Att 2, GRU Att 3, and UniTS models when estimating trajectories $x$ and $y$ offset, and a forecasting time of $2$ $s$, with $p$-values equaling $0.123$, $0.096$, and $0.02$.
-
 The UniTS model achieved the lowest MAE for trajectories estimated using $x$ and $y$ offset, and a forecasting time of $4$, $5$, $10$, $20$, and $30$ $s$ with average values and standard deviation (in brackets) that equal $3.17 \times 10^{-3}$ $\degree$ ($0.39 \times 10^{-3}$ $\degree$), $3.75 \times 10^{-3}$ $\degree$ ($0.58 \times 10^{-3}$ $\degree$), $6.0 \times 10^{-3}$ $\degree$ ($0.65 \times 10^{-3}$ $\degree$), $8.71 \times 10^{-3}$ $\degree$ ($0.8 \times 10^{-3}$ $\degree$), and $11.51 \times 10^{-3}$ $\degree$ ($1.04 \times 10^{-3}$ $\degree$) respectively.
-
-The UniTS model does not make statistically significantly different predictions for longitude than the RNN Linear model when estimating trajectories using $x$ and $y$ offset and a forecasting time of $4$ $s$, with a $p$-value equaling $0.004$.
-
-The UniTS model does not make statistically significantly different predictions for latitude than the GRU Att 1, and LSTM Third models when estimating trajectories $x$ and $y$ offset, and a forecasting time of $4$ $s$, with $p$-values equaling $0.312$, and $0.116$.
-
-The UniTS model does not make statistically significantly different predictions for longitude than the LSTM Twice model when estimating trajectories using $x$ and $y$ offset and a forecasting time of $10$ $s$, with a $p$-value equaling $0.276$.
-
-The UniTS model does not make statistically significantly different predictions for latitude than the GRU Att 2, and GRU Att 3 models when estimating trajectories $x$ and $y$ offset, and a forecasting time of $10$ $s$, with $p$-values equaling $0.401$, and $0.801$.
 
 Figure~\ref{fig:best_haversine_traj_val} contains the average haversine distance in $km$ across k-fold testing datasets using different trajectory estimation methods, validation datasets for all trajectories estimated in nested k-fold cross-validation by different trajectory estimation methods, RNN models, and forecasting times.
 
@@ -138,36 +97,11 @@ The average haversine distance in $km$, with standard deviation in brackets, acr
 
 The GRU Att 4 model achieved the lowest haversine distance for trajectories estimated using $x$ and $y$ offset, and a forecasting time of $2$, and $3$ $s$ with average values and standard deviation (in brackets) that equal $0.346$ $km$ ($0.046$ $km$), and $0.452$ $km$ ($0.052$ $km$) respectively.
 
-The GRU Att 4 model does not make statistically significantly different predictions for longitude than the GRU Att 1, GRU Att 2, GRU Att 3, UniTS, and actual value models when estimating trajectories using $x$ and $y$ offset and a forecasting time of $2$ $s$, with $p$-values equaling $0.428$, $0.146$, $0.813$, $0.013$, and $0.014$.
-
-The GRU Att 4 model does not make statistically significantly different predictions for latitude than the GRU Att 2, GRU Att 3, and UniTS models when estimating trajectories $x$ and $y$ offset, and a forecasting time of $2$ $s$, with $p$-values equaling $0.123$, $0.096$, and $0.02$.
-
-The GRU Att 4 model does not make statistically significantly different predictions for longitude than the GRU Att 1, and actual value models when estimating trajectories using $x$ and $y$ offset and a forecasting time of $3$ $s$, with $p$-values equaling $0.033$, and $0.626$.
-
-The GRU Att 4 model does not make statistically significantly different predictions for latitude than the GRU Att 2, LSTM Linear, LSTM Twice, and actual value models when estimating trajectories $x$ and $y$ offset, and a forecasting time of $3$ $s$, with $p$-values equaling $0.002$, $0.045$, $0.093$, and $0.003$.
-
 The UniTS model achieved the lowest haversine distance for trajectories estimated using $x$ and $y$ offset, and a forecasting time of $4$, $5$, $10$, $20$, and $30$ $s$ with average values and standard deviation (in brackets) that equal $0.558$ $km$ ($0.071$ $km$), $0.653$ $km$ ($0.098$ $km$), $1.059$ $km$ ($0.124$ $km$), $1.536$ $km$ ($0.157$ $km$), and $2.025$ $km$ ($0.209$ $km$) respectively.
-
-The UniTS model does not make statistically significantly different predictions for longitude than the RNN Linear model when estimating trajectories using $x$ and $y$ offset and a forecasting time of $4$ $s$, with a $p$-value equaling $0.004$.
-
-The UniTS model does not make statistically significantly different predictions for latitude than the GRU Att 1, and LSTM Third models when estimating trajectories $x$ and $y$ offset, and a forecasting time of $4$ $s$, with $p$-values equaling $0.312$, and $0.116$.
-
-The UniTS model does not make statistically significantly different predictions for longitude than the LSTM Twice model when estimating trajectories using $x$ and $y$ offset and a forecasting time of $10$ $s$, with a $p$-value equaling $0.276$.
-
-The UniTS model does not make statistically significantly different predictions for latitude than the GRU Att 2, and GRU Att 3 models when estimating trajectories $x$ and $y$ offset, and a forecasting time of $10$ $s$, with $p$-values equaling $0.401$, and $0.801$.
 
 \subsection{Results for Trajectories Estimated Using Speed, Heading, and Time}
 %\label{subsec:speed_actual_dir_results}
 %\vspace{10pt}
-
-Figure~\ref{fig:var_speed actual dir.png} represents the $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the trajectories estimated using speed, heading, and time in the k-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black beacuse each model is equal to itself.
-
-\begin{figure}[!ht]
-	\centering
-	\includegraphics[width = 0.99 \linewidth]{var_speed actual dir.png.pdf}
-	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the trajectories estimated using speed, heading, and time in the k-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black beacuse each model is equal to itself.}
-	\label{fig:var_speed actual dir.png}
-\end{figure}
 
 The average $R^{2}$ (\%), with standard deviation in brackets, across k-fold validation datasets for the trajectories in the k-fold testing datasets estimated using speed, heading, and time, different RNN models, and forecasting times is listed in Table~\ref{tab:best_speed_actual_dir_R2}.
 
@@ -191,33 +125,9 @@ The average $R^{2}$ (\%), with standard deviation in brackets, across k-fold val
 
 The GRU Att 1 model achieved the highest $R^{2}$ (\%) for trajectories estimated using speed, heading, and time, and a forecasting time of $10$, $20$, and $5$ $s$ with average values and standard deviation (in brackets) that equal $94.22$\% ($1.08$\%), $81.82$\% ($6.54$\%), and $95.7$\% ($0.44$\%) respectively.
 
-The GRU Att 1 model does not make statistically significantly different predictions for longitude than the GRU Att 4 model when estimating trajectories using speed, heading, and time and a forecasting time of $10$ $s$, with a $p$-value equaling $0.425$.
-
-The GRU Att 1 model does not make statistically significantly different predictions for latitude than the GRU Att 2, and UniTS models when estimating trajectories speed, heading, and time, and a forecasting time of $10$ $s$, with $p$-values equaling $0.025$, and $0.002$.
-
-The GRU Att 1 model does not make statistically significantly different predictions for longitude than the GRU Att 2, and GRU Att 3 models when estimating trajectories using speed, heading, and time and a forecasting time of $20$ $s$, with $p$-values equaling $0.001$, and $0.091$.
-
-The GRU Att 1 model does not make statistically significantly different predictions for latitude than the GRU Att 3 model when estimating trajectories speed, heading, and time, and a forecasting time of $20$ $s$, with a $p$-value equaling $0.073$.
-
-The GRU Att 1 model does not make statistically significantly different predictions for longitude than the GRU Att 3, GRU Att 4, and UniTS models when estimating trajectories using speed, heading, and time and a forecasting time of $5$ $s$, with $p$-values equaling $0.023$, $0.079$, and $0.003$.
-
-The GRU Att 1 model does not make statistically significantly different predictions for latitude than the GRU Att 2 model when estimating trajectories speed, heading, and time, and a forecasting time of $5$ $s$, with a $p$-value equaling $0.651$.
-
 The GRU Att 2 model achieved the highest $R^{2}$ (\%) for trajectories estimated using speed, heading, and time, and a forecasting time of $30$ $s$ with an average value and standard deviation (in brackets) that equals $54.1$\% ($25.78$\%).
 
 The GRU Att 4 model achieved the highest $R^{2}$ (\%) for trajectories estimated using speed, heading, and time, and a forecasting time of $2$, $3$, and $4$ $s$ with average values and standard deviation (in brackets) that equal $96.55$\% ($0.2$\%), $96.36$\% ($0.24$\%), and $95.93$\% ($0.4$\%) respectively.
-
-The GRU Att 4 model does not make statistically significantly different predictions for longitude than the GRU Att 1, GRU Att 2, and GRU Att 3 models when estimating trajectories using speed, heading, and time and a forecasting time of $2$ $s$, with $p$-values equaling $0.744$, $0.592$, and $0.823$.
-
-The GRU Att 4 model does not make statistically significantly different predictions for latitude than the GRU Att 1, GRU Att 2, GRU Att 3, GRU Linear, LSTM Linear, and RNN Linear models when estimating trajectories speed, heading, and time, and a forecasting time of $2$ $s$, with $p$-values equaling $0.149$, $0.069$, $0.283$, $0.114$, $0.847$, and $0.167$.
-
-The GRU Att 4 model does not make statistically significantly different predictions for longitude than the GRU Att 1, GRU Att 2, and GRU Att 3 models when estimating trajectories using speed, heading, and time and a forecasting time of $3$ $s$, with $p$-values equaling $0.397$, $0.739$, and $0.078$.
-
-The GRU Att 4 model does not make statistically significantly different predictions for latitude than the GRU Att 1, GRU Att 2, LSTM Linear, and UniTS models when estimating trajectories speed, heading, and time, and a forecasting time of $3$ $s$, with $p$-values equaling $0.318$, $0.05$, $0.445$, and $0.052$.
-
-The GRU Att 4 model does not make statistically significantly different predictions for longitude than the GRU Att 1, GRU Att 2, GRU Att 3, and UniTS models when estimating trajectories using speed, heading, and time and a forecasting time of $4$ $s$, with $p$-values equaling $0.063$, $0.036$, $0.391$, and $0.596$.
-
-The GRU Att 4 model does not make statistically significantly different predictions for latitude than the GRU Att 1, GRU Att 2, and GRU Att 3 models when estimating trajectories speed, heading, and time, and a forecasting time of $4$ $s$, with $p$-values equaling $0.178$, $0.179$, and $0.352$.
 
 The average MAE in $\degree$ ($\times 10^{-3}$), with standard deviation in brackets, across k-fold validation datasets for the trajectories in the k-fold testing datasets estimated using speed, heading, and time, different RNN models, and forecasting times is listed in Table~\ref{tab:best_speed_actual_dir_MAE}.
 
@@ -241,33 +151,9 @@ The average MAE in $\degree$ ($\times 10^{-3}$), with standard deviation in brac
 
 The GRU Att 1 model achieved the lowest MAE for trajectories estimated using speed, heading, and time, and a forecasting time of $10$, $20$, $4$, and $5$ $s$ with average values and standard deviation (in brackets) that equal $10.22 \times 10^{-3}$ $\degree$ ($0.62 \times 10^{-3}$ $\degree$), $17.11 \times 10^{-3}$ $\degree$ ($1.22 \times 10^{-3}$ $\degree$), $8.42 \times 10^{-3}$ $\degree$ ($0.39 \times 10^{-3}$ $\degree$), and $8.64 \times 10^{-3}$ $\degree$ ($0.45 \times 10^{-3}$ $\degree$) respectively.
 
-The GRU Att 1 model does not make statistically significantly different predictions for longitude than the GRU Att 4 model when estimating trajectories using speed, heading, and time and a forecasting time of $10$ $s$, with a $p$-value equaling $0.425$.
-
-The GRU Att 1 model does not make statistically significantly different predictions for latitude than the GRU Att 2, and UniTS models when estimating trajectories speed, heading, and time, and a forecasting time of $10$ $s$, with $p$-values equaling $0.025$, and $0.002$.
-
-The GRU Att 1 model does not make statistically significantly different predictions for longitude than the GRU Att 2, and GRU Att 3 models when estimating trajectories using speed, heading, and time and a forecasting time of $20$ $s$, with $p$-values equaling $0.001$, and $0.091$.
-
-The GRU Att 1 model does not make statistically significantly different predictions for latitude than the GRU Att 3 model when estimating trajectories speed, heading, and time, and a forecasting time of $20$ $s$, with a $p$-value equaling $0.073$.
-
-The GRU Att 1 model does not make statistically significantly different predictions for longitude than the GRU Att 2, GRU Att 3, GRU Att 4, and UniTS models when estimating trajectories using speed, heading, and time and a forecasting time of $4$ $s$, with $p$-values equaling $0.806$, $0.326$, $0.063$, and $0.183$.
-
-The GRU Att 1 model does not make statistically significantly different predictions for latitude than the GRU Att 2, GRU Att 3, and GRU Att 4 models when estimating trajectories speed, heading, and time, and a forecasting time of $4$ $s$, with $p$-values equaling $0.007$, $0.023$, and $0.178$.
-
-The GRU Att 1 model does not make statistically significantly different predictions for longitude than the GRU Att 3, GRU Att 4, and UniTS models when estimating trajectories using speed, heading, and time and a forecasting time of $5$ $s$, with $p$-values equaling $0.023$, $0.079$, and $0.003$.
-
-The GRU Att 1 model does not make statistically significantly different predictions for latitude than the GRU Att 2 model when estimating trajectories speed, heading, and time, and a forecasting time of $5$ $s$, with a $p$-value equaling $0.651$.
-
 The GRU Att 2 model achieved the lowest MAE for trajectories estimated using speed, heading, and time, and a forecasting time of $30$ $s$ with an average value and standard deviation (in brackets) that equals $24.64 \times 10^{-3}$ $\degree$ ($3.04 \times 10^{-3}$ $\degree$).
 
 The GRU Att 4 model achieved the lowest MAE for trajectories estimated using speed, heading, and time, and a forecasting time of $2$, and $3$ $s$ with average values and standard deviation (in brackets) that equal $7.27 \times 10^{-3}$ $\degree$ ($0.37 \times 10^{-3}$ $\degree$), and $7.67 \times 10^{-3}$ $\degree$ ($0.4 \times 10^{-3}$ $\degree$) respectively.
-
-The GRU Att 4 model does not make statistically significantly different predictions for longitude than the GRU Att 1, GRU Att 2, and GRU Att 3 models when estimating trajectories using speed, heading, and time and a forecasting time of $2$ $s$, with $p$-values equaling $0.744$, $0.592$, and $0.823$.
-
-The GRU Att 4 model does not make statistically significantly different predictions for latitude than the GRU Att 1, GRU Att 2, GRU Att 3, GRU Linear, LSTM Linear, and RNN Linear models when estimating trajectories speed, heading, and time, and a forecasting time of $2$ $s$, with $p$-values equaling $0.149$, $0.069$, $0.283$, $0.114$, $0.847$, and $0.167$.
-
-The GRU Att 4 model does not make statistically significantly different predictions for longitude than the GRU Att 1, GRU Att 2, and GRU Att 3 models when estimating trajectories using speed, heading, and time and a forecasting time of $3$ $s$, with $p$-values equaling $0.397$, $0.739$, and $0.078$.
-
-The GRU Att 4 model does not make statistically significantly different predictions for latitude than the GRU Att 1, GRU Att 2, LSTM Linear, and UniTS models when estimating trajectories speed, heading, and time, and a forecasting time of $3$ $s$, with $p$-values equaling $0.318$, $0.05$, $0.445$, and $0.052$.
 
 The average haversine distance in $km$, with standard deviation in brackets, across k-fold validation datasets for the trajectories in the k-fold testing datasets estimated using speed, heading, and time, different RNN models, and forecasting times is listed in Table~\ref{tab:best_speed_actual_dir_haversine}.
 
@@ -291,31 +177,7 @@ The average haversine distance in $km$, with standard deviation in brackets, acr
 
 The GRU Att 1 model achieved the lowest haversine distance for trajectories estimated using speed, heading, and time, and a forecasting time of $10$, $20$, and $5$ $s$ with average values and standard deviation (in brackets) that equal $1.906$ $km$ ($0.116$ $km$), $3.075$ $km$ ($0.202$ $km$), and $1.665$ $km$ ($0.083$ $km$) respectively.
 
-The GRU Att 1 model does not make statistically significantly different predictions for longitude than the GRU Att 4 model when estimating trajectories using speed, heading, and time and a forecasting time of $10$ $s$, with a $p$-value equaling $0.425$.
-
-The GRU Att 1 model does not make statistically significantly different predictions for latitude than the GRU Att 2, and UniTS models when estimating trajectories speed, heading, and time, and a forecasting time of $10$ $s$, with $p$-values equaling $0.025$, and $0.002$.
-
-The GRU Att 1 model does not make statistically significantly different predictions for longitude than the GRU Att 2, and GRU Att 3 models when estimating trajectories using speed, heading, and time and a forecasting time of $20$ $s$, with $p$-values equaling $0.001$, and $0.091$.
-
-The GRU Att 1 model does not make statistically significantly different predictions for latitude than the GRU Att 3 model when estimating trajectories speed, heading, and time, and a forecasting time of $20$ $s$, with a $p$-value equaling $0.073$.
-
-The GRU Att 1 model does not make statistically significantly different predictions for longitude than the GRU Att 3, GRU Att 4, and UniTS models when estimating trajectories using speed, heading, and time and a forecasting time of $5$ $s$, with $p$-values equaling $0.023$, $0.079$, and $0.003$.
-
-The GRU Att 1 model does not make statistically significantly different predictions for latitude than the GRU Att 2 model when estimating trajectories speed, heading, and time, and a forecasting time of $5$ $s$, with a $p$-value equaling $0.651$.
-
 The GRU Att 2 model achieved the lowest haversine distance for trajectories estimated using speed, heading, and time, and a forecasting time of $30$, and $4$ $s$ with average values and standard deviation (in brackets) that equal $4.38$ $km$ ($0.515$ $km$), and $1.634$ $km$ ($0.095$ $km$) respectively.
 
-The GRU Att 2 model does not make statistically significantly different predictions for longitude than the GRU Att 1, GRU Att 3, GRU Att 4, and UniTS models when estimating trajectories using speed, heading, and time and a forecasting time of $4$ $s$, with $p$-values equaling $0.806$, $0.217$, $0.036$, and $0.129$.
-
-The GRU Att 2 model does not make statistically significantly different predictions for latitude than the GRU Att 1, GRU Att 3, and GRU Att 4 models when estimating trajectories speed, heading, and time, and a forecasting time of $4$ $s$, with $p$-values equaling $0.007$, $0.683$, and $0.179$.
-
 The GRU Att 4 model achieved the lowest haversine distance for trajectories estimated using speed, heading, and time, and a forecasting time of $2$, and $3$ $s$ with average values and standard deviation (in brackets) that equal $1.467$ $km$ ($0.084$ $km$), and $1.518$ $km$ ($0.092$ $km$) respectively.
-
-The GRU Att 4 model does not make statistically significantly different predictions for longitude than the GRU Att 1, GRU Att 2, and GRU Att 3 models when estimating trajectories using speed, heading, and time and a forecasting time of $2$ $s$, with $p$-values equaling $0.744$, $0.592$, and $0.823$.
-
-The GRU Att 4 model does not make statistically significantly different predictions for latitude than the GRU Att 1, GRU Att 2, GRU Att 3, GRU Linear, LSTM Linear, and RNN Linear models when estimating trajectories speed, heading, and time, and a forecasting time of $2$ $s$, with $p$-values equaling $0.149$, $0.069$, $0.283$, $0.114$, $0.847$, and $0.167$.
-
-The GRU Att 4 model does not make statistically significantly different predictions for longitude than the GRU Att 1, GRU Att 2, and GRU Att 3 models when estimating trajectories using speed, heading, and time and a forecasting time of $3$ $s$, with $p$-values equaling $0.397$, $0.739$, and $0.078$.
-
-The GRU Att 4 model does not make statistically significantly different predictions for latitude than the GRU Att 1, GRU Att 2, LSTM Linear, and UniTS models when estimating trajectories speed, heading, and time, and a forecasting time of $3$ $s$, with $p$-values equaling $0.318$, $0.05$, $0.445$, and $0.052$.
 

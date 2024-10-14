@@ -57,9 +57,9 @@ def plot_dict(dict_use, save_name, use_var = []):
             plt.ylim(- stepy / 2, y - stepy / 2)
             ticks_use = [ix * stepx for ix in range(len(dict_use[var][ws]))]
             labs_use = [m.replace("_", " ") for m in sorted(dict_use[var][ws])]
-            varnew = var.replace("_", " ").replace("longitude no abs", "$x$ offset").replace("direction", "heading")
-            varnew = varnew.replace("latitude no abs", "$y$ offset").replace("no abs", "$x$ and $y$ offset")
-            varnew = varnew.replace("latitude speed", "$y$ offset - speed").replace("longitude speed", "$x$ offset - speed")
+            varnew = var.replace("_", " ").replace("longitude no abs", "longitude - $x$ and $y$ offset").replace("direction", "heading")
+            varnew = varnew.replace("latitude no abs", "latitude - $x$ and $y$ offset").replace("no abs", "$x$ and $y$ offset")
+            varnew = varnew.replace("latitude speed", "latitude - speed").replace("longitude speed", "longitude - speed")
             varnew = varnew.replace("speed actual dir", "speed, heading, and time")
             if ix_ws % 8 == 1 and len(use_var) > 1:
                 plt.ylabel(varnew.capitalize())

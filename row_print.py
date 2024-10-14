@@ -872,6 +872,14 @@ for name in name_list_total:
     num_tab_occured = dict()
     all_text_for_tab = dict()
     metric_occured = set()
+    if "traj" in name:
+        print_pred_res = False
+        usep = False
+        use_p_table = False
+    else:
+        print_pred_res = True
+        usep = True
+        use_p_table = True
     for var in min_max_for_metric_for_ws:
         if "time" in var:
             continue
@@ -887,8 +895,8 @@ for name in name_list_total:
             var_fig = var.replace("_", " ").replace("longitude no abs", "$x$ offset").replace("direction", "heading")
             var_fig = var_fig.replace("latitude no abs", "$y$ offset").replace("no abs", "trajectories estimated using $x$ and $y$ offset")
             var_fig = var_fig.replace("speed actual dir", "trajectories estimated using speed, heading, and time")
-            sentence_add = " Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black beacuse each model is equal to itself."
-            if "traj" in var:
+            sentence_add = " Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because each model is equal to itself."
+            if "traj" in name:
                 var_fig1 = var_fig.replace("trajectories", "the longitude of trajectories")
                 var_fig2 = var_fig.replace("trajectories", "the latitude of trajectories")
                 if "speed" in var:
@@ -897,8 +905,8 @@ for name in name_list_total:
                 else:
                     label_mod1 = "traj_long"
                     label_mod2 = "traj_lat"
-                text_mod1 = "$p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the " + var_fig1 + " in the k-fold testing datasets using different RNN models, and forecasting times."
-                text_mod2 = "$p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the " + var_fig1 + " in the k-fold testing datasets using different RNN models, and forecasting times."
+                text_mod1 = "$p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for " + var_fig1 + " in the k-fold testing datasets using different RNN models, and forecasting times."
+                text_mod2 = "$p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for " + var_fig1 + " in the k-fold testing datasets using different RNN models, and forecasting times."
                 my_text_var += "\n\n\nFigure~\\ref{fig:" + label_mod1 + "} represents the " + text_mod1 + sentence_add
                 my_text_var += "\n\n\\begin{figure}[!ht]\n\t\\centering\n\t\\includegraphics[width = 0.99 \\linewidth]{" + label_mod1 + ".pdf}"
                 my_text_var += "\n\t\\caption{The " + text_mod1 + "}\n\t\\label{fig:" + label_mod1 + "}\n\\end{figure}\n\n\n"
@@ -906,7 +914,7 @@ for name in name_list_total:
                 my_text_var += "\n\n\\begin{figure}[!ht]\n\t\\centering\n\t\\includegraphics[width = 0.99 \\linewidth]{" + label_mod2 + ".pdf}"
                 my_text_var += "\n\t\\caption{The " + text_mod2 + "}\n\t\\label{fig:" + label_mod2 + "}\n\\end{figure}\n\n\n"
             else:    
-                label_mod = "var_" + var + ".png"
+                label_mod = "var_" + var.replace("itude_no_abs", "")
                 text_mod = "$p$-values for the Mann-Whitney $U$-test on actual and predicted values across k-fold validation datasets for the " + var_fig + " in the k-fold testing datasets using different RNN models, and forecasting times."
                 my_text_var += "\n\n\nFigure~\\ref{fig:" + label_mod + "} represents the " + text_mod + sentence_add
                 my_text_var += "\n\n\\begin{figure}[!ht]\n\t\\centering\n\t\\includegraphics[width = 0.99 \\linewidth]{" + label_mod + ".pdf}"
