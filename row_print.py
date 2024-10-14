@@ -887,7 +887,7 @@ for name in name_list_total:
             var_fig = var.replace("_", " ").replace("longitude no abs", "$x$ offset").replace("direction", "heading")
             var_fig = var_fig.replace("latitude no abs", "$y$ offset").replace("no abs", "trajectories estimated using $x$ and $y$ offset")
             var_fig = var_fig.replace("speed actual dir", "trajectories estimated using speed, heading, and time")
-            sentence_add = "Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black beacuse each model is equal to itself."
+            sentence_add = " Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black beacuse each model is equal to itself."
             if "traj" in var:
                 var_fig1 = var_fig.replace("trajectories", "the longitude of trajectories")
                 var_fig2 = var_fig.replace("trajectories", "the latitude of trajectories")
