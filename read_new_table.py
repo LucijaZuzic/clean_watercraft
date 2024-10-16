@@ -313,7 +313,7 @@ for name in name_list_total:
                 plt.ylabel(varnew.capitalize())
                 if ix == len(dictio) - 1 * ("time" in dictio):
                     plt.xticks(sorted_ws)
-                    plt.xlabel("Forecasting time")
+                    plt.xlabel("Forecasting time ($s$)")
                 else:
                     plt.xticks([])
                 plt.xlim(min(sorted_ws), max(sorted_ws))
