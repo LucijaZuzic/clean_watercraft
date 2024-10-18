@@ -16,7 +16,8 @@ print_var_res = False
 print_ws_res = False
 print_metric_res = False
 print_pred_res = True
-
+start_name = "dicti_wilcoxon"
+translate_start_name = {"dicti_wilcoxon": "Wilcoxon signed-rank test", "dicti_mann_whitney": "Mann-Whitney $U$-test"}
 def read_dict(dict_p_path, usable_cols):
     if not usep:
         return "", "", ""
@@ -24,12 +25,12 @@ def read_dict(dict_p_path, usable_cols):
     df_p_path = pd.read_csv(dict_p_path, index_col = False)
     if useu:
         df_u_path = pd.read_csv(dict_p_path.replace("/p_", "/u_"), index_col = False)
-    label_name = "\\label{tab:" + dict_p_path.replace("dicti_mann_whitney_", "").replace("filter_", "").replace("/", "_").replace(" ", "_").replace(".csv", "") + "}"
+    label_name = "\\label{tab:" + dict_p_path.replace(start_name + "_", "").replace(start_name, "").replace("filter_", "").replace("/", "_").replace(" ", "_").replace(".csv", "") + "}"
     for word in ["ws", "base", "metric", "var"]:
         label_name = label_name.replace(word + "_", "")
         label_name = label_name.replace("_" + word, "")
     label_name = label_name.replace("_", ":")
-    captext = "The $p$-values for the Mann-Whitney $U$-test on "
+    captext = "The $p$-values for the " + translate_start_name[start_name]  + " on "
     found_metric = False
     for metric in round_val:
         if metric in dict_p_path:
@@ -117,9 +118,9 @@ def read_dict(dict_p_path, usable_cols):
                 str_pvals += " & /"
                 continue
             if (reverse_dir and df_p_path[str(colname)][ix] < 0.05 / num_use) or (not reverse_dir and df_p_path[str(colname)][ix] >= 0.05 / num_use):
-                str_pvals += " & $\\mathbf{" + str(stringify(df_p_path[str(colname)][ix], 3 - 1 * reverse_dir, not reverse_dir)[0]) + "}$"
+                str_pvals += " & $\\mathbf{" + str(stringify(df_p_path[str(colname)][ix], 3 - 1 * reverse_dir, False)[0]) + "}$"
             else:
-                str_pvals += " & $" + str(stringify(df_p_path[str(colname)][ix], 3 - 1 * reverse_dir, not reverse_dir)[0]) + "$"
+                str_pvals += " & $" + str(stringify(df_p_path[str(colname)][ix], 3 - 1 * reverse_dir, False)[0]) + "$"
         if not useu:
             str_pvals += " \\\\ \\hline\n"
         else:
@@ -211,7 +212,7 @@ def print_sentence_var(var, model, metric, ws):
             varnew = varnew.replace("speed actual dir", "speed, heading, and time")
             str_var += varnew + ", "
             str_uvals += "$" + str(np.round(u, 0))[:-2] + "$, "
-            str_pvals += "$" + str(stringify(p, 3 - 1 * reverse_dir, not reverse_dir)[0]) + "$, "
+            str_pvals += "$" + str(stringify(p, 3 - 1 * reverse_dir, False)[0]) + "$, "
         str_var = str_var[:-2]
         str_uvals = str_uvals[:-2]
         str_pvals = str_pvals[:-2]
@@ -227,20 +228,20 @@ def print_sentence_var(var, model, metric, ws):
         metricnew = metricnew.replace("haversine", "haversine distance")
         sentence_use = "The " + model.replace("_", " ") + " model does not have a statistically significantly different " + metricnew + " for " + varnew + " than for " + str_var + " using a forecasting time of $" + str(ws) + "$ $s$"
         ppart = ", with $p$-values equaling " + str_pvals
-        upart = ", and $U$ statistics equaling " + str_uvals + " respectively"
+        upart = ", and statistics equaling " + str_uvals + " respectively"
         if usep:
             sentence_use += ppart
         if useu:
             sentence_use += upart
         if "," not in str_pvals:
-            sentence_use = sentence_use.replace("$p$-values", "a $p$-value").replace("$U$ statistics", "a $U$ statistic")
+            sentence_use = sentence_use.replace("$p$-values", "a $p$-value").replace("statistics", "a statistic")
         if " " in var:
             sentence_use = sentence_use.replace(" for " + varnew + " than for ", " for trajectories estimated using " + varnew + " than for trajectories estimated using ")
             sentence_use = sentence_use.replace("using a forecasting", ", and a forecasting")
         if reverse_dir:
             sentence_use = sentence_use.replace("does not have", "has")
         retval = sentence_use + ".\n\n"
-        stat_test_results_file = "filter_dicti_mann_whitney_var/" + metric + "/" + model + "/p_" + str(ws) + "_dicti_mann_whitney_var" + "_traj" * (" " in var) + ".csv"
+        stat_test_results_file = "filter_" + start_name + "_var/" + metric + "/" + model + "/p_" + str(ws) + "_" + start_name + "_var" + "_traj" * (" " in var) + ".csv"
         stattab, capt, reflab = read_dict(stat_test_results_file, var_print)
         if use_appendix:
             retval += capt[:-1] + " are listed in Table~" + reflab.replace("label", "ref") + ".\n"
@@ -269,7 +270,7 @@ def print_sentence_ws(var, model, metric, ws):
             ws_print.append(ws2)
             str_ws += "$" + str(ws2) + "$" + ", "
             str_uvals += "$" + str(np.round(u, 0))[:-2] + "$, "
-            str_pvals += "$" + str(stringify(p, 3 - 1 * reverse_dir, not reverse_dir)[0]) + "$, "
+            str_pvals += "$" + str(stringify(p, 3 - 1 * reverse_dir, False)[0]) + "$, "
         str_ws = str_ws[:-2]
         str_uvals = str_uvals[:-2]
         str_pvals = str_pvals[:-2]
@@ -285,19 +286,19 @@ def print_sentence_ws(var, model, metric, ws):
         metricnew = metricnew.replace("haversine", "haversine distance")
         sentence_use = "The " + model.replace("_", " ") + " model does not have a statistically significantly different " + metricnew + " for " + varnew + " using a forecasting time of $" + str(ws) + "$ $s$ instead of " + str_ws + " $s$"
         ppart = ", with $p$-values equaling " + str_pvals
-        upart = ", and $U$ statistics equaling " + str_uvals + " respectively"
+        upart = ", and statistics equaling " + str_uvals + " respectively"
         if usep:
             sentence_use += ppart
         if useu:
             sentence_use += upart
         if "," not in str_pvals:
-            sentence_use = sentence_use.replace("$p$-values", "a $p$-value").replace("$U$ statistics", "a $U$ statistic")
+            sentence_use = sentence_use.replace("$p$-values", "a $p$-value").replace("statistics", "a statistic")
         if " " in var:
             sentence_use = sentence_use.replace(" for " + varnew + " using", " for trajectories estimated using " + varnew + ", and")
         if reverse_dir:
             sentence_use = sentence_use.replace("does not have", "has")
         retval = sentence_use + ".\n\n"
-        stat_test_results_file = "filter_dicti_mann_whitney_ws/" + metric + "/" + var + "/p_" + model + "_dicti_mann_whitney_ws.csv"
+        stat_test_results_file = "filter_" + start_name + "_ws/" + metric + "/" + var + "/p_" + model + "_" + start_name + "_ws.csv"
         stattab, capt, reflab = read_dict(stat_test_results_file, ws_print)
         if use_appendix:
             retval += capt[:-1] + " are listed in Table~" + reflab.replace("label", "ref") + ".\n"
@@ -326,7 +327,7 @@ def print_sentence_metric(var, model, metric, ws):
             model_print.append(model2)
             str_models += model2.replace("_", " ") + ", "
             str_uvals += "$" + str(np.round(u, 0))[:-2] + "$, "
-            str_pvals += "$" + str(stringify(p, 3 - 1 * reverse_dir, not reverse_dir)[0]) + "$, "
+            str_pvals += "$" + str(stringify(p, 3 - 1 * reverse_dir, False)[0]) + "$, "
         str_models = str_models[:-2]
         str_uvals = str_uvals[:-2]
         str_pvals = str_pvals[:-2]
@@ -342,17 +343,17 @@ def print_sentence_metric(var, model, metric, ws):
         metricnew = metricnew.replace("haversine", "haversine distance")
         sentence_use = "The " + model.replace("_", " ") + " model does not have a statistically significantly different " + metricnew + " than the " + str_models + " models for " + varnew + " using a forecasting time of $" + str(ws) + "$ $s$"
         ppart = ", with $p$-values equaling " + str_pvals
-        upart = ", and $U$ statistics equaling " + str_uvals + " respectively"
+        upart = ", and statistics equaling " + str_uvals + " respectively"
         if usep:
             sentence_use += ppart
         if useu:
             sentence_use += upart
         if "," not in str_pvals:
-            sentence_use = sentence_use.replace("models", "model").replace("$p$-values", "a $p$-value").replace("$U$ statistics", "a $U$ statistic")
+            sentence_use = sentence_use.replace("models", "model").replace("$p$-values", "a $p$-value").replace("statistics", "a statistic")
         if reverse_dir:
             sentence_use = sentence_use.replace("does not have", "has")
         retval = sentence_use.replace("actual", "actual value") + ".\n\n"
-        stat_test_results_file = "filter_dicti_mann_whitney_base_metric/" + metric + "/" + var + "/p_" + str(ws) + "_dicti_mann_whitney_base_metric.csv"
+        stat_test_results_file = "filter_" + start_name + "_base_metric/" + metric + "/" + var + "/p_" + str(ws) + "_" + start_name + "_base_metric.csv"
         stattab, capt, reflab = read_dict(stat_test_results_file, model_print)
         if use_appendix:
             retval += capt[:-1] + " are listed in Table~" + reflab.replace("label", "ref") + ".\n"
@@ -392,12 +393,12 @@ def print_sentence(var, model, ws):
                     model_print_long.append(model2)
                     str_modelslong += model2.replace("_", " ") + ", "
                     str_uvalslong += "$" + str(np.round(ulong, 0))[:-2] + "$, "
-                    str_pvalslong += "$" + str(stringify(plong, 3 - 1 * reverse_dir, not reverse_dir)[0]) + "$, "
+                    str_pvalslong += "$" + str(stringify(plong, 3 - 1 * reverse_dir, False)[0]) + "$, "
                 if (reverse_dir and plat < 0.05 / num_use) or (not reverse_dir and plat >= 0.05 / num_use):
                     model_print_lat.append(model2)
                     str_modelslat += model2.replace("_", " ") + ", "
                     str_uvalslat += "$" + str(np.round(ulat, 0))[:-2] + "$, "
-                    str_pvalslat += "$" + str(stringify(plat, 3 - 1 * reverse_dir, not reverse_dir)[0]) + "$, "
+                    str_pvalslat += "$" + str(stringify(plat, 3 - 1 * reverse_dir, False)[0]) + "$, "
             str_modelslong = str_modelslong[:-2]
             str_uvalslong = str_uvalslong[:-2]
             str_pvalslong = str_pvalslong[:-2]
@@ -418,17 +419,17 @@ def print_sentence(var, model, ws):
             if len(str_pvalslong) > 0:
                 sentence_use = "The " + model.replace("_", " ") + " model does not make statistically significantly different predictions for longitude than the " + str_modelslong + " models when estimating trajectories using " + varnew + " and a forecasting time of $" + str(ws) + "$ $s$"
                 ppart = ", with $p$-values equaling " + str_pvalslong
-                upart = ", and $U$ statistics equaling " + str_uvalslong + " respectively"
+                upart = ", and statistics equaling " + str_uvalslong + " respectively"
                 if usep:
                     sentence_use += ppart
                 if useu:
                     sentence_use += upart
                 if "," not in str_pvalslong:
-                    sentence_use = sentence_use.replace("models", "model").replace("$p$-values", "a $p$-value").replace("$U$ statistics", "a $U$ statistic")
+                    sentence_use = sentence_use.replace("models", "model").replace("$p$-values", "a $p$-value").replace("statistics", "a statistic")
                 if reverse_dir:
                     sentence_use = sentence_use.replace("does not make", "makes")
                 retval = sentence_use.replace("actual", "actual value") + ".\n\n"
-                stat_test_results_file_long = "filter_dicti_mann_whitney_base/" + var + "/p_long_" + str(ws) + "_dicti_mann_whitney_base.csv"
+                stat_test_results_file_long = "filter_" + start_name + "_base/" + var + "/p_long_" + str(ws) + "_" + start_name + "_base.csv"
                 stattab, capt, reflab = read_dict(stat_test_results_file_long, model_print_long)
                 if use_appendix:
                     retval += capt[:-1] + " are listed in Table~" + reflab.replace("label", "ref") + ".\n"
@@ -442,17 +443,17 @@ def print_sentence(var, model, ws):
                     all_text_for_tab[stat_test_results_file_long].add(m)
                 sentence_use = "The " + model.replace("_", " ") + " model does not make statistically significantly different predictions for latitude than the " + str_modelslat + " models when estimating trajectories " + varnew + ", and a forecasting time of $" + str(ws) + "$ $s$"
                 ppart = ", with $p$-values equaling " + str_pvalslat
-                upart = ", and $U$ statistics equaling " + str_uvalslat + " respectively"
+                upart = ", and statistics equaling " + str_uvalslat + " respectively"
                 if usep:
                     sentence_use += ppart
                 if useu:
                     sentence_use += upart
                 if "," not in str_pvalslat:
-                    sentence_use = sentence_use.replace("models", "model").replace("$p$-values", "a $p$-value").replace("$U$ statistics", "a $U$ statistic")
+                    sentence_use = sentence_use.replace("models", "model").replace("$p$-values", "a $p$-value").replace("statistics", "a statistic")
                 if reverse_dir:
                     sentence_use = sentence_use.replace("does not make", "makes")
                 retval += "\n" + sentence_use.replace("actual", "actual value") + ".\n\n"
-                stat_test_results_file_lat = "filter_dicti_mann_whitney_base/" + var + "/p_lat_" + str(ws) + "_dicti_mann_whitney_base.csv"
+                stat_test_results_file_lat = "filter_" + start_name + "_base/" + var + "/p_lat_" + str(ws) + "_" + start_name + "_base.csv"
                 stattab, capt, reflab = read_dict(stat_test_results_file_lat, model_print_lat)
                 if use_appendix:
                     retval += capt[:-1] + " are listed in Table~" + reflab.replace("label", "ref") + ".\n"
@@ -474,7 +475,7 @@ def print_sentence(var, model, ws):
                 model_print.append(model2)
                 str_models += model2.replace("_", " ") + ", "
                 str_uvals += "$" + str(np.round(u, 0))[:-2] + "$, "
-                str_pvals += "$" + str(stringify(p, 3 - 1 * reverse_dir, not reverse_dir)[0]) + "$, "
+                str_pvals += "$" + str(stringify(p, 3 - 1 * reverse_dir, False)[0]) + "$, "
             str_models = str_models[:-2]
             str_uvals = str_uvals[:-2]
             str_pvals = str_pvals[:-2]
@@ -487,17 +488,17 @@ def print_sentence(var, model, ws):
             varnew = varnew.replace("speed actual dir", "speed, heading, and time")
             sentence_use = "The " + model.replace("_", " ") + " model does not make statistically significantly different predictions than the " + str_models + " models for " + varnew + " using a forecasting time of $" + str(ws) + "$ $s$"
             ppart = ", with $p$-values equaling " + str_pvals
-            upart = ", and $U$ statistics equaling " + str_uvals + " respectively"
+            upart = ", and statistics equaling " + str_uvals + " respectively"
             if usep:
                 sentence_use += ppart
             if useu:
                 sentence_use += upart
             if "," not in str_pvals:
-                sentence_use = sentence_use.replace("models", "model").replace("$p$-values", "a $p$-value").replace("$U$ statistics", "a $U$ statistic")
+                sentence_use = sentence_use.replace("models", "model").replace("$p$-values", "a $p$-value").replace("statistics", "a statistic")
             if reverse_dir:
                 sentence_use = sentence_use.replace("does not make", "makes")
             retval = sentence_use.replace("actual", "actual value") + ".\n\n"
-            stat_test_results_file = "filter_dicti_mann_whitney_base/" + var + "/p_" + str(ws) + "_dicti_mann_whitney_base.csv"
+            stat_test_results_file = "filter_" + start_name + "_base/" + var + "/p_" + str(ws) + "_" + start_name + "_base.csv"
             stattab, capt, reflab = read_dict(stat_test_results_file, model_print)
             if use_appendix:
                 retval += capt[:-1] + " are listed in Table~" + reflab.replace("label", "ref") + ".\n"
@@ -638,7 +639,7 @@ for name in name_list_total:
         for var in min_max_for_metric_for_ws:
             if "time" in var:
                 continue
-            pd_file_base = "dicti_mann_whitney"
+            pd_file_base = start_name
             if " " in var:
                 pd_file_base += "_traj"
             pd_file_var = pd_file_base + "_variables_" + metric + ".csv"
@@ -712,7 +713,7 @@ for name in name_list_total:
     for var in sorted(var_list):
         if "time" in var:
             continue
-        pd_file_base = "dicti_mann_whitney"
+        pd_file_base = start_name
         if " " in var:
             pd_file_base += "_traj"
         pd_file_base += ".csv"
@@ -853,20 +854,20 @@ for name in name_list_total:
             continue
         for model in sorted(model_list):
             for ws in sorted(ws_list):
-                save_dict(dicti_mann_whitney_var[metric][model][ws], "filter_dicti_mann_whitney_var/" + metric + "/" + model + "/", str(ws) + "_dicti_mann_whitney_var" + "_traj" * ("traj" in name) + ".csv")
+                save_dict(dicti_mann_whitney_var[metric][model][ws], "filter_" + start_name + "_var/" + metric + "/" + model + "/", str(ws) + "_" + start_name + "_var" + "_traj" * ("traj" in name) + ".csv")
         for var in sorted(var_list):
             if "time" in var:
                 continue
             for model in sorted(model_list):
-                save_dict(dicti_mann_whitney_ws[metric][var][model], "filter_dicti_mann_whitney_ws/" + metric + "/" + var + "/", model + "_dicti_mann_whitney_ws.csv")
+                save_dict(dicti_mann_whitney_ws[metric][var][model], "filter_" + start_name + "_ws/" + metric + "/" + var + "/", model + "_" + start_name + "_ws.csv")
             for ws in sorted(ws_list):
-                save_dict(dicti_mann_whitney_base_metric[metric][var][ws], "filter_dicti_mann_whitney_base_metric/" + metric + "/" + var + "/", str(ws) + "_dicti_mann_whitney_base_metric.csv")
+                save_dict(dicti_mann_whitney_base_metric[metric][var][ws], "filter_" + start_name + "_base_metric/" + metric + "/" + var + "/", str(ws) + "_" + start_name + "_base_metric.csv")
 
     for var in sorted(var_list):
         if "time" in var:
             continue
         for ws in sorted(ws_list):
-            save_dict(dicti_mann_whitney_base[var][ws], "filter_dicti_mann_whitney_base/" + var + "/", str(ws) + "_dicti_mann_whitney_base.csv")
+            save_dict(dicti_mann_whitney_base[var][ws], "filter_" + start_name + "_base/" + var + "/", str(ws) + "_" + start_name + "_base.csv")
 
     my_text = ""
     num_tab_occured = dict()
@@ -905,8 +906,8 @@ for name in name_list_total:
                 else:
                     label_mod1 = "traj_long"
                     label_mod2 = "traj_lat"
-                text_mod1 = "$p$-values for the Mann-Whitney $U$-test on actual and predicted values across $k$-fold validation datasets for " + var_fig1 + " in the $k$-fold testing datasets using different RNN models, and forecasting times."
-                text_mod2 = "$p$-values for the Mann-Whitney $U$-test on actual and predicted values across $k$-fold validation datasets for " + var_fig1 + " in the $k$-fold testing datasets using different RNN models, and forecasting times."
+                text_mod1 = "$p$-values for the " + translate_start_name[start_name]  + " on actual and predicted values across $k$-fold validation datasets for " + var_fig1 + " in the $k$-fold testing datasets using different RNN models, and forecasting times."
+                text_mod2 = "$p$-values for the " + translate_start_name[start_name]  + " on actual and predicted values across $k$-fold validation datasets for " + var_fig1 + " in the $k$-fold testing datasets using different RNN models, and forecasting times."
                 my_text_var += "\n\n\nFigure~\\ref{fig:" + label_mod1 + "} represents the " + text_mod1 + sentence_add
                 my_text_var += "\n\n\\begin{figure}[!ht]\n\t\\centering\n\t\\includegraphics[width = 0.99 \\linewidth]{" + label_mod1 + ".pdf}"
                 my_text_var += "\n\t\\caption{The " + text_mod1 + "}\n\t\\label{fig:" + label_mod1 + "}\n\\end{figure}\n\n\n"
@@ -915,7 +916,7 @@ for name in name_list_total:
                 my_text_var += "\n\t\\caption{The " + text_mod2 + "}\n\t\\label{fig:" + label_mod2 + "}\n\\end{figure}\n\n\n"
             else:    
                 label_mod = "var_" + var.replace("itude_no_abs", "")
-                text_mod = "$p$-values for the Mann-Whitney $U$-test on actual and predicted values across $k$-fold validation datasets for the " + var_fig + " in the $k$-fold testing datasets using different RNN models, and forecasting times."
+                text_mod = "$p$-values for the " + translate_start_name[start_name]  + " on actual and predicted values across $k$-fold validation datasets for the " + var_fig + " in the $k$-fold testing datasets using different RNN models, and forecasting times."
                 my_text_var += "\n\n\nFigure~\\ref{fig:" + label_mod + "} represents the " + text_mod + sentence_add
                 my_text_var += "\n\n\\begin{figure}[!ht]\n\t\\centering\n\t\\includegraphics[width = 0.99 \\linewidth]{" + label_mod + ".pdf}"
                 my_text_var += "\n\t\\caption{The " + text_mod + sentence_add + "}\n\t\\label{fig:" + label_mod + "}\n\\end{figure}\n\n\n"
@@ -1094,7 +1095,7 @@ for name in name_list_total:
                 sth = print_sentence(var, model, ws).strip()
                 while "\n" in sth:
                     sth = sth.replace("\n", "")
-                #print(sth)
+                print(sth)
                 usep = oldusep
 
 my_text_total_file = open("my_text_total.tex", "w")

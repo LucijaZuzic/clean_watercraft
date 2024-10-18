@@ -7,7 +7,7 @@ import os
 MAXINT = 10 ** 100
 cm = 1/2.54  # centimeters in inches
 
-def plot_dict(dict_use, save_name, subtitle, use_ws = []):
+def plot_dict(begin_name, dict_use, save_name, subtitle, use_ws = []):
     plt.figure(figsize=(21*cm, 29.7/2.1*len(use_ws)*cm), dpi = 300)
     
     plt.rcParams["svg.fonttype"] = "none"
@@ -74,89 +74,94 @@ def plot_dict(dict_use, save_name, subtitle, use_ws = []):
                 plt.yticks([])
             plt.xticks([])
         ix_var += 20
-    if not os.path.isdir("stats_dir_var_reverse"):
-        os.makedirs("stats_dir_var_reverse")
-    plt.savefig("stats_dir_var_reverse/" + save_name + ".svg", bbox_inches = "tight")
-    plt.savefig("stats_dir_var_reverse/" + save_name + ".png", bbox_inches = "tight")
-    plt.savefig("stats_dir_var_reverse/" + save_name + ".pdf", bbox_inches = "tight")
+    new_dir_name = "stats_dir_var_reverse/"    
+    if begin_name == "dicti_wilcoxon":
+        new_dir_name += "wilcoxon/"
+    if not os.path.isdir(new_dir_name):
+        os.makedirs(new_dir_name)
+    plt.savefig(new_dir_name + save_name + ".svg", bbox_inches = "tight")
+    plt.savefig(new_dir_name + save_name + ".png", bbox_inches = "tight")
+    plt.savefig(new_dir_name + save_name + ".pdf", bbox_inches = "tight")
     plt.close()
 
-for metric in ["R2", "MAE"]:
-    df_dictio = pd.read_csv("dicti_mann_whitney_variables_" + metric + ".csv", index_col = False)
+for start_name in ["dicti_mann_whitney", "dicti_wilcoxon"]:
 
-    model_list = set(df_dictio["model"])
-    var_list1 = set(list(df_dictio["variable1"]))
-    var_list2 = set(list(df_dictio["variable2"]))
-    var_list = set()
-    for m in var_list1:
-        var_list.add(m)
-    for m in var_list2:
-        var_list.add(m)
-    ws_list = set(df_dictio["ws"])
+    for metric in ["R2", "MAE"]:
+        df_dictio = pd.read_csv(start_name + "_variables_" + metric + ".csv", index_col = False)
 
-    dicti_mann_whitney = dict()
+        model_list = set(df_dictio["model"])
+        var_list1 = set(list(df_dictio["variable1"]))
+        var_list2 = set(list(df_dictio["variable2"]))
+        var_list = set()
+        for m in var_list1:
+            var_list.add(m)
+        for m in var_list2:
+            var_list.add(m)
+        ws_list = set(df_dictio["ws"])
 
-    for ws in ws_list:
-        dicti_mann_whitney[ws] = dict()
-        for model in model_list:
-            dicti_mann_whitney[ws][model] = dict()
-            for var1 in var_list:
-                dicti_mann_whitney[ws][model][var1] = dict()
-                for var2 in var_list:
-                    dicti_mann_whitney[ws][model][var1][var2] = (1.0, 1.0)
+        dicti_mann_whitney = dict()
 
-    for ix in range(len(df_dictio["model"])):
-        var1 = df_dictio["variable1"][ix]
-        var2 = df_dictio["variable2"][ix]
-        ws = df_dictio["ws"][ix]
-        model = df_dictio["model"][ix]
-        u = df_dictio["u"][ix] 
-        p = df_dictio["p"][ix]
-        dicti_mann_whitney[ws][model][var1][var2] = (u, p)
-        dicti_mann_whitney[ws][model][var2][var1] = (u, p)
+        for ws in ws_list:
+            dicti_mann_whitney[ws] = dict()
+            for model in model_list:
+                dicti_mann_whitney[ws][model] = dict()
+                for var1 in var_list:
+                    dicti_mann_whitney[ws][model][var1] = dict()
+                    for var2 in var_list:
+                        dicti_mann_whitney[ws][model][var1][var2] = (1.0, 1.0)
 
-    metricnew = metric.replace("R2", "$R^{2}$ (%)")
-    metricnew = metricnew.replace("euclid", "Euclidean distance")
-    metricnew = metricnew.replace("haversine", "Haversine distance")
-    for ws in set(list(df_dictio["ws"])):
-        plot_dict(dicti_mann_whitney, "var_" + str(ws) + "_" + metric, metricnew, [ws])
+        for ix in range(len(df_dictio["model"])):
+            var1 = df_dictio["variable1"][ix]
+            var2 = df_dictio["variable2"][ix]
+            ws = df_dictio["ws"][ix]
+            model = df_dictio["model"][ix]
+            u = df_dictio["u"][ix] 
+            p = df_dictio["p"][ix]
+            dicti_mann_whitney[ws][model][var1][var2] = (u, p)
+            dicti_mann_whitney[ws][model][var2][var1] = (u, p)
 
-for metric in ["R2", "MAE", "euclid", "haversine"]:
-    df_dictio_traj = pd.read_csv("dicti_mann_whitney_traj_variables_" + metric + ".csv", index_col = False)
+        metricnew = metric.replace("R2", "$R^{2}$ (%)")
+        metricnew = metricnew.replace("euclid", "Euclidean distance")
+        metricnew = metricnew.replace("haversine", "Haversine distance")
+        for ws in set(list(df_dictio["ws"])):
+            plot_dict(start_name, dicti_mann_whitney, "var_" + str(ws) + "_" + metric, metricnew, [ws])
 
-    model_list = set(df_dictio_traj["model"])
-    var_list1 = set(list(df_dictio_traj["variable1"]))
-    var_list2 = set(list(df_dictio_traj["variable2"]))
-    var_list = set()
-    for m in var_list1:
-        var_list.add(m)
-    for m in var_list2:
-        var_list.add(m)
-    ws_list = set(df_dictio_traj["ws"])
+    for metric in ["R2", "MAE", "euclid", "haversine"]:
+        df_dictio_traj = pd.read_csv(start_name + "_traj_variables_" + metric + ".csv", index_col = False)
 
-    dicti_mann_whitney_traj = dict()
+        model_list = set(df_dictio_traj["model"])
+        var_list1 = set(list(df_dictio_traj["variable1"]))
+        var_list2 = set(list(df_dictio_traj["variable2"]))
+        var_list = set()
+        for m in var_list1:
+            var_list.add(m)
+        for m in var_list2:
+            var_list.add(m)
+        ws_list = set(df_dictio_traj["ws"])
 
-    for ws in ws_list:
-        dicti_mann_whitney_traj[ws] = dict()
-        for model in model_list:
-            dicti_mann_whitney_traj[ws][model] = dict()
-            for var1 in var_list:
-                dicti_mann_whitney_traj[ws][model][var1] = dict()
-                for var2 in var_list:
-                    dicti_mann_whitney_traj[ws][model][var1][var2] = (1.0, 1.0)
+        dicti_mann_whitney_traj = dict()
 
-    for ix in range(len(df_dictio_traj["model"])):
-        var1 = df_dictio_traj["variable1"][ix]
-        var2 = df_dictio_traj["variable2"][ix]
-        ws = df_dictio_traj["ws"][ix]
-        model = df_dictio_traj["model"][ix]
-        u = df_dictio_traj["u"][ix] 
-        p = df_dictio_traj["p"][ix]
-        dicti_mann_whitney_traj[ws][model][var1][var2] = (u, p)
-        dicti_mann_whitney_traj[ws][model][var2][var1] = (u, p)
+        for ws in ws_list:
+            dicti_mann_whitney_traj[ws] = dict()
+            for model in model_list:
+                dicti_mann_whitney_traj[ws][model] = dict()
+                for var1 in var_list:
+                    dicti_mann_whitney_traj[ws][model][var1] = dict()
+                    for var2 in var_list:
+                        dicti_mann_whitney_traj[ws][model][var1][var2] = (1.0, 1.0)
 
-    metricnew = metric.replace("R2", "$R^{2}$ (%)")
-    metricnew = metricnew.replace("euclid", "Euclidean distance")
-    metricnew = metricnew.replace("haversine", "Haversine distance")
-    for ws in set(list(df_dictio_traj["ws"])):
-        plot_dict(dicti_mann_whitney_traj, "traj_" + str(ws) + "_" + metric, metricnew, [ws])
+        for ix in range(len(df_dictio_traj["model"])):
+            var1 = df_dictio_traj["variable1"][ix]
+            var2 = df_dictio_traj["variable2"][ix]
+            ws = df_dictio_traj["ws"][ix]
+            model = df_dictio_traj["model"][ix]
+            u = df_dictio_traj["u"][ix] 
+            p = df_dictio_traj["p"][ix]
+            dicti_mann_whitney_traj[ws][model][var1][var2] = (u, p)
+            dicti_mann_whitney_traj[ws][model][var2][var1] = (u, p)
+
+        metricnew = metric.replace("R2", "$R^{2}$ (%)")
+        metricnew = metricnew.replace("euclid", "Euclidean distance")
+        metricnew = metricnew.replace("haversine", "Haversine distance")
+        for ws in set(list(df_dictio_traj["ws"])):
+            plot_dict(start_name, dicti_mann_whitney_traj, "traj_" + str(ws) + "_" + metric, metricnew, [ws])

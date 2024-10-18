@@ -2,12 +2,12 @@
 %\label{subsec:direction_results}
 %\vspace{10pt}
 
-Figure~\ref{fig:var_direction} represents the $p$-values for the Mann-Whitney $U$-test on actual and predicted values across $k$-fold validation datasets for the heading in the $k$-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because models equal themselves.
+Figure~\ref{fig:var_direction} represents the $p$-values for the Wilcoxon signed-rank test on actual and predicted values across $k$-fold validation datasets for the heading in the $k$-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because models equal themselves.
 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width = 0.99 \linewidth]{var_direction.pdf}
-	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across $k$-fold validation datasets for the heading in the $k$-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because models equal themselves.}
+	\caption{The $p$-values for the Wilcoxon signed-rank test on actual and predicted values across $k$-fold validation datasets for the heading in the $k$-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because models equal themselves.}
 	\label{fig:var_direction}
 \end{figure}
 
@@ -40,13 +40,7 @@ The average $R^{2}$ (\%), with standard deviation in brackets, across $k$-fold v
 
 The RNN Linear model achieved the highest $R^{2}$ (\%) for heading, and a forecasting time of $2$, $3$, and $4$ $s$ with average values and standard deviation (in brackets) that equal $86.11$\% ($1.3$\%), $79.12$\% ($2.11$\%), and $72.83$\% ($2.27$\%) respectively.
 
-The RNN Linear model does not make statistically significantly different predictions than the GRU Att 1, GRU Att 2, GRU Att 3, GRU Att 4, UniTS, and actual value models for heading using a forecasting time of $2$ $s$, with $p$-values equaling $0.115$, $0.119$, $0.007$, $0.412$, $0.002$, and $0.0$.
-
 The UniTS model achieved the highest $R^{2}$ (\%) for heading, and a forecasting time of $5$, $10$, $20$, and $30$ $s$ with average values and standard deviation (in brackets) that equal $68.39$\% ($2.55$\%), $57.72$\% ($2.76$\%), $44.0$\% ($3.21$\%), and $34.98$\% ($3.79$\%) respectively.
-
-The UniTS model does not make statistically significantly different predictions than the GRU Att 1, GRU Att 3, GRU Att 4, and RNN Linear models for heading using a forecasting time of $5$ $s$, with $p$-values equaling $0.001$, $0.433$, $0.099$, and $0.443$.
-
-The UniTS model does not make statistically significantly different predictions than the GRU Att 3, and GRU Att 4 models for heading using a forecasting time of $10$ $s$, with $p$-values equaling $0.132$, and $0.228$.
 
 Figure~\ref{fig:best_MAE_val} contains the average MAE across $k$-fold testing datasets using different validation datasets for all variables estimated in nested $k$-fold cross-validation by different RNN models, and forecasting times.
 
@@ -77,15 +71,9 @@ The average MAE in $\degree$, with standard deviation in brackets, across $k$-fo
 
 The GRU Att 1 model achieved the lowest MAE for heading, and a forecasting time of $10$, $2$, $3$, $4$, and $5$ $s$ with average values and standard deviation (in brackets) that equal $32.74$ $\degree$ ($2.14$ $\degree$), $11.77$ $\degree$ ($1.29$ $\degree$), $15.7$ $\degree$ ($1.63$ $\degree$), $19.33$ $\degree$ ($1.67$ $\degree$), and $21.9$ $\degree$ ($1.75$ $\degree$) respectively.
 
-The GRU Att 1 model does not make statistically significantly different predictions than the GRU Att 2, and actual value models for heading using a forecasting time of $10$ $s$, with $p$-values equaling $0.535$, and $0.008$.
+The GRU Att 1 model does not make statistically significantly different predictions than the GRU Att 4 model for heading using a forecasting time of $2$ $s$, with a $p$-value equaling $3.018 \times 10^{-1}$.
 
-The GRU Att 1 model does not make statistically significantly different predictions than the GRU Att 2, GRU Att 4, RNN Linear, and UniTS models for heading using a forecasting time of $2$ $s$, with $p$-values equaling $0.002$, $0.042$, $0.115$, and $0.001$.
-
-The GRU Att 1 model does not make statistically significantly different predictions than the GRU Att 3, GRU Att 4, GRU Linear, LSTM Linear, and UniTS models for heading using a forecasting time of $3$ $s$, with $p$-values equaling $0.823$, $0.958$, $0.776$, $0.904$, and $0.485$.
-
-The GRU Att 1 model does not make statistically significantly different predictions than the GRU Att 2, GRU Att 3, GRU Att 4, GRU Linear, LSTM Linear, UniTS, and actual value models for heading using a forecasting time of $4$ $s$, with $p$-values equaling $0.078$, $0.041$, $0.002$, $0.538$, $0.002$, $0.005$, and $0.011$.
-
-The GRU Att 1 model does not make statistically significantly different predictions than the GRU Att 2, UniTS, and actual value models for heading using a forecasting time of $5$ $s$, with $p$-values equaling $0.068$, $0.001$, and $0.081$.
+The GRU Att 1 model does not make statistically significantly different predictions than the GRU Att 3 model for heading using a forecasting time of $3$ $s$, with a $p$-value equaling $4.596 \times 10^{-4}$.
 
 The UniTS model achieved the lowest MAE for heading, and a forecasting time of $20$, and $30$ $s$ with average values and standard deviation (in brackets) that equal $47.49$ $\degree$ ($2.55$ $\degree$), and $55.81$ $\degree$ ($3.01$ $\degree$) respectively.
 
@@ -93,12 +81,12 @@ The UniTS model achieved the lowest MAE for heading, and a forecasting time of $
 %\label{subsec:latitude_no_abs_results}
 %\vspace{10pt}
 
-Figure~\ref{fig:var_lat} represents the $p$-values for the Mann-Whitney $U$-test on actual and predicted values across $k$-fold validation datasets for the $y$ offset in the $k$-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because models equal themselves.
+Figure~\ref{fig:var_lat} represents the $p$-values for the Wilcoxon signed-rank test on actual and predicted values across $k$-fold validation datasets for the $y$ offset in the $k$-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because models equal themselves.
 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width = 0.99 \linewidth]{var_lat.pdf}
-	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across $k$-fold validation datasets for the $y$ offset in the $k$-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because models equal themselves.}
+	\caption{The $p$-values for the Wilcoxon signed-rank test on actual and predicted values across $k$-fold validation datasets for the $y$ offset in the $k$-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because models equal themselves.}
 	\label{fig:var_lat}
 \end{figure}
 
@@ -126,21 +114,19 @@ The average $R^{2}$ (\%), with standard deviation in brackets, across $k$-fold v
 
 The GRU Att 2 model achieved the highest $R^{2}$ (\%) for $y$ offset, and a forecasting time of $4$, and $5$ $s$ with average values and standard deviation (in brackets) that equal $87.69$\% ($1.72$\%), and $84.05$\% ($1.93$\%) respectively.
 
-The GRU Att 2 model does not make statistically significantly different predictions than the GRU Att 1, GRU Att 3, GRU Att 4, GRU Third, UniTS, and actual value models for $y$ offset using a forecasting time of $4$ $s$, with $p$-values equaling $0.178$, $0.219$, $0.236$, $0.001$, $0.0$, and $0.509$.
-
-The GRU Att 2 model does not make statistically significantly different predictions than the GRU Att 1, GRU Att 3, GRU Att 4, UniTS, and actual value models for $y$ offset using a forecasting time of $5$ $s$, with $p$-values equaling $0.069$, $0.153$, $0.789$, $0.018$, and $0.209$.
-
 The GRU Reference model achieved the highest $R^{2}$ (\%) for $y$ offset, and a forecasting time of $2$ $s$ with an average value and standard deviation (in brackets) that equals $95.61$\% ($2.14$\%).
 
 The LSTM Third model achieved the highest $R^{2}$ (\%) for $y$ offset, and a forecasting time of $3$ $s$ with an average value and standard deviation (in brackets) that equals $90.91$\% ($5.23$\%).
 
+The LSTM Third model does not make statistically significantly different predictions than the LSTM Twice model for $y$ offset using a forecasting time of $3$ $s$, with a $p$-value equaling $6.104 \times 10^{-2}$.
+
 The UniTS model achieved the highest $R^{2}$ (\%) for $y$ offset, and a forecasting time of $10$, $20$, and $30$ $s$ with average values and standard deviation (in brackets) that equal $68.0$\% ($2.31$\%), $41.68$\% ($3.95$\%), and $24.17$\% ($4.68$\%) respectively.
 
-The UniTS model does not make statistically significantly different predictions than the GRU Att 2, GRU Att 3, LSTM Third, and actual value models for $y$ offset using a forecasting time of $10$ $s$, with $p$-values equaling $0.664$, $0.052$, $0.068$, and $0.019$.
+The UniTS model does not make statistically significantly different predictions than the GRU Att 3, and actual value models for $y$ offset using a forecasting time of $10$ $s$, with $p$-values equaling $7.389 \times 10^{-3}$, and $4.075 \times 10^{-1}$.
 
-The UniTS model does not make statistically significantly different predictions than the GRU Att 4, GRU Third, RNN Twice, and actual value models for $y$ offset using a forecasting time of $20$ $s$, with $p$-values equaling $0.054$, $0.002$, $0.464$, and $0.538$.
+The UniTS model does not make statistically significantly different predictions than the actual value model for $y$ offset using a forecasting time of $20$ $s$, with a $p$-value equaling $6.866 \times 10^{-2}$.
 
-The UniTS model does not make statistically significantly different predictions than the GRU Att 2, GRU Att 4, and actual value models for $y$ offset using a forecasting time of $30$ $s$, with $p$-values equaling $0.093$, $0.472$, and $0.152$.
+The UniTS model does not make statistically significantly different predictions than the GRU Att 2, GRU Linear, and actual value models for $y$ offset using a forecasting time of $30$ $s$, with $p$-values equaling $1.002 \times 10^{-1}$, $3.812 \times 10^{-3}$, and $1.084 \times 10^{-2}$.
 
 The average MAE in $\degree$ ($\times 10^{-5}$), with standard deviation in brackets, across $k$-fold validation datasets for the $y$ offset estimated on the $k$-fold testing datasets by different RNN models, and forecasting times is listed in Table~\ref{tab:best_latitude_no_abs_MAE}.
 
@@ -166,36 +152,30 @@ The average MAE in $\degree$ ($\times 10^{-5}$), with standard deviation in brac
 
 The GRU Att 1 model achieved the lowest MAE for $y$ offset, and a forecasting time of $2$, and $3$ $s$ with average values and standard deviation (in brackets) that equal $5.558 \times 10^{-5}$ $\degree$ ($0.492 \times 10^{-5}$ $\degree$), and $7.454 \times 10^{-5}$ $\degree$ ($0.708 \times 10^{-5}$ $\degree$) respectively.
 
-The GRU Att 1 model does not make statistically significantly different predictions than the GRU Att 2, GRU Att 3, GRU Att 4, UniTS, and actual value models for $y$ offset using a forecasting time of $2$ $s$, with $p$-values equaling $0.948$, $0.048$, $0.378$, $0.011$, and $0.494$.
-
-The GRU Att 1 model does not make statistically significantly different predictions than the GRU Att 2, GRU Att 3, GRU Att 4, LSTM Linear, LSTM Twice, and actual value models for $y$ offset using a forecasting time of $3$ $s$, with $p$-values equaling $0.766$, $0.273$, $0.7$, $0.017$, $0.102$, and $0.453$.
+The GRU Att 1 model does not make statistically significantly different predictions than the UniTS model for $y$ offset using a forecasting time of $2$ $s$, with a $p$-value equaling $1.373 \times 10^{-3}$.
 
 The GRU Att 2 model achieved the lowest MAE for $y$ offset, and a forecasting time of $4$, and $5$ $s$ with average values and standard deviation (in brackets) that equal $8.816 \times 10^{-5}$ $\degree$ ($0.762 \times 10^{-5}$ $\degree$), and $10.118 \times 10^{-5}$ $\degree$ ($0.997 \times 10^{-5}$ $\degree$) respectively.
 
-The GRU Att 2 model does not make statistically significantly different predictions than the GRU Att 1, GRU Att 3, GRU Att 4, GRU Third, UniTS, and actual value models for $y$ offset using a forecasting time of $4$ $s$, with $p$-values equaling $0.178$, $0.219$, $0.236$, $0.001$, $0.0$, and $0.509$.
-
-The GRU Att 2 model does not make statistically significantly different predictions than the GRU Att 1, GRU Att 3, GRU Att 4, UniTS, and actual value models for $y$ offset using a forecasting time of $5$ $s$, with $p$-values equaling $0.069$, $0.153$, $0.789$, $0.018$, and $0.209$.
-
 The GRU Att 4 model achieved the lowest MAE for $y$ offset, and a forecasting time of $10$ $s$ with an average value and standard deviation (in brackets) that equals $16.223 \times 10^{-5}$ $\degree$ ($1.953 \times 10^{-5}$ $\degree$).
 
-The GRU Att 4 model does not make statistically significantly different predictions than the GRU Att 2, LSTM Linear, LSTM Third, and actual value models for $y$ offset using a forecasting time of $10$ $s$, with $p$-values equaling $0.001$, $0.0$, $0.006$, and $0.214$.
+The GRU Att 4 model does not make statistically significantly different predictions than the LSTM Linear model for $y$ offset using a forecasting time of $10$ $s$, with a $p$-value equaling $1.121 \times 10^{-2}$.
 
 The UniTS model achieved the lowest MAE for $y$ offset, and a forecasting time of $20$, and $30$ $s$ with average values and standard deviation (in brackets) that equal $23.209 \times 10^{-5}$ $\degree$ ($2.001 \times 10^{-5}$ $\degree$), and $27.355 \times 10^{-5}$ $\degree$ ($2.3 \times 10^{-5}$ $\degree$) respectively.
 
-The UniTS model does not make statistically significantly different predictions than the GRU Att 4, GRU Third, RNN Twice, and actual value models for $y$ offset using a forecasting time of $20$ $s$, with $p$-values equaling $0.054$, $0.002$, $0.464$, and $0.538$.
+The UniTS model does not make statistically significantly different predictions than the actual value model for $y$ offset using a forecasting time of $20$ $s$, with a $p$-value equaling $6.866 \times 10^{-2}$.
 
-The UniTS model does not make statistically significantly different predictions than the GRU Att 2, GRU Att 4, and actual value models for $y$ offset using a forecasting time of $30$ $s$, with $p$-values equaling $0.093$, $0.472$, and $0.152$.
+The UniTS model does not make statistically significantly different predictions than the GRU Att 2, GRU Linear, and actual value models for $y$ offset using a forecasting time of $30$ $s$, with $p$-values equaling $1.002 \times 10^{-1}$, $3.812 \times 10^{-3}$, and $1.084 \times 10^{-2}$.
 
 \subsection{Results for $x$ Offset}
 %\label{subsec:longitude_no_abs_results}
 %\vspace{10pt}
 
-Figure~\ref{fig:var_long} represents the $p$-values for the Mann-Whitney $U$-test on actual and predicted values across $k$-fold validation datasets for the $x$ offset in the $k$-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because models equal themselves.
+Figure~\ref{fig:var_long} represents the $p$-values for the Wilcoxon signed-rank test on actual and predicted values across $k$-fold validation datasets for the $x$ offset in the $k$-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because models equal themselves.
 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width = 0.99 \linewidth]{var_long.pdf}
-	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across $k$-fold validation datasets for the $x$ offset in the $k$-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because models equal themselves.}
+	\caption{The $p$-values for the Wilcoxon signed-rank test on actual and predicted values across $k$-fold validation datasets for the $x$ offset in the $k$-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because models equal themselves.}
 	\label{fig:var_long}
 \end{figure}
 
@@ -221,21 +201,19 @@ The average $R^{2}$ (\%), with standard deviation in brackets, across $k$-fold v
 
 The GRU Att 1 model achieved the highest $R^{2}$ (\%) for $x$ offset, and a forecasting time of $3$ $s$ with an average value and standard deviation (in brackets) that equals $91.83$\% ($1.53$\%).
 
-The GRU Att 1 model does not make statistically significantly different predictions than the GRU Att 2, GRU Att 3, GRU Att 4, GRU Linear, LSTM Linear, RNN Third, and actual value models for $x$ offset using a forecasting time of $3$ $s$, with $p$-values equaling $0.175$, $0.968$, $0.571$, $0.304$, $0.004$, $0.023$, and $0.9$.
+The GRU Att 1 model does not make statistically significantly different predictions than the GRU Att 4, and RNN Third models for $x$ offset using a forecasting time of $3$ $s$, with $p$-values equaling $1.579 \times 10^{-1}$, and $8.207 \times 10^{-1}$.
 
 The LSTM Third model achieved the highest $R^{2}$ (\%) for $x$ offset, and a forecasting time of $2$ $s$ with an average value and standard deviation (in brackets) that equals $96.88$\% ($1.13$\%).
 
-The LSTM Third model does not make statistically significantly different predictions than the LSTM Reference model for $x$ offset using a forecasting time of $2$ $s$, with a $p$-value equaling $0.063$.
-
 The UniTS model achieved the highest $R^{2}$ (\%) for $x$ offset, and a forecasting time of $4$, $5$, $10$, $20$, and $30$ $s$ with average values and standard deviation (in brackets) that equal $88.19$\% ($1.32$\%), $85.09$\% ($1.57$\%), $69.54$\% ($2.54$\%), $42.6$\% ($3.68$\%), and $23.39$\% ($4.0$\%) respectively.
 
-The UniTS model does not make statistically significantly different predictions than the GRU Att 3, and actual value models for $x$ offset using a forecasting time of $4$ $s$, with $p$-values equaling $0.002$, and $0.003$.
+The UniTS model does not make statistically significantly different predictions than the GRU Twice, and LSTM Third models for $x$ offset using a forecasting time of $5$ $s$, with $p$-values equaling $6.213 \times 10^{-1}$, and $2.591 \times 10^{-1}$.
 
-The UniTS model does not make statistically significantly different predictions than the GRU Att 3, GRU Twice, LSTM Third, and actual value models for $x$ offset using a forecasting time of $5$ $s$, with $p$-values equaling $0.016$, $0.003$, $0.063$, and $0.005$.
+The UniTS model does not make statistically significantly different predictions than the RNN Third model for $x$ offset using a forecasting time of $10$ $s$, with a $p$-value equaling $1.747 \times 10^{-3}$.
 
-The UniTS model does not make statistically significantly different predictions than the GRU Att 2, GRU Att 3, LSTM Reference, LSTM Twice, and actual value models for $x$ offset using a forecasting time of $10$ $s$, with $p$-values equaling $0.046$, $0.54$, $0.007$, $0.001$, and $0.0$.
+The UniTS model does not make statistically significantly different predictions than the GRU Att 1, and LSTM Twice models for $x$ offset using a forecasting time of $20$ $s$, with $p$-values equaling $7.814 \times 10^{-1}$, and $5.546 \times 10^{-2}$.
 
-The UniTS model does not make statistically significantly different predictions than the GRU Att 3, and GRU Third models for $x$ offset using a forecasting time of $20$ $s$, with $p$-values equaling $0.976$, and $0.204$.
+The UniTS model does not make statistically significantly different predictions than the GRU Reference model for $x$ offset using a forecasting time of $30$ $s$, with a $p$-value equaling $6.734 \times 10^{-3}$.
 
 The average MAE in $\degree$ ($\times 10^{-5}$), with standard deviation in brackets, across $k$-fold validation datasets for the $x$ offset estimated on the $k$-fold testing datasets by different RNN models, and forecasting times is listed in Table~\ref{tab:best_longitude_no_abs_MAE}.
 
@@ -259,32 +237,32 @@ The average MAE in $\degree$ ($\times 10^{-5}$), with standard deviation in brac
 
 The GRU Att 1 model achieved the lowest MAE for $x$ offset, and a forecasting time of $2$, $3$, $4$, and $5$ $s$ with average values and standard deviation (in brackets) that equal $6.81 \times 10^{-5}$ $\degree$ ($0.85 \times 10^{-5}$ $\degree$), $9.13 \times 10^{-5}$ $\degree$ ($1.09 \times 10^{-5}$ $\degree$), $11.39 \times 10^{-5}$ $\degree$ ($1.48 \times 10^{-5}$ $\degree$), and $12.77 \times 10^{-5}$ $\degree$ ($1.41 \times 10^{-5}$ $\degree$) respectively.
 
-The GRU Att 1 model does not make statistically significantly different predictions than the GRU Att 2, GRU Att 3, GRU Att 4, LSTM Linear, LSTM Twice, UniTS, and actual value models for $x$ offset using a forecasting time of $2$ $s$, with $p$-values equaling $0.954$, $0.611$, $0.524$, $0.052$, $0.02$, $0.265$, and $0.412$.
+The GRU Att 1 model does not make statistically significantly different predictions than the GRU Att 2, and GRU Att 3 models for $x$ offset using a forecasting time of $2$ $s$, with $p$-values equaling $7.278 \times 10^{-1}$, and $2.838 \times 10^{-2}$.
 
-The GRU Att 1 model does not make statistically significantly different predictions than the GRU Att 2, GRU Att 3, GRU Att 4, GRU Linear, LSTM Linear, RNN Third, and actual value models for $x$ offset using a forecasting time of $3$ $s$, with $p$-values equaling $0.175$, $0.968$, $0.571$, $0.304$, $0.004$, $0.023$, and $0.9$.
+The GRU Att 1 model does not make statistically significantly different predictions than the GRU Att 4, and RNN Third models for $x$ offset using a forecasting time of $3$ $s$, with $p$-values equaling $1.579 \times 10^{-1}$, and $8.207 \times 10^{-1}$.
 
-The GRU Att 1 model does not make statistically significantly different predictions than the GRU Att 2, GRU Att 3, GRU Att 4, LSTM Twice, RNN Linear, and actual value models for $x$ offset using a forecasting time of $4$ $s$, with $p$-values equaling $0.063$, $0.45$, $0.756$, $0.728$, $0.054$, and $0.417$.
-
-The GRU Att 1 model does not make statistically significantly different predictions than the GRU Att 2, GRU Att 3, GRU Att 4, and actual value models for $x$ offset using a forecasting time of $5$ $s$, with $p$-values equaling $0.031$, $0.332$, $0.574$, and $0.595$.
+The GRU Att 1 model does not make statistically significantly different predictions than the RNN Linear model for $x$ offset using a forecasting time of $4$ $s$, with a $p$-value equaling $2.789 \times 10^{-2}$.
 
 The GRU Att 2 model achieved the lowest MAE for $x$ offset, and a forecasting time of $10$ $s$ with an average value and standard deviation (in brackets) that equals $20.61 \times 10^{-5}$ $\degree$ ($2.81 \times 10^{-5}$ $\degree$).
 
-The GRU Att 2 model does not make statistically significantly different predictions than the GRU Att 3, LSTM Third, UniTS, and actual value models for $x$ offset using a forecasting time of $10$ $s$, with $p$-values equaling $0.055$, $0.145$, $0.046$, and $0.037$.
+The GRU Att 2 model does not make statistically significantly different predictions than the GRU Reference model for $x$ offset using a forecasting time of $10$ $s$, with a $p$-value equaling $4.694 \times 10^{-1}$.
 
 The UniTS model achieved the lowest MAE for $x$ offset, and a forecasting time of $20$, and $30$ $s$ with average values and standard deviation (in brackets) that equal $29.73 \times 10^{-5}$ $\degree$ ($3.04 \times 10^{-5}$ $\degree$), and $35.17 \times 10^{-5}$ $\degree$ ($3.37 \times 10^{-5}$ $\degree$) respectively.
 
-The UniTS model does not make statistically significantly different predictions than the GRU Att 3, and GRU Third models for $x$ offset using a forecasting time of $20$ $s$, with $p$-values equaling $0.976$, and $0.204$.
+The UniTS model does not make statistically significantly different predictions than the GRU Att 1, and LSTM Twice models for $x$ offset using a forecasting time of $20$ $s$, with $p$-values equaling $7.814 \times 10^{-1}$, and $5.546 \times 10^{-2}$.
+
+The UniTS model does not make statistically significantly different predictions than the GRU Reference model for $x$ offset using a forecasting time of $30$ $s$, with a $p$-value equaling $6.734 \times 10^{-3}$.
 
 \subsection{Results for Speed}
 %\label{subsec:speed_results}
 %\vspace{10pt}
 
-Figure~\ref{fig:var_speed} represents the $p$-values for the Mann-Whitney $U$-test on actual and predicted values across $k$-fold validation datasets for the speed in the $k$-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because models equal themselves.
+Figure~\ref{fig:var_speed} represents the $p$-values for the Wilcoxon signed-rank test on actual and predicted values across $k$-fold validation datasets for the speed in the $k$-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because models equal themselves.
 
 \begin{figure}[!ht]
 	\centering
 	\includegraphics[width = 0.99 \linewidth]{var_speed.pdf}
-	\caption{The $p$-values for the Mann-Whitney $U$-test on actual and predicted values across $k$-fold validation datasets for the speed in the $k$-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because models equal themselves.}
+	\caption{The $p$-values for the Wilcoxon signed-rank test on actual and predicted values across $k$-fold validation datasets for the speed in the $k$-fold testing datasets using different RNN models, and forecasting times. Darker colors in grayscale represent a higher $p$-value in a range from $0$ to $1$. The values on the secondary diagonal are all equal to $1$ and black because models equal themselves.}
 	\label{fig:var_speed}
 \end{figure}
 
@@ -308,13 +286,11 @@ The average $R^{2}$ (\%), with standard deviation in brackets, across $k$-fold v
 
 The LSTM Linear model achieved the highest $R^{2}$ (\%) for speed, and a forecasting time of $2$ $s$ with an average value and standard deviation (in brackets) that equals $94.39$\% ($0.63$\%).
 
-The LSTM Linear model does not make statistically significantly different predictions than the GRU Linear model for speed using a forecasting time of $2$ $s$, with a $p$-value equaling $0.084$.
+The LSTM Linear model does not make statistically significantly different predictions than the GRU Linear model for speed using a forecasting time of $2$ $s$, with a $p$-value equaling $5.067 \times 10^{-4}$.
 
 The UniTS model achieved the highest $R^{2}$ (\%) for speed, and a forecasting time of $3$, $4$, $5$, $10$, $20$, and $30$ $s$ with average values and standard deviation (in brackets) that equal $90.5$\% ($0.92$\%), $87.48$\% ($1.21$\%), $84.54$\% ($1.49$\%), $72.89$\% ($2.68$\%), $61.53$\% ($3.89$\%), and $56.21$\% ($3.92$\%) respectively.
 
-The UniTS model does not make statistically significantly different predictions than the actual value model for speed using a forecasting time of $4$ $s$, with a $p$-value equaling $0.002$.
-
-The UniTS model does not make statistically significantly different predictions than the actual value model for speed using a forecasting time of $5$ $s$, with a $p$-value equaling $0.051$.
+The UniTS model does not make statistically significantly different predictions than the GRU Att 1 model for speed using a forecasting time of $10$ $s$, with a $p$-value equaling $7.354 \times 10^{-2}$.
 
 The average MAE in $km/h$, with standard deviation in brackets, across $k$-fold validation datasets for the speed estimated on the $k$-fold testing datasets by different RNN models, and forecasting times is listed in Table~\ref{tab:best_speed_MAE}.
 
@@ -336,11 +312,9 @@ The average MAE in $km/h$, with standard deviation in brackets, across $k$-fold 
 
 The LSTM Linear model achieved the lowest MAE for speed, and a forecasting time of $2$ $s$ with an average value and standard deviation (in brackets) that equals $2.46$ $km/h$ ($0.23$ $km/h$).
 
-The LSTM Linear model does not make statistically significantly different predictions than the GRU Linear model for speed using a forecasting time of $2$ $s$, with a $p$-value equaling $0.084$.
+The LSTM Linear model does not make statistically significantly different predictions than the GRU Linear model for speed using a forecasting time of $2$ $s$, with a $p$-value equaling $5.067 \times 10^{-4}$.
 
 The UniTS model achieved the lowest MAE for speed, and a forecasting time of $3$, $4$, $5$, $10$, $20$, and $30$ $s$ with average values and standard deviation (in brackets) that equal $3.31$ $km/h$ ($0.31$ $km/h$), $3.8$ $km/h$ ($0.36$ $km/h$), $4.23$ $km/h$ ($0.4$ $km/h$), $5.7$ $km/h$ ($0.55$ $km/h$), $7.02$ $km/h$ ($0.66$ $km/h$), and $7.65$ $km/h$ ($0.67$ $km/h$) respectively.
 
-The UniTS model does not make statistically significantly different predictions than the actual value model for speed using a forecasting time of $4$ $s$, with a $p$-value equaling $0.002$.
-
-The UniTS model does not make statistically significantly different predictions than the actual value model for speed using a forecasting time of $5$ $s$, with a $p$-value equaling $0.051$.
+The UniTS model does not make statistically significantly different predictions than the GRU Att 1 model for speed using a forecasting time of $10$ $s$, with a $p$-value equaling $7.354 \times 10^{-2}$.
 
