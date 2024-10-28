@@ -7,6 +7,18 @@ import os
 MAXINT = 10 ** 100
 cm = 1/2.54  # centimeters in inches
 
+def stringify(value_round, rounding, skip_mul):
+    if value_round == 0:
+        return "0", 0
+    if abs(value_round) >= 1 or skip_mul:
+        return str(np.round(value_round, rounding)), 0
+    else:
+        pot = 0
+        while abs(value_round) < 1:
+            pot += 1
+            value_round *= 10
+        return "$" + str(np.round(value_round, rounding)) + "$\n$\\times 10^{-" + str(pot) + "}$", pot
+    
 def plot_dict(begin_name, dict_use, save_name, subtitle, use_var = []):
     plt.figure(figsize=(21*cm, 29.7/2.4*len(use_var)*cm), dpi = 300)
     
@@ -45,14 +57,14 @@ def plot_dict(begin_name, dict_use, save_name, subtitle, use_var = []):
                     ymax = y + stepy / 2
                     valu = 1 - dict_use[var][ws][m1][m2][1]
                     hexcode = "#" + str(hex(int(np.round(valu * 255, 0)))).replace("0x", "") * 3
-                    mid_x = x - stepx / 2 + stepx / 8
+                    mid_x = x - stepx / 2 + stepx / 16
                     mid_y = (y - stepy / 2 + y + stepy / 2) / 2
                     if valu > 0.5:
                         hexcode_opposite = "#000000"
                     else:
                         hexcode_opposite = "#ffffff"
                     plt.fill_between(xarr, ymin, ymax, color = hexcode)
-                    plt.text(mid_x, mid_y, str(np.round(dict_use[var][ws][m1][m2][1], 3)), color = hexcode_opposite)
+                    plt.text(mid_x, mid_y, stringify(dict_use[var][ws][m1][m2][1], 3, False)[0], color = hexcode_opposite)
                     y += stepy
                 x += stepx
             range_vals = np.arange(- stepx / 2, x, stepx)
