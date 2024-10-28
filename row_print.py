@@ -14,8 +14,8 @@ useu = False
 reverse_dir = False
 print_var_res = False
 print_ws_res = False
-print_metric_res = False
-print_pred_res = True
+print_metric_res = True
+print_pred_res = False
 start_name = "dicti_wilcoxon"
 translate_start_name = {"dicti_wilcoxon": "Wilcoxon signed-rank test", "dicti_mann_whitney": "Mann-Whitney $U$-test"}
 def read_dict(dict_p_path, usable_cols):
@@ -533,7 +533,8 @@ name_list_total = []
 name_list_total.extend(name_list)
 name_list_total.extend(name_list_traj)
 
-round_val = {"R2": (100, 2, 3), "MAE": (1, 2, 1), "euclid": (1, 2, 1), "haversine": (1, 2, 1)}
+round_val = {"R2": (100, 2, 3), "MAE": (1, 2, 1), "MSE": (1, 2, 1), "RMSE": (1, 2, 1), "euclid": (1, 2, 1), "haversine": (1, 2, 1)}
+round_val = {"RMSE": (1, 2, 1)}
 my_text_total = ""
 my_appendix_total = ""
 for name in name_list_total:
@@ -607,21 +608,21 @@ for name in name_list_total:
                             metric_min = dictio_avg[var][model][ws][metric]
                             model_min = model
                         min_max_for_metric_for_ws[var][ws][metric] = (metric_min, model_min, metric_max, model_max)
-
-    if "no abs" in dictio:
-        for ws in [2, 3, 4, 5, 10, 20, 30]:
-            for var in ["no abs"]:
-                for metric in ["R2"]:
-                    for model in ["UniTS"]:
-                            averages = []
-                            for ps in range(5):
-                                list_new = dictio[var][model][ws][metric][ps*5:(ps+1)*5]
-                                averages.append(np.average(list_new))
-                            continue
-                            if "R2" in metric:
-                                print(averages, np.argmax(averages) + 1)
-                            else:
-                                print(averages, np.argmin(averages) + 1)
+    if False:
+        if "no abs" in dictio:
+            for ws in [2, 3, 4, 5, 10, 20, 30]:
+                for var in ["no abs"]:
+                    for metric in ["R2"]:
+                        for model in ["UniTS"]:
+                                averages = []
+                                for ps in range(5):
+                                    list_new = dictio[var][model][ws][metric][ps*5:(ps+1)*5]
+                                    averages.append(np.average(list_new))
+                                continue
+                                if "R2" in metric:
+                                    print(averages, np.argmax(averages) + 1)
+                                else:
+                                    print(averages, np.argmin(averages) + 1)
 
     model_best_for = dict()
     dicti_mann_whitney_var = dict()
@@ -874,11 +875,11 @@ for name in name_list_total:
     all_text_for_tab = dict()
     metric_occured = set()
     if "traj" in name:
-        print_pred_res = False
+        print_metric_res = False
         usep = False
         use_p_table = False
     else:
-        print_pred_res = True
+        print_metric_res = True
         usep = True
         use_p_table = True
     for var in min_max_for_metric_for_ws:
@@ -960,12 +961,12 @@ for name in name_list_total:
                     if metric == "R2":
                         mul_val = 2
                         direction_use = "highest"
-                    if metric == "MAE" and "no_abs" in var:
+                    if metric in ["MAE", "RMSE"] and "no_abs" in var:
                         mul_val = 5
-                    if metric == "MAE" and ("no abs" in var or "actual" in var):
+                    if metric in ["MAE", "RMSE"] and ("no abs" in var or "actual" in var):
                         mul_val = 3
                     rnd_val = 2
-                    if metric == "MAE" and "latitude" in var:
+                    if metric in ["MAE", "RMSE"] and "latitude" in var:
                         rnd_val = 3
                     if metric == "haversine":
                         rnd_val = 3
@@ -989,9 +990,9 @@ for name in name_list_total:
                         unit_str = "\\%"
                         if metric == "haversine":
                             unit_str = " $km$"
-                        if "euclid" in metric or ("MAE" in metric and ("heading" in varnew or "offset" in varnew)):
+                        if "euclid" in metric or (metric in ["MAE", "RMSE"] and ("heading" in varnew or "offset" in varnew)):
                             unit_str = " $\\degree$"
-                        if "MAE" in metric and "speed" == varnew:
+                        if metric in ["MAE", "RMSE"] and "speed" == varnew:
                             unit_str = " $km/h$"
                         last_part = " $" + str(avg_arr[ix]) + mul_str + "$" + unit_str + " ($" + str(std_arr[ix]) + mul_str + "$" + unit_str + ")"
                         str_avg_std += last_part + ","
@@ -1066,7 +1067,7 @@ for name in name_list_total:
                     print_sentence_ws(var, model, metric, ws)
                     print_sentence_metric(var, model, metric, ws)
 
-    if "traj" in name:
+    if "traj" in name and False:
         for var in sorted(var_list):
             print(var, "$" + stringify(dictio_avg[var]["UniTS"][2]["R2"] * 100, 2, True)[0] + "\%$", "$" + stringify(dictio_avg[var]["UniTS"][30]["R2"] * 100, 2, True)[0] + "\%$")
             print(var, "$" + stringify(dictio_avg[var]["UniTS"][2]["MAE"] * (10 ** 3), 3, True)[0] + " \\times 10^{-3}$ $\\degree$", "$" + stringify(dictio_avg[var]["UniTS"][30]["MAE"] * (10 ** 3), 3, True)[0] + " \\times 10^{-3}$ $\\degree$")

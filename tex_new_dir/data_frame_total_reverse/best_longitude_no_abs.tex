@@ -19,6 +19,21 @@
 		\begin{tabular}{|c|c|c|c|c|c|c|c|}
 			\hline
 			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
+			GRU Att 1 & $1.97$ & $\mathbf{3.42}$ & $5.14$ & $6.46$ & $21.02$ & $36.56$ & $41.9$ \\ \hline
+			LSTM Third & $\mathbf{1.3}$ & $4.17$ & $6.83$ & $9.98$ & $22.08$ & $42.99$ & $52.72$ \\ \hline
+			UniTS & $2.5$ & $3.67$ & $\mathbf{4.92}$ & $\mathbf{6.21}$ & $\mathbf{12.69}$ & $\mathbf{23.9}$ & $\mathbf{31.89}$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average MSE ($\times 10^{-8}$), with standard deviation in brackets, across $k$-fold validation datasets for the $x$ offset estimated on the $k$-fold testing datasets by different RNN models, and forecasting times.}
+	\label{tab:best_longitude_no_abs_MSE}
+\end{table}
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
 			GRU Att 1 & $95.28\%$ & $\mathbf{91.82\%}$ & $87.72\%$ & $84.58\%$ & $50.23\%$ & $14.4\%$ & $2.92\%$ \\ \hline
 			LSTM Third & $\mathbf{96.89\%}$ & $90.01\%$ & $83.68\%$ & $76.18\%$ & $47.71\%$ & $-0.66\%$ & $-22.14\%$ \\ \hline
 			UniTS & $93.99\%$ & $91.16\%$ & $\mathbf{88.16\%}$ & $\mathbf{85.06\%}$ & $\mathbf{69.49\%}$ & $\mathbf{42.52\%}$ & $\mathbf{23.32\%}$ \\ \hline
@@ -26,4 +41,19 @@
 	}
 	\caption{The average $R^{2}$ (\%), with standard deviation in brackets, across $k$-fold validation datasets for the $x$ offset estimated on the $k$-fold testing datasets by different RNN models, and forecasting times.}
 	\label{tab:best_longitude_no_abs_R2}
+\end{table}
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
+			GRU Att 1 & $1.4$ & $\mathbf{1.85}$ & $2.27$ & $2.54$ & $4.58$ & $6.05$ & $6.47$ \\ \hline
+			LSTM Third & $\mathbf{1.14}$ & $2.04$ & $2.61$ & $3.16$ & $4.7$ & $6.56$ & $7.26$ \\ \hline
+			UniTS & $1.58$ & $1.92$ & $\mathbf{2.22}$ & $\mathbf{2.49}$ & $\mathbf{3.56}$ & $\mathbf{4.89}$ & $\mathbf{5.65}$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average RMSE ($\times 10^{-4}$), with standard deviation in brackets, across $k$-fold validation datasets for the $x$ offset estimated on the $k$-fold testing datasets by different RNN models, and forecasting times.}
+	\label{tab:best_longitude_no_abs_RMSE}
 \end{table}

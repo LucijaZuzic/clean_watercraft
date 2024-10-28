@@ -1,0 +1,13 @@
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
+			RNN Linear & $\mathbf{1505.12}$ & $\mathbf{2261.13}$ & $\mathbf{2947.98}$ & $3437.64$ & $5250.98$ & $7787.62$ & $9097.1$ \\ \hline
+			UniTS & $2479.48$ & $2813.74$ & $3126.59$ & $\mathbf{3421.45}$ & $\mathbf{4581.43}$ & $\mathbf{6070.72}$ & $\mathbf{7050.05}$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average MSE, with standard deviation in brackets, across $k$-fold validation datasets for the heading estimated on the $k$-fold testing datasets by different RNN models, and forecasting times.}
+	\label{tab:best_direction_MSE}
+\end{table}

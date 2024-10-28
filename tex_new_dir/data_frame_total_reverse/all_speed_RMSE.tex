@@ -1,0 +1,28 @@
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
+			GRU Att 1 & $5.105$ & $7.058$ & $8.136$ & $8.403$ & $10.093$ & $12.762$ & $13.95$ \\ \hline
+			GRU Att 2 & $5.006$ & $6.934$ & $8.149$ & $9.152$ & $11.004$ & $13.351$ & $14.558$ \\ \hline
+			GRU Att 3 & $5.0$ & $6.846$ & $8.282$ & $9.476$ & $12.076$ & $13.869$ & $15.519$ \\ \hline
+			GRU Att 4 & $5.123$ & $7.062$ & $8.561$ & $9.713$ & $12.301$ & $13.638$ & $15.248$ \\ \hline
+			GRU Linear & $4.054$ & $5.647$ & $6.977$ & $7.884$ & $10.428$ & $11.451$ & $11.836$ \\ \hline
+			GRU Reference & $27.518$ & $27.544$ & $27.566$ & $27.59$ & $27.7$ & $27.88$ & $28.045$ \\ \hline
+			GRU Third & $27.518$ & $27.544$ & $27.566$ & $27.59$ & $27.7$ & $27.88$ & $28.045$ \\ \hline
+			GRU Twice & $27.518$ & $27.544$ & $27.566$ & $27.59$ & $27.7$ & $27.88$ & $28.045$ \\ \hline
+			LSTM Linear & $\mathbf{4.019}$ & $5.604$ & $6.859$ & $7.869$ & $10.357$ & $11.416$ & $11.883$ \\ \hline
+			LSTM Reference & $27.518$ & $27.544$ & $27.566$ & $27.59$ & $27.7$ & $27.88$ & $28.045$ \\ \hline
+			LSTM Third & $27.518$ & $27.544$ & $27.566$ & $27.59$ & $27.7$ & $27.88$ & $28.045$ \\ \hline
+			LSTM Twice & $27.521$ & $27.544$ & $27.566$ & $27.59$ & $27.7$ & $27.88$ & $28.045$ \\ \hline
+			RNN Linear & $4.052$ & $5.585$ & $6.852$ & $7.75$ & $10.219$ & $11.302$ & $11.789$ \\ \hline
+			RNN Reference & $27.518$ & $27.544$ & $27.566$ & $27.59$ & $27.7$ & $27.88$ & $28.045$ \\ \hline
+			RNN Third & $27.518$ & $27.544$ & $27.566$ & $27.59$ & $27.7$ & $27.88$ & $28.045$ \\ \hline
+			RNN Twice & $27.518$ & $27.544$ & $27.566$ & $27.59$ & $27.7$ & $27.88$ & $28.045$ \\ \hline
+			UniTS & $4.346$ & $\mathbf{5.237}$ & $\mathbf{6.012}$ & $\mathbf{6.68}$ & $\mathbf{8.847}$ & $\mathbf{10.54}$ & $\mathbf{11.245}$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average RMSE, with standard deviation in brackets, across $k$-fold validation datasets for the speed estimated on the $k$-fold testing datasets by different RNN models, and forecasting times.}
+	\label{tab:all_speed_RMSE}
+\end{table}

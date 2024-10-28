@@ -1,0 +1,28 @@
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
+			GRU Att 1 & $1.478$ & $2.36$ & $3.224$ & $4.216$ & $13.938$ & $20.688$ & $24.27$ \\ \hline
+			GRU Att 2 & $1.707$ & $2.521$ & $\mathbf{3.096}$ & $\mathbf{4.027}$ & $9.731$ & $18.323$ & $25.428$ \\ \hline
+			GRU Att 3 & $1.762$ & $2.941$ & $4.116$ & $5.168$ & $11.104$ & $21.288$ & $27.892$ \\ \hline
+			GRU Att 4 & $1.569$ & $2.752$ & $3.828$ & $4.937$ & $9.645$ & $19.605$ & $24.252$ \\ \hline
+			GRU Linear & $1.164$ & $3.009$ & $4.343$ & $6.083$ & $13.99$ & $25.359$ & $30.892$ \\ \hline
+			GRU Reference & $\mathbf{1.104}$ & $3.138$ & $5.001$ & $6.425$ & $13.737$ & $25.087$ & $31.411$ \\ \hline
+			GRU Third & $1.432$ & $2.678$ & $4.895$ & $6.404$ & $13.848$ & $25.48$ & $31.296$ \\ \hline
+			GRU Twice & $1.209$ & $2.348$ & $4.525$ & $6.19$ & $13.803$ & $25.122$ & $30.769$ \\ \hline
+			LSTM Linear & $1.719$ & $2.727$ & $4.485$ & $6.593$ & $13.558$ & $24.431$ & $30.84$ \\ \hline
+			LSTM Reference & $1.335$ & $3.008$ & $4.573$ & $6.012$ & $13.507$ & $25.171$ & $30.461$ \\ \hline
+			LSTM Third & $1.539$ & $\mathbf{2.279}$ & $4.356$ & $5.728$ & $13.672$ & $25.316$ & $31.407$ \\ \hline
+			LSTM Twice & $16.643$ & $16.669$ & $13.221$ & $10.917$ & $13.891$ & $24.958$ & $29.365$ \\ \hline
+			RNN Linear & $13.275$ & $5.857$ & $9.264$ & $8.066$ & $13.847$ & $25.906$ & $30.651$ \\ \hline
+			RNN Reference & $11.241$ & $14.649$ & $6.717$ & $7.855$ & $14.172$ & $25.613$ & $31.266$ \\ \hline
+			RNN Third & $6.507$ & $4.351$ & $4.926$ & $5.984$ & $13.828$ & $26.497$ & $32.062$ \\ \hline
+			RNN Twice & $26.147$ & $22.568$ & $22.191$ & $25.516$ & $18.318$ & $28.747$ & $31.211$ \\ \hline
+			UniTS & $1.826$ & $2.521$ & $3.278$ & $4.062$ & $\mathbf{7.984}$ & $\mathbf{14.536}$ & $\mathbf{18.9}$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average MSE ($\times 10^{-8}$), with standard deviation in brackets, across $k$-fold validation datasets for the $y$ offset estimated on the $k$-fold testing datasets by different RNN models, and forecasting times.}
+	\label{tab:all_latitude_no_abs_MSE}
+\end{table}

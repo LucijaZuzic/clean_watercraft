@@ -1,0 +1,13 @@
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
+			LSTM Linear & $\mathbf{16.15}$ & $31.41$ & $47.05$ & $61.92$ & $107.28$ & $130.32$ & $141.2$ \\ \hline
+			UniTS & $18.89$ & $\mathbf{27.43}$ & $\mathbf{36.14}$ & $\mathbf{44.62}$ & $\mathbf{78.27}$ & $\mathbf{111.09}$ & $\mathbf{126.46}$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average MSE, with standard deviation in brackets, across $k$-fold validation datasets for the speed estimated on the $k$-fold testing datasets by different RNN models, and forecasting times.}
+	\label{tab:best_speed_MSE}
+\end{table}

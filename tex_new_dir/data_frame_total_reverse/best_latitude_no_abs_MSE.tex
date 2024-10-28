@@ -1,0 +1,15 @@
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
+			GRU Att 2 & $1.707$ & $2.521$ & $\mathbf{3.096}$ & $\mathbf{4.027}$ & $9.731$ & $18.323$ & $25.428$ \\ \hline
+			GRU Reference & $\mathbf{1.104}$ & $3.138$ & $5.001$ & $6.425$ & $13.737$ & $25.087$ & $31.411$ \\ \hline
+			LSTM Third & $1.539$ & $\mathbf{2.279}$ & $4.356$ & $5.728$ & $13.672$ & $25.316$ & $31.407$ \\ \hline
+			UniTS & $1.826$ & $2.521$ & $3.278$ & $4.062$ & $\mathbf{7.984}$ & $\mathbf{14.536}$ & $\mathbf{18.9}$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average MSE ($\times 10^{-8}$), with standard deviation in brackets, across $k$-fold validation datasets for the $y$ offset estimated on the $k$-fold testing datasets by different RNN models, and forecasting times.}
+	\label{tab:best_latitude_no_abs_MSE}
+\end{table}

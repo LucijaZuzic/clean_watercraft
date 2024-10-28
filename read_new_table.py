@@ -27,7 +27,7 @@ name_list_total = []
 name_list_total.extend(name_list)
 name_list_total.extend(name_list_traj)
 
-round_val = {"R2": (100, 2, 3), "MAE": (1, 2, 1), "euclid": (1, 2, 1), "haversine": (1, 2, 1)}
+round_val = {"R2": (100, 2, 3), "MAE": (1, 2, 1), "MSE": (1, 2, 1), "RMSE": (1, 2, 1), "euclid": (1, 2, 1), "haversine": (1, 2, 1)}
 cm = 1/2.54  # centimeters in inches
 plot_draw = True
 legend_pos = {17: 8, 4: 4, 5: 5, 7: 5}

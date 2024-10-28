@@ -1,0 +1,15 @@
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
+			GRU Att 2 & $1.306$ & $1.588$ & $\mathbf{1.759}$ & $\mathbf{2.007}$ & $3.119$ & $4.281$ & $5.043$ \\ \hline
+			GRU Reference & $\mathbf{1.051}$ & $1.772$ & $2.236$ & $2.535$ & $3.706$ & $5.009$ & $5.605$ \\ \hline
+			LSTM Third & $1.241$ & $\mathbf{1.51}$ & $2.087$ & $2.393$ & $3.698$ & $5.031$ & $5.604$ \\ \hline
+			UniTS & $1.351$ & $1.588$ & $1.81$ & $2.015$ & $\mathbf{2.826}$ & $\mathbf{3.813}$ & $\mathbf{4.347}$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average RMSE ($\times 10^{-4}$), with standard deviation in brackets, across $k$-fold validation datasets for the $y$ offset estimated on the $k$-fold testing datasets by different RNN models, and forecasting times.}
+	\label{tab:best_latitude_no_abs_RMSE}
+\end{table}

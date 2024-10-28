@@ -1,0 +1,28 @@
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
+			GRU Att 4 & $\mathbf{3.08}$ & $\mathbf{3.91}$ & $4.88$ & $6.43$ & $27.35$ & $60.13$ & $75.19$ \\ \hline
+			UniTS & $5.6$ & $5.42$ & $\mathbf{4.57}$ & $\mathbf{5.51}$ & $\mathbf{8.92}$ & $\mathbf{12.49}$ & $\mathbf{16.53}$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average RMSE ($\times 10^{-3}$), with standard deviation in brackets, across $k$-fold validation datasets for the trajectories in the $k$-fold testing datasets estimated using $x$ and $y$ offset, different RNN models, and forecasting times.}
+	\label{tab:best_no_abs_RMSE}
+\end{table}
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
+			GRU Att 1 & $1.509$ & $1.531$ & $1.593$ & $\mathbf{1.604}$ & $\mathbf{1.752}$ & $\mathbf{2.659}$ & $9.895$ \\ \hline
+			GRU Att 2 & $1.504$ & $1.546$ & $1.593$ & $1.624$ & $1.83$ & $2.724$ & $\mathbf{3.927}$ \\ \hline
+			GRU Att 4 & $\mathbf{1.501}$ & $\mathbf{1.522}$ & $\mathbf{1.588}$ & $1.623$ & $1.848$ & $2.741$ & $6.867$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average RMSE ($\times 10^{-2}$), with standard deviation in brackets, across $k$-fold validation datasets for the trajectories in the $k$-fold testing datasets estimated using speed, heading, and time, different RNN models, and forecasting times.}
+	\label{tab:best_speed_actual_dir_RMSE}
+\end{table}

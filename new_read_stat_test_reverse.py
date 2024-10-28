@@ -85,7 +85,7 @@ def plot_dict(begin_name, dict_use, save_name, subtitle, use_ws = []):
 
 for start_name in ["dicti_mann_whitney", "dicti_wilcoxon"]:
 
-    for metric in ["R2", "MAE"]:
+    for metric in ["R2", "MAE", "RMSE", "MSE"]:
         df_dictio = pd.read_csv(start_name + "_" + metric + ".csv", index_col = False)
 
         var_list = set(df_dictio["variable"])
@@ -125,7 +125,7 @@ for start_name in ["dicti_mann_whitney", "dicti_wilcoxon"]:
         for ws in set(list(df_dictio["ws"])):
             plot_dict(start_name, dicti_mann_whitney, "var_" + str(ws) + "_" + metric, metricnew, [ws])
 
-    for metric in ["R2", "MAE", "euclid", "haversine"]:
+    for metric in ["R2", "MAE", "RMSE", "MSE", "euclid", "haversine"]:
         df_dictio_traj = pd.read_csv(start_name + "_traj_" + metric + ".csv", index_col = False)
 
         var_list = set(df_dictio_traj["variable"])

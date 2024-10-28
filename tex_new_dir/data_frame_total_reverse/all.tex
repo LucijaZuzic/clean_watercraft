@@ -120,6 +120,122 @@
 		\begin{tabular}{|c|c|c|c|c|c|c|c|}
 			\hline
 			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
+			GRU Att 1 & $2215.536$ & $2919.56$ & $3614.452$ & $4003.479$ & $5897.508$ & $8901.193$ & $11165.016$ \\ \hline
+			GRU Att 2 & $2337.122$ & $2997.403$ & $3594.702$ & $4033.962$ & $6053.946$ & $8845.105$ & $10700.566$ \\ \hline
+			GRU Att 3 & $2092.812$ & $3159.616$ & $3878.324$ & $4424.298$ & $6305.807$ & $9019.799$ & $10879.751$ \\ \hline
+			GRU Att 4 & $2256.164$ & $3039.273$ & $3774.878$ & $4210.856$ & $6207.643$ & $9004.682$ & $11022.779$ \\ \hline
+			GRU Linear & $1640.901$ & $2437.66$ & $3048.272$ & $3536.867$ & $5390.659$ & $7827.186$ & $9235.852$ \\ \hline
+			GRU Reference & $43274.517$ & $43297.715$ & $43318.962$ & $43343.035$ & $43443.327$ & $43658.241$ & $43862.937$ \\ \hline
+			GRU Third & $43274.517$ & $43297.715$ & $43318.962$ & $43343.035$ & $43443.327$ & $43658.241$ & $43862.937$ \\ \hline
+			GRU Twice & $43274.517$ & $43297.715$ & $43318.962$ & $43343.035$ & $43443.327$ & $43658.241$ & $43862.937$ \\ \hline
+			LSTM Linear & $1643.455$ & $2411.833$ & $3404.159$ & $3527.839$ & $5291.369$ & $7513.358$ & $8795.291$ \\ \hline
+			LSTM Reference & $43274.517$ & $43297.715$ & $43318.962$ & $43343.035$ & $43443.327$ & $43658.241$ & $43862.937$ \\ \hline
+			LSTM Third & $43274.517$ & $43297.715$ & $43318.962$ & $43343.035$ & $43443.327$ & $43658.241$ & $43862.937$ \\ \hline
+			LSTM Twice & $43274.517$ & $43297.715$ & $43318.962$ & $43343.035$ & $43443.327$ & $43658.241$ & $43862.937$ \\ \hline
+			RNN Linear & $\mathbf{1505.123}$ & $\mathbf{2261.125}$ & $\mathbf{2947.981}$ & $3437.644$ & $5250.975$ & $7787.618$ & $9097.102$ \\ \hline
+			RNN Reference & $43274.517$ & $43297.715$ & $43318.962$ & $43343.035$ & $43443.327$ & $43658.241$ & $43862.937$ \\ \hline
+			RNN Third & $43274.517$ & $43297.715$ & $43318.962$ & $43343.035$ & $43443.327$ & $43658.241$ & $43862.937$ \\ \hline
+			RNN Twice & $43274.517$ & $43297.715$ & $43318.962$ & $43343.035$ & $43443.327$ & $43658.241$ & $43862.937$ \\ \hline
+			UniTS & $2479.481$ & $2813.741$ & $3126.591$ & $\mathbf{3421.455}$ & $\mathbf{4581.427}$ & $\mathbf{6070.722}$ & $\mathbf{7050.047}$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average MSE, with standard deviation in brackets, across $k$-fold validation datasets for the heading estimated on the $k$-fold testing datasets by different RNN models, and forecasting times.}
+	\label{tab:all_direction_MSE}
+\end{table}
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
+			GRU Att 1 & $1.478$ & $2.36$ & $3.224$ & $4.216$ & $13.938$ & $20.688$ & $24.27$ \\ \hline
+			GRU Att 2 & $1.707$ & $2.521$ & $\mathbf{3.096}$ & $\mathbf{4.027}$ & $9.731$ & $18.323$ & $25.428$ \\ \hline
+			GRU Att 3 & $1.762$ & $2.941$ & $4.116$ & $5.168$ & $11.104$ & $21.288$ & $27.892$ \\ \hline
+			GRU Att 4 & $1.569$ & $2.752$ & $3.828$ & $4.937$ & $9.645$ & $19.605$ & $24.252$ \\ \hline
+			GRU Linear & $1.164$ & $3.009$ & $4.343$ & $6.083$ & $13.99$ & $25.359$ & $30.892$ \\ \hline
+			GRU Reference & $\mathbf{1.104}$ & $3.138$ & $5.001$ & $6.425$ & $13.737$ & $25.087$ & $31.411$ \\ \hline
+			GRU Third & $1.432$ & $2.678$ & $4.895$ & $6.404$ & $13.848$ & $25.48$ & $31.296$ \\ \hline
+			GRU Twice & $1.209$ & $2.348$ & $4.525$ & $6.19$ & $13.803$ & $25.122$ & $30.769$ \\ \hline
+			LSTM Linear & $1.719$ & $2.727$ & $4.485$ & $6.593$ & $13.558$ & $24.431$ & $30.84$ \\ \hline
+			LSTM Reference & $1.335$ & $3.008$ & $4.573$ & $6.012$ & $13.507$ & $25.171$ & $30.461$ \\ \hline
+			LSTM Third & $1.539$ & $\mathbf{2.279}$ & $4.356$ & $5.728$ & $13.672$ & $25.316$ & $31.407$ \\ \hline
+			LSTM Twice & $16.643$ & $16.669$ & $13.221$ & $10.917$ & $13.891$ & $24.958$ & $29.365$ \\ \hline
+			RNN Linear & $13.275$ & $5.857$ & $9.264$ & $8.066$ & $13.847$ & $25.906$ & $30.651$ \\ \hline
+			RNN Reference & $11.241$ & $14.649$ & $6.717$ & $7.855$ & $14.172$ & $25.613$ & $31.266$ \\ \hline
+			RNN Third & $6.507$ & $4.351$ & $4.926$ & $5.984$ & $13.828$ & $26.497$ & $32.062$ \\ \hline
+			RNN Twice & $26.147$ & $22.568$ & $22.191$ & $25.516$ & $18.318$ & $28.747$ & $31.211$ \\ \hline
+			UniTS & $1.826$ & $2.521$ & $3.278$ & $4.062$ & $\mathbf{7.984}$ & $\mathbf{14.536}$ & $\mathbf{18.9}$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average MSE ($\times 10^{-8}$), with standard deviation in brackets, across $k$-fold validation datasets for the $y$ offset estimated on the $k$-fold testing datasets by different RNN models, and forecasting times.}
+	\label{tab:all_latitude_no_abs_MSE}
+\end{table}
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
+			GRU Att 1 & $1.967$ & $\mathbf{3.415}$ & $5.138$ & $6.461$ & $21.018$ & $36.561$ & $41.905$ \\ \hline
+			GRU Att 2 & $2.076$ & $3.63$ & $5.096$ & $6.695$ & $14.895$ & $32.435$ & $45.855$ \\ \hline
+			GRU Att 3 & $2.296$ & $3.908$ & $5.472$ & $7.418$ & $18.261$ & $40.93$ & $53.858$ \\ \hline
+			GRU Att 4 & $2.079$ & $3.826$ & $5.441$ & $7.582$ & $16.23$ & $35.247$ & $47.554$ \\ \hline
+			GRU Linear & $1.84$ & $4.257$ & $7.454$ & $9.411$ & $22.057$ & $43.948$ & $53.951$ \\ \hline
+			GRU Reference & $1.837$ & $4.691$ & $6.939$ & $9.409$ & $21.94$ & $42.669$ & $54.106$ \\ \hline
+			GRU Third & $1.325$ & $4.444$ & $7.634$ & $9.885$ & $22.622$ & $43.391$ & $53.649$ \\ \hline
+			GRU Twice & $1.536$ & $4.293$ & $6.988$ & $9.786$ & $22.391$ & $42.216$ & $53.086$ \\ \hline
+			LSTM Linear & $1.696$ & $4.386$ & $6.802$ & $9.87$ & $22.27$ & $43.564$ & $52.308$ \\ \hline
+			LSTM Reference & $1.64$ & $4.798$ & $7.538$ & $9.518$ & $22.044$ & $42.151$ & $53.341$ \\ \hline
+			LSTM Third & $\mathbf{1.298}$ & $4.174$ & $6.827$ & $9.983$ & $22.081$ & $42.991$ & $52.723$ \\ \hline
+			LSTM Twice & $16.895$ & $8.051$ & $7.021$ & $9.385$ & $21.603$ & $42.238$ & $51.688$ \\ \hline
+			RNN Linear & $11.389$ & $20.772$ & $9.259$ & $9.919$ & $22.281$ & $43.262$ & $54.644$ \\ \hline
+			RNN Reference & $11.292$ & $7.985$ & $8.389$ & $10.99$ & $22.246$ & $43.075$ & $54.575$ \\ \hline
+			RNN Third & $3.401$ & $4.435$ & $7.786$ & $10.597$ & $22.157$ & $44.719$ & $54.268$ \\ \hline
+			RNN Twice & $24.549$ & $22.828$ & $29.941$ & $23.965$ & $25.909$ & $43.356$ & $53.904$ \\ \hline
+			UniTS & $2.501$ & $3.674$ & $\mathbf{4.921}$ & $\mathbf{6.211}$ & $\mathbf{12.687}$ & $\mathbf{23.905}$ & $\mathbf{31.891}$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average MSE ($\times 10^{-8}$), with standard deviation in brackets, across $k$-fold validation datasets for the $x$ offset estimated on the $k$-fold testing datasets by different RNN models, and forecasting times.}
+	\label{tab:all_longitude_no_abs_MSE}
+\end{table}
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
+			GRU Att 1 & $26.065$ & $49.815$ & $66.187$ & $70.607$ & $101.878$ & $162.871$ & $194.614$ \\ \hline
+			GRU Att 2 & $25.057$ & $48.082$ & $66.413$ & $83.755$ & $121.082$ & $178.261$ & $211.94$ \\ \hline
+			GRU Att 3 & $25.001$ & $46.87$ & $68.594$ & $89.787$ & $145.831$ & $192.358$ & $240.84$ \\ \hline
+			GRU Att 4 & $26.248$ & $49.877$ & $73.287$ & $94.343$ & $151.323$ & $186.005$ & $232.514$ \\ \hline
+			GRU Linear & $16.437$ & $31.892$ & $48.675$ & $62.165$ & $108.749$ & $131.13$ & $140.102$ \\ \hline
+			GRU Reference & $757.264$ & $758.669$ & $759.912$ & $761.226$ & $767.281$ & $777.289$ & $786.544$ \\ \hline
+			GRU Third & $757.264$ & $758.669$ & $759.912$ & $761.226$ & $767.281$ & $777.289$ & $786.544$ \\ \hline
+			GRU Twice & $757.264$ & $758.669$ & $759.912$ & $761.226$ & $767.281$ & $777.289$ & $786.544$ \\ \hline
+			LSTM Linear & $\mathbf{16.154}$ & $31.409$ & $47.047$ & $61.916$ & $107.276$ & $130.317$ & $141.201$ \\ \hline
+			LSTM Reference & $757.264$ & $758.669$ & $759.912$ & $761.226$ & $767.281$ & $777.289$ & $786.544$ \\ \hline
+			LSTM Third & $757.264$ & $758.669$ & $759.912$ & $761.226$ & $767.281$ & $777.289$ & $786.544$ \\ \hline
+			LSTM Twice & $757.414$ & $758.669$ & $759.912$ & $761.226$ & $767.281$ & $777.289$ & $786.544$ \\ \hline
+			RNN Linear & $16.42$ & $31.188$ & $46.953$ & $60.064$ & $104.421$ & $127.738$ & $138.984$ \\ \hline
+			RNN Reference & $757.265$ & $758.669$ & $759.912$ & $761.226$ & $767.281$ & $777.289$ & $786.544$ \\ \hline
+			RNN Third & $757.264$ & $758.669$ & $759.912$ & $761.226$ & $767.281$ & $777.289$ & $786.544$ \\ \hline
+			RNN Twice & $757.264$ & $758.669$ & $759.912$ & $761.226$ & $767.281$ & $777.289$ & $786.544$ \\ \hline
+			UniTS & $18.887$ & $\mathbf{27.429}$ & $\mathbf{36.141}$ & $\mathbf{44.625}$ & $\mathbf{78.27}$ & $\mathbf{111.086}$ & $\mathbf{126.457}$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average MSE, with standard deviation in brackets, across $k$-fold validation datasets for the speed estimated on the $k$-fold testing datasets by different RNN models, and forecasting times.}
+	\label{tab:all_speed_MSE}
+\end{table}
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
 			GRU Att 1 & $79.651\%$ & $73.198\%$ & $66.831\%$ & $63.275\%$ & $45.972\%$ & $18.417\%$ & $-2.594\%$ \\ \hline
 			GRU Att 2 & $78.534\%$ & $72.484\%$ & $67.012\%$ & $62.996\%$ & $44.539\%$ & $18.931\%$ & $1.674\%$ \\ \hline
 			GRU Att 3 & $80.778\%$ & $70.995\%$ & $64.409\%$ & $59.415\%$ & $42.232\%$ & $17.33\%$ & $0.027\%$ \\ \hline
@@ -228,4 +344,120 @@
 	}
 	\caption{The average $R^{2}$ (\%), with standard deviation in brackets, across $k$-fold validation datasets for the speed estimated on the $k$-fold testing datasets by different RNN models, and forecasting times.}
 	\label{tab:all_speed_R2}
+\end{table}
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
+			GRU Att 1 & $47.069$ & $54.033$ & $60.12$ & $63.273$ & $76.795$ & $94.346$ & $105.665$ \\ \hline
+			GRU Att 2 & $48.344$ & $54.749$ & $59.956$ & $63.513$ & $77.807$ & $94.048$ & $103.444$ \\ \hline
+			GRU Att 3 & $45.747$ & $56.21$ & $62.276$ & $66.515$ & $79.409$ & $94.973$ & $104.306$ \\ \hline
+			GRU Att 4 & $47.499$ & $55.13$ & $61.44$ & $64.891$ & $78.789$ & $94.893$ & $104.989$ \\ \hline
+			GRU Linear & $40.508$ & $49.373$ & $55.211$ & $59.472$ & $73.421$ & $88.471$ & $96.103$ \\ \hline
+			GRU Reference & $208.025$ & $208.081$ & $208.132$ & $208.19$ & $208.431$ & $208.946$ & $209.435$ \\ \hline
+			GRU Third & $208.025$ & $208.081$ & $208.132$ & $208.19$ & $208.431$ & $208.946$ & $209.435$ \\ \hline
+			GRU Twice & $208.025$ & $208.081$ & $208.132$ & $208.19$ & $208.431$ & $208.946$ & $209.435$ \\ \hline
+			LSTM Linear & $40.54$ & $49.11$ & $58.345$ & $59.396$ & $72.742$ & $86.68$ & $93.783$ \\ \hline
+			LSTM Reference & $208.025$ & $208.081$ & $208.132$ & $208.19$ & $208.431$ & $208.946$ & $209.435$ \\ \hline
+			LSTM Third & $208.025$ & $208.081$ & $208.132$ & $208.19$ & $208.431$ & $208.946$ & $209.435$ \\ \hline
+			LSTM Twice & $208.025$ & $208.081$ & $208.132$ & $208.19$ & $208.431$ & $208.946$ & $209.435$ \\ \hline
+			RNN Linear & $\mathbf{38.796}$ & $\mathbf{47.551}$ & $\mathbf{54.295}$ & $58.631$ & $72.464$ & $88.247$ & $95.379$ \\ \hline
+			RNN Reference & $208.025$ & $208.081$ & $208.132$ & $208.19$ & $208.431$ & $208.946$ & $209.435$ \\ \hline
+			RNN Third & $208.025$ & $208.081$ & $208.132$ & $208.19$ & $208.431$ & $208.946$ & $209.435$ \\ \hline
+			RNN Twice & $208.025$ & $208.081$ & $208.132$ & $208.19$ & $208.431$ & $208.946$ & $209.435$ \\ \hline
+			UniTS & $49.794$ & $53.045$ & $55.916$ & $\mathbf{58.493}$ & $\mathbf{67.686}$ & $\mathbf{77.915}$ & $\mathbf{83.965}$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average RMSE, with standard deviation in brackets, across $k$-fold validation datasets for the heading estimated on the $k$-fold testing datasets by different RNN models, and forecasting times.}
+	\label{tab:all_direction_RMSE}
+\end{table}
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
+			GRU Att 1 & $1.216$ & $1.536$ & $1.796$ & $2.053$ & $3.733$ & $4.548$ & $4.926$ \\ \hline
+			GRU Att 2 & $1.306$ & $1.588$ & $\mathbf{1.759}$ & $\mathbf{2.007}$ & $3.119$ & $4.281$ & $5.043$ \\ \hline
+			GRU Att 3 & $1.327$ & $1.715$ & $2.029$ & $2.273$ & $3.332$ & $4.614$ & $5.281$ \\ \hline
+			GRU Att 4 & $1.253$ & $1.659$ & $1.957$ & $2.222$ & $3.106$ & $4.428$ & $4.925$ \\ \hline
+			GRU Linear & $1.079$ & $1.735$ & $2.084$ & $2.466$ & $3.74$ & $5.036$ & $5.558$ \\ \hline
+			GRU Reference & $\mathbf{1.051}$ & $1.772$ & $2.236$ & $2.535$ & $3.706$ & $5.009$ & $5.605$ \\ \hline
+			GRU Third & $1.196$ & $1.636$ & $2.212$ & $2.531$ & $3.721$ & $5.048$ & $5.594$ \\ \hline
+			GRU Twice & $1.1$ & $1.532$ & $2.127$ & $2.488$ & $3.715$ & $5.012$ & $5.547$ \\ \hline
+			LSTM Linear & $1.311$ & $1.651$ & $2.118$ & $2.568$ & $3.682$ & $4.943$ & $5.553$ \\ \hline
+			LSTM Reference & $1.156$ & $1.734$ & $2.138$ & $2.452$ & $3.675$ & $5.017$ & $5.519$ \\ \hline
+			LSTM Third & $1.241$ & $\mathbf{1.51}$ & $2.087$ & $2.393$ & $3.698$ & $5.031$ & $5.604$ \\ \hline
+			LSTM Twice & $4.08$ & $4.083$ & $3.636$ & $3.304$ & $3.727$ & $4.996$ & $5.419$ \\ \hline
+			RNN Linear & $3.644$ & $2.42$ & $3.044$ & $2.84$ & $3.721$ & $5.09$ & $5.536$ \\ \hline
+			RNN Reference & $3.353$ & $3.827$ & $2.592$ & $2.803$ & $3.765$ & $5.061$ & $5.592$ \\ \hline
+			RNN Third & $2.551$ & $2.086$ & $2.219$ & $2.446$ & $3.719$ & $5.148$ & $5.662$ \\ \hline
+			RNN Twice & $5.113$ & $4.751$ & $4.711$ & $5.051$ & $4.28$ & $5.362$ & $5.587$ \\ \hline
+			UniTS & $1.351$ & $1.588$ & $1.81$ & $2.015$ & $\mathbf{2.826}$ & $\mathbf{3.813}$ & $\mathbf{4.347}$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average RMSE ($\times 10^{-4}$), with standard deviation in brackets, across $k$-fold validation datasets for the $y$ offset estimated on the $k$-fold testing datasets by different RNN models, and forecasting times.}
+	\label{tab:all_latitude_no_abs_RMSE}
+\end{table}
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
+			GRU Att 1 & $1.403$ & $\mathbf{1.848}$ & $2.267$ & $2.542$ & $4.585$ & $6.047$ & $6.473$ \\ \hline
+			GRU Att 2 & $1.441$ & $1.905$ & $2.257$ & $2.587$ & $3.859$ & $5.695$ & $6.772$ \\ \hline
+			GRU Att 3 & $1.515$ & $1.977$ & $2.339$ & $2.724$ & $4.273$ & $6.398$ & $7.339$ \\ \hline
+			GRU Att 4 & $1.442$ & $1.956$ & $2.333$ & $2.753$ & $4.029$ & $5.937$ & $6.896$ \\ \hline
+			GRU Linear & $1.357$ & $2.063$ & $2.73$ & $3.068$ & $4.696$ & $6.629$ & $7.345$ \\ \hline
+			GRU Reference & $1.355$ & $2.166$ & $2.634$ & $3.067$ & $4.684$ & $6.532$ & $7.356$ \\ \hline
+			GRU Third & $1.151$ & $2.108$ & $2.763$ & $3.144$ & $4.756$ & $6.587$ & $7.325$ \\ \hline
+			GRU Twice & $1.239$ & $2.072$ & $2.643$ & $3.128$ & $4.732$ & $6.497$ & $7.286$ \\ \hline
+			LSTM Linear & $1.302$ & $2.094$ & $2.608$ & $3.142$ & $4.719$ & $6.6$ & $7.232$ \\ \hline
+			LSTM Reference & $1.281$ & $2.19$ & $2.746$ & $3.085$ & $4.695$ & $6.492$ & $7.304$ \\ \hline
+			LSTM Third & $\mathbf{1.139}$ & $2.043$ & $2.613$ & $3.16$ & $4.699$ & $6.557$ & $7.261$ \\ \hline
+			LSTM Twice & $4.11$ & $2.837$ & $2.65$ & $3.064$ & $4.648$ & $6.499$ & $7.189$ \\ \hline
+			RNN Linear & $3.375$ & $4.558$ & $3.043$ & $3.149$ & $4.72$ & $6.577$ & $7.392$ \\ \hline
+			RNN Reference & $3.36$ & $2.826$ & $2.896$ & $3.315$ & $4.717$ & $6.563$ & $7.387$ \\ \hline
+			RNN Third & $1.844$ & $2.106$ & $2.79$ & $3.255$ & $4.707$ & $6.687$ & $7.367$ \\ \hline
+			RNN Twice & $4.955$ & $4.778$ & $5.472$ & $4.895$ & $5.09$ & $6.584$ & $7.342$ \\ \hline
+			UniTS & $1.581$ & $1.917$ & $\mathbf{2.218}$ & $\mathbf{2.492}$ & $\mathbf{3.562}$ & $\mathbf{4.889}$ & $\mathbf{5.647}$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average RMSE ($\times 10^{-4}$), with standard deviation in brackets, across $k$-fold validation datasets for the $x$ offset estimated on the $k$-fold testing datasets by different RNN models, and forecasting times.}
+	\label{tab:all_longitude_no_abs_RMSE}
+\end{table}
+
+\begin{table}[!ht]
+	\centering
+	\resizebox{\linewidth}{!}{
+		\begin{tabular}{|c|c|c|c|c|c|c|c|}
+			\hline
+			Model & $2$ $s$ & $3$ $s$ & $4$ $s$ & $5$ $s$ & $10$ $s$ & $20$ $s$ & $30$ $s$ \\ \hline
+			GRU Att 1 & $5.105$ & $7.058$ & $8.136$ & $8.403$ & $10.093$ & $12.762$ & $13.95$ \\ \hline
+			GRU Att 2 & $5.006$ & $6.934$ & $8.149$ & $9.152$ & $11.004$ & $13.351$ & $14.558$ \\ \hline
+			GRU Att 3 & $5.0$ & $6.846$ & $8.282$ & $9.476$ & $12.076$ & $13.869$ & $15.519$ \\ \hline
+			GRU Att 4 & $5.123$ & $7.062$ & $8.561$ & $9.713$ & $12.301$ & $13.638$ & $15.248$ \\ \hline
+			GRU Linear & $4.054$ & $5.647$ & $6.977$ & $7.884$ & $10.428$ & $11.451$ & $11.836$ \\ \hline
+			GRU Reference & $27.518$ & $27.544$ & $27.566$ & $27.59$ & $27.7$ & $27.88$ & $28.045$ \\ \hline
+			GRU Third & $27.518$ & $27.544$ & $27.566$ & $27.59$ & $27.7$ & $27.88$ & $28.045$ \\ \hline
+			GRU Twice & $27.518$ & $27.544$ & $27.566$ & $27.59$ & $27.7$ & $27.88$ & $28.045$ \\ \hline
+			LSTM Linear & $\mathbf{4.019}$ & $5.604$ & $6.859$ & $7.869$ & $10.357$ & $11.416$ & $11.883$ \\ \hline
+			LSTM Reference & $27.518$ & $27.544$ & $27.566$ & $27.59$ & $27.7$ & $27.88$ & $28.045$ \\ \hline
+			LSTM Third & $27.518$ & $27.544$ & $27.566$ & $27.59$ & $27.7$ & $27.88$ & $28.045$ \\ \hline
+			LSTM Twice & $27.521$ & $27.544$ & $27.566$ & $27.59$ & $27.7$ & $27.88$ & $28.045$ \\ \hline
+			RNN Linear & $4.052$ & $5.585$ & $6.852$ & $7.75$ & $10.219$ & $11.302$ & $11.789$ \\ \hline
+			RNN Reference & $27.518$ & $27.544$ & $27.566$ & $27.59$ & $27.7$ & $27.88$ & $28.045$ \\ \hline
+			RNN Third & $27.518$ & $27.544$ & $27.566$ & $27.59$ & $27.7$ & $27.88$ & $28.045$ \\ \hline
+			RNN Twice & $27.518$ & $27.544$ & $27.566$ & $27.59$ & $27.7$ & $27.88$ & $28.045$ \\ \hline
+			UniTS & $4.346$ & $\mathbf{5.237}$ & $\mathbf{6.012}$ & $\mathbf{6.68}$ & $\mathbf{8.847}$ & $\mathbf{10.54}$ & $\mathbf{11.245}$ \\ \hline
+		\end{tabular}
+	}
+	\caption{The average RMSE, with standard deviation in brackets, across $k$-fold validation datasets for the speed estimated on the $k$-fold testing datasets by different RNN models, and forecasting times.}
+	\label{tab:all_speed_RMSE}
 \end{table}
